@@ -29,11 +29,47 @@
       }
 
       &:hover {
-         transform: translateY(-1rem);
+         transform: translateY(-0.5rem) scale(1.1);
       }
 
       & + a {
          margin-left: 0.95rem;
+      }
+   }
+
+   .twitter:hover {
+      background-color: #1da1f2;
+
+      svg {
+         fill: #ffffff;
+      }
+   }
+   .linkedin:hover {
+      background-color: #0077B5;
+
+      svg {
+         fill: #ffffff;
+      }
+   }
+   .github:hover {
+      background-color: #333333;
+
+      svg {
+         fill: #ffffff;
+      }
+   }
+   .source:hover {
+      background-color: #1E741E;
+
+      svg {
+         fill: #ffffff;
+      }
+   }
+   .rocketseat:hover {
+      background-color: #8257e5;
+
+      svg {
+         fill: #ffffff;
       }
    }
 }

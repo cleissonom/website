@@ -1,0 +1,30 @@
+.container {
+   width: 100vw;
+   height: 100vh;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.content {
+   overflow-y: scroll;
+
+   min-width: 95vw;
+   height: 80vh;
+   margin-bottom: 1rem;
+   padding: 1rem;
+
+   border-radius: 0.75rem;
+   backdrop-filter: blur(2px);
+}
+
+html[data-theme="light"] .content {
+   background-color: rgba(255, 255, 255, 0.5);
+   border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="dark"] .content {
+   background-color: rgba(0, 0, 0, 0.5);
+   border: 2px solid rgba(255, 255, 255, 0.1);
+}

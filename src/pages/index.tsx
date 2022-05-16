@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { DarkModeButton } from "../components/DarkModeButton";
-import { Footer } from "../components/Footer";
+import { MainBox } from "../components/MainBox/";
 
 const Home: NextPage = () => {
   return (
@@ -9,9 +8,9 @@ const Home: NextPage = () => {
       <Head>
         <title>Personal Website</title>
       </Head>
-      <DarkModeButton />
-      <div>Hello World!</div>
-      <Footer />
+      <MainBox>
+        <div>Hello World!</div>
+      </MainBox>
     </>
   );
 };

@@ -20,28 +20,44 @@ export function Footer() {
           <FaTwitter size="1.75rem" color="#000" />
         )}
       </a>
-      <a href="https://linkedin.com/in/cleissonom" title="Linkedin button">
+      <a
+        href="https://linkedin.com/in/cleissonom"
+        title="Linkedin button"
+        className={styles.linkedin}
+      >
         {theme === "dark" ? (
           <FaLinkedin size="1.75rem" color="#fff" />
         ) : (
           <FaLinkedin size="1.75rem" color="#000" />
         )}
       </a>
-      <a href="https://github.com/cleissonom" title="Github button">
+      <a
+        href="https://github.com/cleissonom"
+        title="Github button"
+        className={styles.github}
+      >
         {theme === "dark" ? (
           <FaGithub size="1.75rem" color="#fff" />
         ) : (
           <FaGithub size="1.75rem" color="#000" />
         )}
       </a>
-      <a href="https://github.com/cleissonom/website" title="SourceCode button">
+      <a
+        href="https://github.com/cleissonom/website"
+        title="SourceCode button"
+        className={styles.source}
+      >
         {theme === "dark" ? (
           <VscBracketDot size="1.75rem" color="#fff" />
         ) : (
           <VscBracketDot size="1.75rem" color="#000" />
         )}
       </a>
-      <a href="https://rocketseat.com/cleissonom" title="Rocketseat button">
+      <a
+        href="https://rocketseat.com/cleissonom"
+        title="Rocketseat button"
+        className={styles.rocketseat}
+      >
         {theme === "dark" ? (
           <ImRocket size="1.75rem" color="#fff" />
         ) : (
