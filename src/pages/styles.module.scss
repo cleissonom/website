@@ -1,0 +1,222 @@
+.content {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+
+   .avatarSection {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      div {
+         margin-bottom: 4rem;
+         display: flex;
+         flex-direction: row;
+      }
+      h1 {
+         font-size: 2.5rem;
+         font-weight: bold;
+         margin-bottom: 0.8rem;
+
+         text-decoration: underline;     
+         text-decoration-color: red; 
+         text-underline-offset: 3px;
+      }
+      h3 {
+         font-size: 2rem;
+         font-weight: bold;
+         margin-bottom: 1rem;
+         opacity: 0.7;
+      }
+      
+      img {
+         min-width: 18rem;
+         min-height: 18rem;
+         max-width: 18rem;
+         max-height: 18rem;
+         width: 18rem;
+         height: 18rem;
+         object-fit: contain;
+      }
+
+      .backImage {
+         position: relative;
+         z-index: 1;
+         left: 6rem;
+         bottom: 2rem;
+      }
+      .frontImage {
+         position: relative;
+         z-index: 99;
+         top: 2rem;
+         right: 6rem;
+      }
+   }
+
+   .aboutSection {
+      flex: 1;
+
+      h2 {
+         font-size: 2.5rem;
+         font-weight: bold;
+         margin-bottom: 2.25rem;
+      }
+      p {
+         font-size: 1.75rem;
+         font-weight: 600;
+         margin-bottom: 2.25rem;
+      }
+      ul {
+         list-style: none;
+         padding: 0;
+         margin: 0;
+
+         li {
+            font-size: 1.5rem;
+            font-weight: 500;
+            padding-left: 2rem;
+            margin-bottom: 0.5rem;
+            cursor: default;
+         }
+      }
+
+      div {
+         margin: 0 auto;
+         text-align: center;
+         padding-top: 2.5rem;
+
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+
+   }
+
+}
+
+//  ============= Responsive Design =============
+
+@media (max-width: 1180px) {
+   .content {
+      flex-direction: column;
+      padding: 5rem 3rem 5rem;
+
+      .avatarSection {
+         margin-bottom: 2.5rem;
+         padding-top: 18rem;
+
+         div {
+            margin-top: 1rem;
+         }
+      }
+
+      .aboutSection {
+         padding-bottom: 2rem;
+      }
+   }
+}
+
+@media (max-width: 625px){
+   .avatarSection img {
+      min-width: 15rem;
+      min-height: 15rem;
+      max-width: 15rem;
+      max-height: 15rem;
+      width: 15rem;
+      height: 15rem;
+   }
+}
+
+//  ============= Theme changing =============
+
+html[data-theme="light"] .avatarSection div {
+   filter: drop-shadow(0 0 1rem rgba(0, 0, 0, 0.5));
+}
+html[data-theme="dark"] .avatarSection div {
+   filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.5));
+}
+
+
+html[data-theme="light"] .avatarSection h1 {
+   text-shadow: 0 0 20px #fff;
+}
+html[data-theme="dark"] .avatarSection h1 {
+   text-shadow: 0 0 20px #000;
+}
+
+html[data-theme="light"] .avatarSection h3 {
+   text-shadow: 0 0 20px #fff;
+}
+html[data-theme="dark"] .avatarSection h3 {
+   text-shadow: 0 0 20px #000;
+}
+
+html[data-theme="light"] .aboutSection {
+   text-shadow: 0 0 20px #fff;
+}
+html[data-theme="dark"] .aboutSection {
+   text-shadow: 0 0 20px #000;
+}
+
+//  =========== Button Animation ==============
+
+.buttonNav {
+   position: relative;
+   display: inline-block;
+   text-transform: uppercase;
+
+   padding: 1rem 2rem;
+
+   font-size: 1.5rem;
+   font-weight: 600;
+   letter-spacing: 2px;
+
+   & + .buttonNav {
+      margin-left: 2rem;
+   }
+
+   &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: red;
+      z-index: -1;
+      transition: transform 500ms;
+      transform-origin: bottom right;
+      transform: scale(0);
+   }
+   &:hover::before {
+      transition: transform 500ms;
+      transform-origin: top left;
+      transform: scale(1);
+   }
+
+   &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: 3px solid red;
+      box-sizing: border-box;
+      z-index: -1;
+      transition: transform 500ms;
+      transform-origin: top left;
+      transform: scale(1);
+   }
+   &:hover::after {
+      transition: transform 500ms;
+      transform-origin: bottom right;
+      transform: scale(0);
+   }
+}
