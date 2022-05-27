@@ -5,21 +5,18 @@ import styles from "./styles.module.scss";
 export function Header() {
   return (
     <header className={styles.header}>
-      <div className={styles.headerTop}>
-        <Link href="/">
-          <a className={styles.logo}>
-            <Image
-              src="/images/bgLogo.png"
-              alt="Image Profile"
-              width="50"
-              height="50"
-              layout="fixed"
-            />
-            <h1>CleissonOM</h1>
-          </a>
-        </Link>
-        <button></button>
-      </div>
+      <Link href="/">
+        <a className={styles.logo}>
+          <Image
+            src="/images/bgLogo.png"
+            alt="Image Profile"
+            width="30"
+            height="30"
+            layout="fixed"
+          />
+          <h1>CleissonOM</h1>
+        </a>
+      </Link>
       <nav>
         <Link as={"/"} href="/">
           <a className={styles.activeNav}>Home</a>
@@ -34,6 +31,7 @@ export function Header() {
           <a>Blog</a>
         </Link>
       </nav>
+      <button></button>
     </header>
   );
 }

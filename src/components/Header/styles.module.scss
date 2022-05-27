@@ -1,39 +1,27 @@
 .header {
    display: flex;
-   justify-content: center;
-   flex-direction: column;
+   justify-content: space-between;
+   flex-direction: row;
    
    width: 100%;
-   padding: 1rem 1rem 0;
+   padding: 0.5rem 1rem 0;
    margin-bottom: 1rem;
 
    background-color: #000;
    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
    box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.2);
 
-   .headerTop {
+   .logo {
       display: flex;
       align-items: center;
+      justify-self: center;
 
-      .logo {
-         display: flex;
-         align-items: center;
-         justify-self: center;
+      h1 {
+         letter-spacing: 1px;
 
-         h1 {
-            letter-spacing: 1px;
-   
-            font-size: 2rem;
-            font-weight: 900;
-            color: #fff;
-         }
-      }
-   
-      button {
-         margin-left: auto;
-
-         width: 30px;
-         height: 20px;
+         font-size: 1.5rem;
+         font-weight: 900;
+         color: #fff;
       }
    }
 
@@ -60,6 +48,22 @@
       .activeNav {
          opacity: 0.8;
          border-bottom: 3px solid red;
+      }
+   }
+
+   button {
+      width: 30px;
+      height: 20px;
+   }
+}
+
+@media(max-width: 698px){
+   .header {
+      flex-wrap: wrap;
+
+      nav {
+         flex-basis: 100%;
+         order: 2;
       }
    }
 }
