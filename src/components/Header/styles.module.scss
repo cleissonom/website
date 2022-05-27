@@ -1,0 +1,65 @@
+.header {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   
+   width: 100%;
+   padding: 1rem 1rem 0;
+   margin-bottom: 1rem;
+
+   background-color: #000;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+   box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.2);
+
+   .headerTop {
+      display: flex;
+      align-items: center;
+
+      .logo {
+         display: flex;
+         align-items: center;
+         justify-self: center;
+
+         h1 {
+            letter-spacing: 1px;
+   
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+         }
+      }
+   
+      button {
+         margin-left: auto;
+
+         width: 30px;
+         height: 20px;
+      }
+   }
+
+   nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: all 250ms;
+
+      a {
+         font-size: 1rem;
+         font-weight: 700;
+
+         letter-spacing: 1px;
+         line-height: 1rem;
+         padding: 0.5rem;
+
+         & + a {
+            margin-left: 1rem;
+         }
+      }
+
+      .activeNav {
+         opacity: 0.8;
+         border-bottom: 3px solid red;
+      }
+   }
+}

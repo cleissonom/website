@@ -1,0 +1,64 @@
+.footer {
+   margin-top: 1rem;
+
+   display: flex;
+   align-items: center;
+   justify-self: center;
+
+   width: 100vw;
+   padding: 1rem;
+   background-color: #000;
+   border-top: 1px solid rgba(255, 255, 255, 0.2);
+   box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.2);
+
+   ul {
+      margin: 0 auto;
+
+      display: flex;
+      flex-direction: row;
+
+      li {
+         list-style: none;
+
+         & + li {
+            margin-left: 2rem;
+         }
+
+         a {
+            transition: all 250ms;
+
+            svg {
+               margin-right: 0.5rem;
+            }
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+      }
+   }
+}
+
+.twitter:hover {
+   svg {
+      fill: #1da1f2;
+   }
+   transform: scale(1.1);
+   color: #1DA1F2;
+}
+
+.linkedin:hover {
+   svg {
+      fill: #0077B5;
+   }
+   transform: scale(1.1);
+   color: #0077b5;
+}
+
+.github:hover {
+   svg {
+      fill: #ccc;
+   }
+   transform: scale(1.1);
+   color: #ccc;
+}

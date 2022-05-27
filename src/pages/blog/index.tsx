@@ -3,12 +3,12 @@ import { useRouter } from "next/router";
 
 export default function Project() {
   const router = useRouter();
-  const { id } = router.query;
+  const { title } = router.query;
 
   return (
     <>
       <Head>
-        <title>CleissonOM | Project</title>
+        <title>CleissonOM | Blog</title>
       </Head>
     </>
   );

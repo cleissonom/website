@@ -3,11 +3,21 @@
    padding: 0;
    box-sizing: border-box;
    font-family: 'Roboto', Arial, Helvetica, sans-serif;
-   // transition: all 200ms;
+
+   color: #fff;
+   text-shadow: 0 0 5px #000;
 }
 
 html {
-   overflow: hidden;
+   background-color: #000;
+}
+
+body {
+   background-image: url(../../public/images/WebsiteBackground.jpeg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
 }
 
 @media (max-width: 1279px) {
@@ -52,22 +62,4 @@ button, a {
 a {
    text-decoration: none;
    color: inherit;
-}
-
-// ============== THEMES ==============
-
-html[data-theme="light"] body {
-   background-image: url('../../public/images/BG-website-day.jpeg');
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-attachment: fixed;
-}
-
-html[data-theme="dark"] body {
-   background-image: url('../../public/images/BG-website-night.jpeg');
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-attachment: fixed;
 }
