@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
+import { Footer } from "../../../components/Footer";
+import { Header } from "../../../components/Header";
 import styles from "./styles.module.scss";
 
 export default function Project() {
   const router = useRouter();
-  const { id } = router.query;
+  const { title } = router.query;
 
   return (
     <div className={styles.content}>
@@ -15,12 +15,12 @@ export default function Project() {
       </Head>
       <Header />
       <main className={styles.container}>
-        <h1>{id}</h1>
+        <h1>{title}</h1>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga
-          corporis libero, consequuntur maiores, impedit, natus nobis nulla
-          laborum voluptatibus quibusdam enim iure asperiores delectus minima
-          harum eligendi eos quam rerum!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt illum
+          fuga assumenda neque, sapiente sit quis doloribus incidunt voluptatem,
+          ad amet sed itaque. Repellat maiores itaque dolore officiis eveniet
+          voluptas?
         </p>
       </main>
       <Footer />

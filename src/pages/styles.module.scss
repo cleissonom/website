@@ -11,7 +11,10 @@
    height: 100%;
    padding: 1rem;
 
-   background-color: rgba($color: #000, $alpha: 0.65);
+   background-color: rgba($color: #000, $alpha: 0.7);
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   border-radius: 0.5rem;
+   box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.2);
 
    display: flex;
    align-items: center;
@@ -32,6 +35,7 @@
          font-weight: 700;
          margin-top: 1rem;
          letter-spacing: 1px;
+         text-align: center;
 
          text-decoration: underline;
          text-decoration-color: red;
@@ -44,11 +48,13 @@
          font-weight: 500;
          font-size: 1.5rem;
          margin-top: 0.5rem;
+         text-align: center;
       }
    }
 
    .about {
       flex: 1;
+      width: 100%;
 
       h3 {
          font-size: 2rem;
@@ -95,7 +101,7 @@
       margin-top: 2rem;
    }
 
-   .about {
-      padding: 0 3rem;
-   }
+   // .about {
+   //    padding: 0 3rem;
+   // }
 }

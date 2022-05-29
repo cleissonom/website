@@ -19,19 +19,24 @@ export function Header() {
       </Link>
       <nav>
         <Link as={"/"} href="/">
-          <a className={styles.activeNav}>Home</a>
+          <a>Home</a>
         </Link>
         <Link as={"/projects"} href="/projects">
           <a>Projects</a>
-        </Link>
-        <Link as={"/experiences"} href="/experiences">
-          <a>Experiences</a>
         </Link>
         <Link as={"/blog"} href="/blog">
           <a>Blog</a>
         </Link>
       </nav>
-      <button></button>
+      <div>
+        <label>Language: </label>
+        <select name="language" id="language">
+          {/* <option value="pt">PT</option> */}
+          <option value="en">EN</option>
+          {/* <option value="fr">FR</option>
+          <option value="es">ES</option> */}
+        </select>
+      </div>
     </header>
   );
 }
