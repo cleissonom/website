@@ -16,6 +16,23 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="shortcut icon" href="favicon.png" type="image/png" />
+          <meta
+            name="image"
+            property="og:image"
+            content="https://imgur.com/a/cgI1M9J"
+          />
+          <meta
+            name="title"
+            property="og:title"
+            content="CleissonOM | Website"
+          />
+          <meta property="og:type" content="Website" />
+          <meta
+            name="description"
+            property="og:description"
+            content="Thats my personal Website to show more about my work!"
+          />
+          <meta name="author" content="Cleisson de Oliveira Moura" />
         </Head>
         <body>
           <Main />
