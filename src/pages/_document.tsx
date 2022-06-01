@@ -19,7 +19,7 @@ export default class MyDocument extends Document {
           <meta
             name="image"
             property="og:image"
-            content="https://imgur.com/a/cgI1M9J"
+            content="https://live.staticflickr.com/65535/52113875571_9491e0bfb3_k.jpg"
           />
           <meta
             name="title"
