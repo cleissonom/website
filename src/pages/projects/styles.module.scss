@@ -16,4 +16,94 @@
    border: 1px solid rgba(255, 255, 255, 0.2);
    border-radius: 0.5rem;
    box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.2);
+
+   display: block;
+
+   h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+   }
+
+   hr {
+      margin-bottom: 0.5rem;
+      opacity: 0.25;
+   }
+
+   .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      section {
+         margin: 1rem;
+         padding: 1rem;
+   
+         border: 2px solid rgba($color: #f00, $alpha: 0.5);
+         box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.2);
+         border-radius: 0.5rem;
+   
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         align-items: center;
+   
+         h2 {
+            margin-bottom: 1rem;
+         }
+   
+         .image {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.2);
+         }
+   
+         div {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+   
+            a {
+               display: flex;
+               align-items: center;
+               justify-content: center;
+   
+               text-align: center;
+               color: #fff;
+               font-size: 1.25rem;
+               letter-spacing: 1px;
+               font-weight: 700;
+               // line-height: 3rem;
+               
+               height: 3rem;
+               width: 6rem;
+               margin-top: 1rem;
+               
+               border-radius: 0.5rem;
+               border: 2px solid red;
+               background-color: #f00;
+   
+               transition: all 250ms;
+   
+               & + a {
+                  margin-left: 1rem;
+               }
+   
+               &:hover {
+                  background-color: #121414;
+               }
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: 678px){
+   .projects {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media (max-width: 498px){
+   .projects {
+      grid-template-columns: 1fr;
+   }
 }
