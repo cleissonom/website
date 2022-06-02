@@ -85,8 +85,8 @@ export default function Projects() {
               <Image
                 src={idealtiImageURL}
                 alt="IdealTi store image"
-                width="2880"
-                height="1646"
+                width="3840"
+                height="2160"
                 layout="intrinsic"
               />
             </picture>
@@ -116,8 +116,8 @@ export default function Projects() {
               <Image
                 src={idealtiImageURL}
                 alt="IdealTi store image"
-                width="2880"
-                height="1646"
+                width="3840"
+                height="2160"
                 layout="intrinsic"
               />
             </picture>
