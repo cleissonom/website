@@ -4,14 +4,14 @@ import { Footer } from "../../../components/Footer";
 import { Header } from "../../../components/Header";
 import styles from "./styles.module.scss";
 
-export default function Project() {
+export default function Post() {
   const router = useRouter();
   const { title } = router.query;
 
   return (
     <div className={styles.content}>
       <Head>
-        <title>CleissonOM | Home</title>
+        <title>CleissonOM | {title}</title>
       </Head>
       <Header />
       <main className={styles.container}>

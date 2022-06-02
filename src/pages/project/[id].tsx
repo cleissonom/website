@@ -11,7 +11,7 @@ export default function Project() {
   return (
     <div className={styles.content}>
       <Head>
-        <title>CleissonOM | Home</title>
+        <title>CleissonOM | Project</title>
       </Head>
       <Header />
       <main className={styles.container}>

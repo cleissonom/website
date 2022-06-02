@@ -48,7 +48,8 @@
          align-items: center;
    
          h2 {
-            margin-bottom: 1rem;
+            margin-top: 1rem;
+            text-align: center;
          }
    
          .image {
@@ -92,18 +93,31 @@
                }
             }
          }
+
+         a.seeMore {
+            margin-top: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            opacity: 0.8;
+            transition: all 250ms;
+         
+            &:hover {
+               text-decoration: underline;
+               opacity: 1;
+            }
+         }
       }
    }
 }
 
 @media (max-width: 678px){
    .projects {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
    }
 }
 
-@media (max-width: 498px){
-   .projects {
+@media (max-width: 598px){
+   div.projects {
       grid-template-columns: 1fr;
    }
 }
