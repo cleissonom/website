@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       <main className={styles.container}>
         <section className={styles.profile}>
           <Image
-            src="/images/avatar.jpeg"
+            src="/images/avatar.webp"
             alt="Image Profile"
             width="300"
             height="300"
