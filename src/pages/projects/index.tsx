@@ -52,68 +52,6 @@ export default function Projects() {
           <section>
             <picture className={styles.image}>
               <Image
-                src={websiteImageURL}
-                alt="Website image"
-                width="3840"
-                height="2160"
-                layout="intrinsic"
-              />
-            </picture>
-            <h2>Personal Website</h2>
-            <div>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://cleisson.vercel.app"
-              >
-                Demo
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://github.com/cleissonom/website"
-              >
-                Source
-              </a>
-            </div>
-            <Link as={"/project/website"} href="/project/website">
-              <a className={styles.seeMore}>See More...</a>
-            </Link>
-          </section>
-          <section>
-            <picture className={styles.image}>
-              <Image
-                src={idealtiImageURL}
-                alt="IdealTi store image"
-                width="3840"
-                height="2160"
-                layout="intrinsic"
-              />
-            </picture>
-            <h2>IdealTi Store</h2>
-            <div>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://ideal-store.vercel.app/"
-              >
-                Demo
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://github.com/cleissonom/desafio-03/tree/main/cleisson-de-oliveira-moura"
-              >
-                Source
-              </a>
-            </div>
-            <Link as={"/project/idealti"} href="/project/idealti">
-              <a className={styles.seeMore}>See More...</a>
-            </Link>
-          </section>
-          <section>
-            <picture className={styles.image}>
-              <Image
                 src={idealtiImageURL}
                 alt="IdealTi store image"
                 width="3840"

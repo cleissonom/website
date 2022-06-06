@@ -25,13 +25,25 @@ export default function Blog() {
       </Head>
       <Header />
       <main className={styles.container}>
+        <div className={styles.alert}>
+          <h1>Important!!</h1>
+          <p>
+            {`In that Blog i will post about Technology in general and some guides
+               and concepts about Software Engineering, but don't forget, that is my
+               personal vision and knowledge about these contents, you should do your own
+               research, learn by yourself and create your own knowledge.`}
+          </p>
+          <hr />
+        </div>
         <h1>Posts</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. In velit
-          culpa porro doloremque rem illo accusamus tempore! Numquam magnam nemo
-          velit sunt commodi consequuntur, sint necessitatibus, totam porro
-          blanditiis voluptate.
-        </p>
+        <article>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In velit
+            culpa porro doloremque rem illo accusamus tempore! Numquam magnam
+            nemo velit sunt commodi consequuntur, sint necessitatibus, totam
+            porro blanditiis voluptate.
+          </p>
+        </article>
       </main>
       <Footer />
     </div>
