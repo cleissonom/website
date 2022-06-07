@@ -29,7 +29,7 @@ const Home: NextPage = () => {
           <p>
             {`- Specialized in delivering creative solutions in various technical
             formats for solving real problems. I'm always expanding my
-            knowledge, studying and improving my skills about Technology.`}
+            knowledge, studying and practicing my skills about Technology.`}
           </p>
           <ul>
             <li>- Programming Languages: JavaScript/TypeScript and SQL</li>
