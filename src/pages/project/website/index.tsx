@@ -1,21 +1,17 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
+import { Footer } from "../../../components/Footer";
+import { Header } from "../../../components/Header";
 import styles from "./styles.module.scss";
 
 export default function Project() {
-  const router = useRouter();
-  const { id } = router.query;
-
   return (
     <div className={styles.content}>
       <Head>
-        <title>CleissonOM | Project</title>
+        <title>CleissonOM | Website</title>
       </Head>
       <Header />
       <main className={styles.container}>
-        <h1>{id}</h1>
+        <h1>Website</h1>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga
           corporis libero, consequuntur maiores, impedit, natus nobis nulla
