@@ -15,14 +15,15 @@
       margin: 0 auto;
 
       display: flex;
+      justify-content: center;
+      align-items: center;
       flex-direction: row;
+      flex-wrap: wrap;
 
       li {
          list-style: none;
-
-         & + li {
-            margin-left: 2rem;
-         }
+         margin: 0.5rem 1rem;
+         font-size: 1.15rem;
 
          a {
             transition: all 250ms;
@@ -61,4 +62,20 @@
    }
    transform: scale(1.1);
    color: #ccc;
+}
+
+.exercism:hover {
+   svg {
+      fill: #dd55ff;
+   }
+   transform: scale(1.1);
+   color: #dd55ff;
+}
+
+.hackerrank:hover {
+   svg {
+      fill: #1ba94c;
+   }
+   transform: scale(1.1);
+   color: #1ba94c;
 }

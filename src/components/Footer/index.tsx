@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { SiExercism, SiHackerrank } from "react-icons/si";
 import styles from "./styles.module.scss";
 
 export function Footer() {
@@ -39,6 +40,30 @@ export function Footer() {
           >
             <FaGithub />
             Github
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://exercism.org/profiles/cleissonom"
+            className={styles.exercism}
+            title="Exercism"
+          >
+            <SiExercism />
+            Exercism
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.hackerrank.com/cleissonconstc"
+            className={styles.hackerrank}
+            title="Hackerrank"
+          >
+            <SiHackerrank />
+            Hackerrank
           </a>
         </li>
       </ul>
