@@ -79,3 +79,11 @@
    transform: scale(1.1);
    color: #1ba94c;
 }
+
+.freeCodeCamp:hover {
+   svg {
+      fill: #fff;
+   }
+   transform: scale(1.1);
+   color: #fff;
+}

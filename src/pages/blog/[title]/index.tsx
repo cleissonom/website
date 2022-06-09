@@ -12,6 +12,7 @@ export default function Post() {
     <div className={styles.content}>
       <Head>
         <title>CleissonOM | {title}</title>
+        <link rel="shortcut icon" href="favicon.png" type="image/png" />
       </Head>
       <Header />
       <main className={styles.container}>
