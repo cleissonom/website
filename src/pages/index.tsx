@@ -17,6 +17,7 @@ const Home: NextPage = () => {
           <Image
             src="/images/avatar.webp"
             alt="Image Profile"
+            loading="lazy"
             width="300"
             height="300"
             layout="intrinsic"

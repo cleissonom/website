@@ -22,6 +22,7 @@ export default function Projects() {
             <picture className={styles.image}>
               <Image
                 src={websiteImageURL}
+                loading="lazy"
                 alt="Website image"
                 width="3840"
                 height="2160"
@@ -53,6 +54,7 @@ export default function Projects() {
             <picture className={styles.image}>
               <Image
                 src={idealtiImageURL}
+                loading="lazy"
                 alt="IdealTi store image"
                 width="3840"
                 height="2160"
