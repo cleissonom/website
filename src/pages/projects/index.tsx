@@ -36,7 +36,7 @@ export default function Projects() {
                 rel="noreferrer"
                 href="https://cleisson.vercel.app"
               >
-                Demo
+                Link
               </a>
               <a
                 target="_blank"
@@ -68,7 +68,7 @@ export default function Projects() {
                 rel="noreferrer"
                 href="https://ideal-store.vercel.app/"
               >
-                Demo
+                Link
               </a>
               <a
                 target="_blank"
