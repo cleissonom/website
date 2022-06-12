@@ -1,7 +1,4 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
 import styles from "./styles.module.scss";
 
 export default function Blog() {
@@ -23,7 +20,6 @@ export default function Blog() {
         />
         <meta name="author" content="Cleisson de Oliveira Moura" />
       </Head>
-      <Header />
       <main className={styles.container}>
         <div className={styles.alert}>
           <h1>Important!!</h1>
@@ -45,7 +41,6 @@ export default function Blog() {
           </p>
         </article>
       </main>
-      <Footer />
     </div>
   );
 }

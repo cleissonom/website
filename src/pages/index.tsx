@@ -1,8 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
 import styles from "./styles.module.scss";
 
 const Home: NextPage = () => {
@@ -11,7 +9,6 @@ const Home: NextPage = () => {
       <Head>
         <title>CleissonOM | Home</title>
       </Head>
-      <Header />
       <main className={styles.container}>
         <section className={styles.profile}>
           <Image
@@ -38,7 +35,6 @@ const Home: NextPage = () => {
           </ul>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };

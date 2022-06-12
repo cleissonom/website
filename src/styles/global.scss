@@ -7,10 +7,18 @@
    color: #fff;
    text-shadow: 0 0 5px #000;
    text-align: justify;
+   -webkit-font-smoothing: antialiased;
 }
 
 html {
    background-color: #000;
+}
+
+#__next {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
 }
 
 body {

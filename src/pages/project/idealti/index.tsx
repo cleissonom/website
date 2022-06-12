@@ -1,6 +1,4 @@
 import Head from "next/head";
-import { Footer } from "../../../components/Footer";
-import { Header } from "../../../components/Header";
 import styles from "./styles.module.scss";
 
 export default function Project() {
@@ -9,7 +7,6 @@ export default function Project() {
       <Head>
         <title>CleissonOM | IdealTI</title>
       </Head>
-      <Header />
       <main className={styles.container}>
         <h1>IdealTi</h1>
         <p>
@@ -19,7 +16,6 @@ export default function Project() {
           harum eligendi eos quam rerum!
         </p>
       </main>
-      <Footer />
     </div>
   );
 }

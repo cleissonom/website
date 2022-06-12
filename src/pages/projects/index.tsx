@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import idealtiImageURL from "../../../public/images/projects/idealtiImage.png";
 import websiteImageURL from "../../../public/images/projects/websiteImage.png";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
 import styles from "./styles.module.scss";
 
 export default function Projects() {
@@ -13,7 +11,6 @@ export default function Projects() {
       <Head>
         <title>CleissonOM | Projects</title>
       </Head>
-      <Header />
       <main className={styles.container}>
         <h1>Projects</h1>
         <hr />
@@ -84,7 +81,6 @@ export default function Projects() {
           </section>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

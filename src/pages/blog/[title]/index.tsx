@@ -1,7 +1,5 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Footer } from "../../../components/Footer";
-import { Header } from "../../../components/Header";
 import styles from "./styles.module.scss";
 
 export default function Post() {
@@ -14,7 +12,6 @@ export default function Post() {
         <title>CleissonOM | {title}</title>
         <link rel="shortcut icon" href="favicon.png" type="image/png" />
       </Head>
-      <Header />
       <main className={styles.container}>
         <h1>{title}</h1>
         <p>
@@ -24,7 +21,6 @@ export default function Post() {
           voluptas?
         </p>
       </main>
-      <Footer />
     </div>
   );
 }
