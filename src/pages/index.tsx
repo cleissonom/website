@@ -30,7 +30,7 @@ const Home: NextPage = () => {
             knowledge, studying and practicing my skills about Technology.`}
           </p>
           <ul>
-            <li>- Programming Languages: JavaScript/TypeScript and SQL</li>
+            <li>- Programming Languages: JavaScript/TypeScript</li>
             <li>- Spoken Languages: 🇧🇷 - 🇺🇸 - 🇪🇸</li>
           </ul>
         </section>
