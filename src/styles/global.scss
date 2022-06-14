@@ -10,6 +10,20 @@
    -webkit-font-smoothing: antialiased;
 }
 
+::-moz-selection { /* Code for Firefox */
+   background: red;
+   color: white;
+   text-shadow: none;
+   transition: all 200ms;
+}
+ 
+ ::selection {
+   background: red;
+   color: white;
+   text-shadow: none;
+   transition: all 200ms
+ }
+
 html {
    background-color: #000;
 }
