@@ -1,8 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import idealtiImageURL from "../../../public/images/projects/idealtiImage.png";
-import websiteImageURL from "../../../public/images/projects/websiteImage.png";
 import styles from "./styles.module.scss";
 
 export default function Projects() {
@@ -18,7 +16,7 @@ export default function Projects() {
           <section>
             <picture className={styles.image}>
               <Image
-                src={websiteImageURL}
+                src="/images/projects/websiteImage.png"
                 loading="lazy"
                 alt="Website image"
                 width="3840"
@@ -50,7 +48,7 @@ export default function Projects() {
           <section>
             <picture className={styles.image}>
               <Image
-                src={idealtiImageURL}
+                src="/images/projects/idealtiImage.png"
                 loading="lazy"
                 alt="IdealTi store image"
                 width="3840"
@@ -76,6 +74,31 @@ export default function Projects() {
               </a>
             </div>
             <Link as={"/project/idealti"} href="/project/idealti">
+              <a className={styles.seeMore}>See More...</a>
+            </Link>
+          </section>
+          <section>
+            <picture className={styles.image}>
+              <Image
+                src="/images/projects/dtmoneyImage.png"
+                loading="lazy"
+                alt="DTMoney store image"
+                width="3840"
+                height="2160"
+                layout="intrinsic"
+              />
+            </picture>
+            <h2>DT Money</h2>
+            <div>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://github.com/cleissonom/project.chap02-rjs-dtmoney"
+              >
+                Source
+              </a>
+            </div>
+            <Link as={"/project/dtmoney"} href="/project/dtmoney">
               <a className={styles.seeMore}>See More...</a>
             </Link>
           </section>
