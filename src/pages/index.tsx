@@ -25,9 +25,7 @@ const Home: NextPage = () => {
         <section className={styles.about}>
           <h3>{`Hello World! 👋 I'm Cleisson.`}</h3>
           <p>
-            {`- Specialized in delivering creative solutions in various technical
-            formats for solving real problems. I'm always expanding my
-            knowledge, studying and practicing my skills about Technology.`}
+            {`- Software Engineer trying to deliver creative solutions in various technical formats for solving real problems. I'm always improving my skills about Technology.`}
           </p>
           <ul>
             <li>- Programming Languages: JavaScript/TypeScript</li>
