@@ -151,16 +151,15 @@ void handle_request(int client_socket)
 			lang = "en";
 		}
 
+		static char new_path[MAX_PAGE_NAME_LENGTH]; // Buffer to store the new path
 		// If the path is root, default to index.html
 		if (strcmp(path, "/") == 0 || strcmp(path, "/index.html") == 0 || strcmp(path, "/index.html/") == 0)
 		{
-			char new_path[MAX_PAGE_NAME_LENGTH];
 			snprintf(new_path, sizeof(new_path), "/%s/index.html", lang);
 			path = new_path;
 		}
 		else if (strcmp(path, "/about") == 0 || strcmp(path, "/about/") == 0)
 		{
-			char new_path[MAX_PAGE_NAME_LENGTH];
 			snprintf(new_path, sizeof(new_path), "/%s/about.html", lang);
 			path = new_path;
 		}
