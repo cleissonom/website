@@ -8,6 +8,35 @@
 #include "file_serving.h"
 
 #define BUFFER_SIZE 16384
+#define HEADER_SIZE 256
+
+const char *get_mime_type(const char *path)
+{
+	size_t map_size = sizeof(mime_map) / sizeof(mime_map[0]);
+	for (size_t i = 0; i < map_size; ++i)
+	{
+		if (strstr(path, mime_map[i].extension) != NULL)
+		{
+			return mime_map[i].mime_type;
+		}
+	}
+	return "text/html";
+}
+
+int is_static_file(const char *path)
+{
+	size_t map_size = sizeof(mime_map) / sizeof(mime_map[0]);
+	for (size_t i = 0; i < map_size; ++i)
+
+		for (size_t i = 0; i < map_size; ++i)
+		{
+			if (strstr(path, mime_map[i].extension) != NULL)
+			{
+				return 1;
+			}
+		}
+	return 0;
+}
 
 void serve_file(int client_socket, const char *path)
 {
@@ -35,9 +64,17 @@ void serve_file(int client_socket, const char *path)
 		return;
 	}
 
+	// Get the file mime type
+	const char *content_type = get_mime_type(path);
+
 	// Send HTTP response headers
-	char header[256];
-	snprintf(header, sizeof(header), "HTTP/1.1 200 OK\r\nContent-Length: %" PRId64 "\r\n\r\n", (int64_t)file_stat.st_size);
+	char header[HEADER_SIZE];
+	snprintf(header, sizeof(header),
+			 "HTTP/1.1 200 OK\r\n"
+			 "Content-Type: %s\r\n"
+			 "Content-Length: %" PRId64 "\r\n\r\n",
+			 content_type,
+			 (int64_t)file_stat.st_size);
 	write(client_socket, header, strlen(header));
 
 	// Send the file content

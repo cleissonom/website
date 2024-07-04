@@ -14,25 +14,6 @@
 extern HashTable *routes;
 extern HashTable *post_routes;
 
-int is_static_file(const char *path)
-{
-	const char *static_extensions[] = {
-		".css", ".js", ".png", ".txt", ".ico", ".pdf", ".jpg", ".jpeg", ".gif",
-		".svg", ".webp", ".mp4", ".webm", ".ogg", ".mp3", ".wav", ".flac",
-		".aac", ".wma", ".m4a", ".opus", ".flv", ".avi", ".mov", ".wmv",
-		".mkv", ".mpg", ".mpeg", ".m4v", ".3gp", ".3g2", ".srt", ".vtt"};
-	size_t num_extensions = sizeof(static_extensions) / sizeof(static_extensions[0]);
-
-	for (size_t i = 0; i < num_extensions; ++i)
-	{
-		if (strstr(path, static_extensions[i]) != NULL)
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
-
 void handle_request(int client_socket)
 {
 	char buffer[BUFFER_SIZE];

@@ -13,4 +13,6 @@ This project implements a personal website server in C.
 
 ## TODO:
 - Create get_handler
-- Improve i18n, add more languages
+- Improve i18n (use one template per page), add more languages
+- PDF per language
+- Bundle de JS, minify CSS and HTML
