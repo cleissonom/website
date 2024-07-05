@@ -18,7 +18,8 @@ void handle_request(int client_socket)
 {
 	char buffer[BUFFER_SIZE];
 	int read_size;
-	char *method, *path, *version;
+	const char *method, *version;
+	char *path;
 
 	// Initialize the buffer
 	memset(buffer, 0, BUFFER_SIZE);
@@ -35,6 +36,7 @@ void handle_request(int client_socket)
 	// Copy the buffer for header parsing
 	char header_buffer[BUFFER_SIZE];
 	strncpy(header_buffer, buffer, BUFFER_SIZE);
+	header_buffer[BUFFER_SIZE - 1] = '\0'; // Ensure null-termination
 
 	method = strtok(header_buffer, " ");
 	path = strtok(NULL, " ");

@@ -26,15 +26,13 @@ const char *get_mime_type(const char *path)
 int is_static_file(const char *path)
 {
 	size_t map_size = sizeof(mime_map) / sizeof(mime_map[0]);
-	for (size_t i = 0; i < map_size; ++i)
-
-		for (size_t i = 0; i < map_size; ++i)
+	for (size_t j = 0; j < map_size; ++j)
+	{
+		if (strstr(path, mime_map[j].extension) != NULL)
 		{
-			if (strstr(path, mime_map[i].extension) != NULL)
-			{
-				return 1;
-			}
+			return 1;
 		}
+	}
 	return 0;
 }
 

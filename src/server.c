@@ -18,7 +18,7 @@ extern task_queue_t task_queue;
 
 void start_server(int port)
 {
-	int server_fd, new_socket;
+	int server_fd;
 	struct sockaddr_in address;
 	int opt = 1;
 	int addrlen = sizeof(address);
@@ -56,6 +56,7 @@ void start_server(int port)
 	init_task_queue(&task_queue, 1000);
 	init_thread_pool(THREAD_POOL_SIZE);
 
+	int new_socket;
 	while (1)
 	{
 		if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t *)&addrlen)) < 0)
