@@ -16,6 +16,7 @@ void init_routes(HashTable *routes)
 {
 	ht_insert(routes, "/", 1);
 	ht_insert(routes, "/about", 1);
+	ht_insert(routes, "/experience", 1);
 	ht_insert(routes, "/resume.pdf", 1);
 	ht_insert(routes, "/icon-light.svg", 1);
 	ht_insert(routes, "/icon-dark.svg", 1);

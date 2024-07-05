@@ -146,6 +146,11 @@ void handle_request(int client_socket)
 			snprintf(new_path, sizeof(new_path), "/%s/about.html", lang);
 			path = new_path;
 		}
+		else if (strcmp(path, "/experience") == 0 || strcmp(path, "/experience/") == 0)
+		{
+			snprintf(new_path, sizeof(new_path), "/%s/experience.html", lang);
+			path = new_path;
+		}
 	}
 
 	// Build the full path

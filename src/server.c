@@ -12,7 +12,7 @@
 #include "thread_pool.h"
 #include "post_handler.h"
 
-#define THREAD_POOL_SIZE 10
+#define THREAD_POOL_SIZE 5
 
 extern task_queue_t task_queue;
 
