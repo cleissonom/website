@@ -17,7 +17,7 @@ build_html:
 	@./scripts/build_html.sh
 
 build_static:
-	@cp -r static build/
+	@./scripts/build_static.sh
 
 post_build:
 	@rm -f $(OBJ)
