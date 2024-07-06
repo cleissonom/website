@@ -42,6 +42,14 @@ void handle_request(int client_socket)
 	path = strtok(NULL, " ");
 	version = strtok(NULL, "\r\n");
 
+	if (strcmp(version, "HTTP/1.1") != 0)
+	{
+		const char *bad_request = "HTTP/1.1 400 Bad Request\r\nContent-Length: 15\r\n\r\n400 Bad Request";
+		write(client_socket, bad_request, strlen(bad_request));
+		close(client_socket);
+		return;
+	}
+
 	if (method == NULL || path == NULL || version == NULL)
 	{
 		const char *bad_request = "HTTP/1.1 400 Bad Request\r\nContent-Length: 15\r\n\r\n400 Bad Request";

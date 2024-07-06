@@ -1,6 +1,6 @@
 .vscode
+build/*
 src/*.o
-server
 
 scan-build_errors.txt
 cppcheck_errors.txt
