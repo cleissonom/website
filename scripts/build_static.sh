@@ -1,64 +1,59 @@
 #!/bin/bash
 
+command -v curl >/dev/null 2>&1 || { echo >&2 "curl is required but it's not installed.  Aborting."; exit 1; }
+command -v rsync >/dev/null 2>&1 || { echo >&2 "rsync is required but it's not installed.  Aborting."; exit 1; }
+
+
 SOURCE_DIR="static"
 TARGET_DIR="build"
 API_URL="https://htmlcompressor.com/compress"
 
 copy_all_files() {
     if [[ ! -d "$SOURCE_DIR" ]]; then
-        printf "Source directory '%s' does not exist.\n" "$SOURCE_DIR" >&2
+        echo "Source directory '$SOURCE_DIR' does not exist."
         return 1
     fi
 
-    if ! mkdir -p "$TARGET_DIR"; then
-        printf "Failed to create destination directory '%s'.\n" "$TARGET_DIR" >&2
+    mkdir -p "$TARGET_DIR" || {
+        echo "Failed to create target directory '$TARGET_DIR'."
         return 1
-    fi
+    }
 
-    if ! rsync -av --include '*/' --exclude '*.js' --exclude '*.css' "$SOURCE_DIR"/ "$TARGET_DIR"/$SOURCE_DIR/; then
-        printf "Failed to copy files from '%s' to '%s'.\n" "$SOURCE_DIR" "$TARGET_DIR" >&2
+    rsync -av --include '*/' --exclude '*.js' --exclude '*.css' "$SOURCE_DIR"/ "$TARGET_DIR"/$SOURCE_DIR/ || {
+        echo "Failed to copy files from '$SOURCE_DIR' to '$TARGET_DIR'."
         return 1
-    fi
+    }
 
-    printf "All files copied successfully from '%s' to '%s'.\n" "$SOURCE_DIR" "$TARGET_DIR"
+    echo "All files copied successfully from '$SOURCE_DIR' to '$TARGET_DIR'."
+}
+
+compress_file() {
+    local file=$1
+
+    local relative_path="${file#$SOURCE_DIR/}"
+    local target_file="$TARGET_DIR/$SOURCE_DIR/$relative_path"
+
+    local response
+    response=$(curl -s --request POST "$API_URL" --data-urlencode "code@$file") || {
+        echo "Error compressing file: $file"
+        return 1
+    }
+
+    echo "$response" > "$target_file"
 }
 
 compress_files() {
-    local src_dir=$1
-    local tgt_dir=$2
-    
-    find "$src_dir" -type f -name "*.js" | while read -r file; do
-        local relative_path="${file#$src_dir/}"
-        local target_file="$tgt_dir/$src_dir/$relative_path"
-        
-        local response
-        if ! response=$(curl -s --request POST "$API_URL" \
-            --data-urlencode "code@$file"); then
-            printf "Error compressing file: %s\n" "$file" >&2
-            continue
-        fi
-        
-        printf "%s" "$response" > "$target_file"
-    done
+    local -a types=('*.js' '*.css')
 
-    find "$src_dir" -type f -name "*.css" | while read -r file; do
-        local relative_path="${file#$src_dir/}"
-        local target_file="$tgt_dir/$src_dir/$relative_path"
-        
-        local response
-        if ! response=$(curl -s --request POST "$API_URL" \
-            --data-urlencode "code@$file"); then
-            printf "Error compressing file: %s\n" "$file" >&2
-            continue
-        fi
-        
-        printf "%s" "$response" > "$target_file"
+    for type in "${types[@]}"; do
+        find "$SOURCE_DIR" -type f -name "$type" | while read -r file; do
+            compress_file "$file" || continue
+        done
     done
 }
 
 main() {
-	copy_all_files
-    compress_files "$SOURCE_DIR" "$TARGET_DIR"
+    copy_all_files && compress_files
 }
 
 main
