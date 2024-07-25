@@ -1,12 +1,24 @@
-/* Basic Reset */
+/* https://www.dafont.com/pt/vcr-osd-mono.font */
+@font-face {
+    font-family: 'VCR OSD Mono';
+    src: url('/VcrOsdMono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    background-color: #000;
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'VCR OSD Mono', sans-serif;
     line-height: 1.6;
     margin: 20px;
     background-color: #f4f4f4;

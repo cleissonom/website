@@ -12,7 +12,8 @@ This project implements a personal website server in C.
 - Internationalization support for English and Portuguese.
 
 ## TODO:
-- Create get_handler
+- Improve pages content
 - Improve i18n (use one template per page), add more languages
 - PDF per language
 - Bundle de JS, minify CSS and HTML
+- Portability
