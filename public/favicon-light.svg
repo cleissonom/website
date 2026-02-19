@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Cleisson monogram light">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f3f2ee" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#bg)" stroke="#cecbc1" stroke-width="2" />
+  <path fill="#b11e2f" d="M44.5 19.6C40.7 15.1 35.2 13 29 13 18.2 13 10 21 10 32s8.2 19 19 19c6.2 0 11.7-2.1 15.5-6.6l-4.3-3.3c-2.6 2.8-6.2 4.3-10.6 4.3-7.8 0-13.3-5.5-13.3-13s5.5-13 13.3-13c4.4 0 8 1.5 10.6 4.3z" />
+  <path fill="#111111" d="M41 30h-9.4c-.9 0-1.6.7-1.6 1.6v4.8c0 .9.7 1.6 1.6 1.6H41v-3.6h-5.4v-1h5.4z" opacity="0.82" />
+</svg>

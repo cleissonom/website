@@ -1,0 +1,72 @@
+import { notFound } from "next/navigation";
+
+import { JsonLd } from "@/components/json-ld";
+import { ProjectCard } from "@/components/project-card";
+import { uiByLocale } from "@/data/profile";
+import { getAllProjects } from "@/lib/content";
+import { isLocale } from "@/lib/i18n";
+import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata";
+import { breadcrumbJsonLd } from "@/lib/schema";
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!isLocale(locale)) {
+    return {};
+  }
+
+  return createMetadata(locale, {
+    title: buildPageTitle("Projects"),
+    description: "Selected engineering projects spanning backend, cloud, and mobile delivery.",
+    path: "/projects"
+  });
+}
+
+export default async function ProjectsPage({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!isLocale(locale)) {
+    notFound();
+  }
+
+  const ui = uiByLocale[locale];
+  const projects = getAllProjects(locale);
+
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: ui.nav.home, url: absoluteUrl(`/${locale}`) },
+    { name: ui.nav.projects, url: absoluteUrl(`/${locale}/projects`) }
+  ]);
+
+  return (
+    <section className="section-stack">
+      <JsonLd id="projects-breadcrumb-jsonld" data={breadcrumbs} />
+
+      <header className="page-header">
+        <p className="eyebrow">{ui.nav.projects}</p>
+        <h1>{ui.sections.projects}</h1>
+        <p className="lead">
+          Outcome-focused project snapshots with architecture decisions, delivery constraints, and measurable impact.
+        </p>
+      </header>
+
+      <div className="grid">
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            locale={locale}
+            readMoreLabel={ui.labels.readMore}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
