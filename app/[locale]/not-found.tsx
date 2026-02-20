@@ -1,3 +1,4 @@
+import { ButtonLink, MutedText } from "@/components/design-system"
 import { uiByLocale } from "@/data/i18n"
 import { DEFAULT_LOCALE, LOCALES, type Locale } from "@/lib/i18n"
 
@@ -22,10 +23,8 @@ export default function LocaleNotFound({ params }: NotFoundProps) {
   return (
     <main className="not-found">
       <h1>{ui.labels.notFoundTitle}</h1>
-      <p className="muted">{ui.labels.notFoundDescription}</p>
-      <a className="primary-button" href={`/${locale}`}>
-        {ui.labels.goHome}
-      </a>
+      <MutedText>{ui.labels.notFoundDescription}</MutedText>
+      <ButtonLink href={`/${locale}`}>{ui.labels.goHome}</ButtonLink>
     </main>
   )
 }

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 
+import { Eyebrow, Grid, Lead, PageHeader, SectionStack } from "@/components/design-system"
 import { JsonLd } from "@/components/json-ld"
 import { PostCard } from "@/components/post-card"
 import { getDictionary } from "@/data/i18n"
@@ -43,16 +44,16 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   ])
 
   return (
-    <section className="section-stack">
+    <SectionStack>
       <JsonLd id="blog-breadcrumb-jsonld" data={breadcrumbs} />
 
-      <header className="page-header">
-        <p className="eyebrow">{ui.nav.blog}</p>
+      <PageHeader>
+        <Eyebrow>{ui.nav.blog}</Eyebrow>
         <h1>{ui.sections.blog}</h1>
-        <p className="lead">{dictionary.pages.blog.lead}</p>
-      </header>
+        <Lead>{dictionary.pages.blog.lead}</Lead>
+      </PageHeader>
 
-      <div className="grid">
+      <Grid>
         {posts.map((post) => (
           <PostCard
             key={post.slug}
@@ -63,7 +64,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
             readingMinutesLabel={dictionary.snippets.readingMinutesShort}
           />
         ))}
-      </div>
-    </section>
+      </Grid>
+    </SectionStack>
   )
 }

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react"
 
+import { ChipButton, ChipRow, Grid, MutedText } from "@/components/design-system"
 import { ProjectCard, type ProjectCardProject } from "@/components/project-card"
 import type { Locale } from "@/lib/i18n"
 
@@ -47,34 +48,34 @@ export function ProjectListWithFilters({
     <>
       <section className="projects-filter" aria-label={copy.filterHeading}>
         <p className="projects-filter-label">{copy.filterHeading}</p>
-        <div className="chip-row">
-          <button
+        <ChipRow>
+          <ChipButton
             type="button"
-            className={`chip chip-button ${selectedLabelKey ? "" : "chip-button-active"}`.trim()}
+            active={!selectedLabelKey}
             onClick={() => setSelectedLabel(null)}
           >
             {copy.allLabels}
-          </button>
+          </ChipButton>
 
           {availableLabels.map((label) => {
             const isActive = label.toLocaleLowerCase(locale) === selectedLabelKey
 
             return (
-              <button
+              <ChipButton
                 key={label}
                 type="button"
-                className={`chip chip-button ${isActive ? "chip-button-active" : ""}`.trim()}
+                active={isActive}
                 onClick={() => setSelectedLabel(label)}
               >
                 {label}
-              </button>
+              </ChipButton>
             )
           })}
-        </div>
+        </ChipRow>
       </section>
 
       {filteredProjects.length > 0 ? (
-        <div className="grid projects-grid">
+        <Grid projects>
           {filteredProjects.map((project) => (
             <ProjectCard
               key={project.slug}
@@ -85,9 +86,9 @@ export function ProjectListWithFilters({
               enableWalletHover
             />
           ))}
-        </div>
+        </Grid>
       ) : (
-        <p className="muted">{copy.noResultsDescription}</p>
+        <MutedText>{copy.noResultsDescription}</MutedText>
       )}
     </>
   )

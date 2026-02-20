@@ -2,6 +2,17 @@ import { notFound } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
+import {
+  ButtonLink,
+  ChipRow,
+  Eyebrow,
+  InlineLink,
+  Lead,
+  MutedText,
+  PageHeader,
+  SectionStack,
+  Surface
+} from "@/components/design-system"
 import { JsonLd } from "@/components/json-ld"
 import { getDictionary } from "@/data/i18n"
 import type { ProjectLinkKey } from "@/data/i18n/types"
@@ -82,15 +93,15 @@ export default async function ProjectDetailPage({
   ])
 
   return (
-    <article className="section-stack">
+    <SectionStack as="article">
       <JsonLd id="project-jsonld" data={projectJsonLd(locale, project)} />
       <JsonLd id="project-breadcrumb-jsonld" data={breadcrumbs} />
 
-      <header className="page-header">
-        <p className="eyebrow">{ui.nav.projects}</p>
+      <PageHeader>
+        <Eyebrow>{ui.nav.projects}</Eyebrow>
         <h1>{project.title}</h1>
-        <p className="lead">{project.summary}</p>
-      </header>
+        <Lead>{project.summary}</Lead>
+      </PageHeader>
 
       {project.coverImage ? (
         <figure className="project-banner">
@@ -100,54 +111,52 @@ export default async function ProjectDetailPage({
 
       <section className="meta-grid">
         <article>
-          <p className="muted">{ui.labels.role}</p>
+          <MutedText>{ui.labels.role}</MutedText>
           <p>{project.role}</p>
         </article>
         <article>
-          <p className="muted">{ui.labels.status}</p>
+          <MutedText>{ui.labels.status}</MutedText>
           <p>{dictionary.pages.projects.statusLabels[project.status]}</p>
         </article>
         <article>
-          <p className="muted">{ui.labels.stack}</p>
+          <MutedText>{ui.labels.stack}</MutedText>
           <p>{project.stack.join(", ")}</p>
         </article>
       </section>
 
-      <section className="surface">
+      <Surface>
         <h2>{ui.labels.highlights}</h2>
         <ul>
           {project.highlights.map((highlight) => (
             <li key={highlight}>{highlight}</li>
           ))}
         </ul>
-      </section>
+      </Surface>
 
       {links.length > 0 ? (
-        <section className="surface">
+        <Surface>
           <h2>{dictionary.pages.projects.linksHeading}</h2>
-          <div className="chip-row">
+          <ChipRow>
             {links.map(({ label, value }) => (
-              <a
+              <ButtonLink
                 key={label}
                 href={value}
                 target="_blank"
                 rel="noreferrer"
-                className="secondary-button"
+                variant="secondary"
               >
                 {dictionary.pages.projects.linkLabels[label]}
-              </a>
+              </ButtonLink>
             ))}
-          </div>
-        </section>
+          </ChipRow>
+        </Surface>
       ) : null}
 
-      <section className="surface markdown">
+      <Surface className="markdown">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{project.body}</ReactMarkdown>
-      </section>
+      </Surface>
 
-      <a className="inline-link" href={`/${locale}/projects`}>
-        {ui.labels.backToProjects}
-      </a>
-    </article>
+      <InlineLink href={`/${locale}/projects`}>{ui.labels.backToProjects}</InlineLink>
+    </SectionStack>
   )
 }

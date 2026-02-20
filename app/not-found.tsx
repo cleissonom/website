@@ -1,13 +1,12 @@
+import { ButtonLink, Container } from "@/components/design-system"
 import { DEFAULT_LOCALE } from "@/lib/i18n"
 
 export default function GlobalNotFound() {
   return (
-    <main className="container not-found">
+    <Container as="main" className="not-found">
       <h1>Page not found</h1>
       <p>The page you requested is unavailable.</p>
-      <a className="primary-button" href={`/${DEFAULT_LOCALE}`}>
-        Go to home
-      </a>
-    </main>
+      <ButtonLink href={`/${DEFAULT_LOCALE}`}>Go to home</ButtonLink>
+    </Container>
   )
 }

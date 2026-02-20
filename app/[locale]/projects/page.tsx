@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 
+import { Eyebrow, Lead, PageHeader, SectionStack } from "@/components/design-system"
 import { JsonLd } from "@/components/json-ld"
 import { ProjectListWithFilters } from "@/components/project-list-with-filters"
 import { getDictionary } from "@/data/i18n"
@@ -51,14 +52,14 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
   ])
 
   return (
-    <section className="section-stack">
+    <SectionStack>
       <JsonLd id="projects-breadcrumb-jsonld" data={breadcrumbs} />
 
-      <header className="page-header">
-        <p className="eyebrow">{ui.nav.projects}</p>
+      <PageHeader>
+        <Eyebrow>{ui.nav.projects}</Eyebrow>
         <h1>{ui.sections.projects}</h1>
-        <p className="lead">{dictionary.pages.projects.lead}</p>
-      </header>
+        <Lead>{dictionary.pages.projects.lead}</Lead>
+      </PageHeader>
 
       <ProjectListWithFilters
         projects={projectCards}
@@ -71,6 +72,6 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
           noResultsDescription: dictionary.pages.projects.noResultsDescription
         }}
       />
-    </section>
+    </SectionStack>
   )
 }

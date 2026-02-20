@@ -1,3 +1,4 @@
+import { Container } from "@/components/design-system"
 import { siteIdentity } from "@/data/profile"
 import type { Locale } from "@/lib/i18n"
 
@@ -14,7 +15,7 @@ export function Footer({
 
   return (
     <footer className="site-footer">
-      <div className="container footer-grid">
+      <Container className="footer-grid">
         <p>
           {siteIdentity.name} | {year}
         </p>
@@ -31,7 +32,7 @@ export function Footer({
           <a href="/feed.json">JSON Feed</a>
           <a href={`/${locale}/resume`}>{resumeLabel}</a>
         </div>
-      </div>
+      </Container>
     </footer>
   )
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import type { ReactNode } from "react"
 import { notFound } from "next/navigation"
 
+import { SiteMain } from "@/components/design-system"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { getDictionary } from "@/data/i18n"
@@ -53,7 +54,7 @@ export default async function LocaleLayout({
   return (
     <>
       <Header locale={locale} ui={dictionary.ui} shortTitle={dictionary.site.shortTitle} />
-      <main className="site-main container">{children}</main>
+      <SiteMain>{children}</SiteMain>
       <Footer
         locale={locale}
         resumeLabel={dictionary.ui.nav.resume}

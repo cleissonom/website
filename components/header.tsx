@@ -1,3 +1,4 @@
+import { Container } from "@/components/design-system"
 import type { UiDictionary } from "@/data/i18n/types"
 import { LocaleSwitcher } from "@/components/locale-switcher"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -40,7 +41,7 @@ export function Header({
 
   return (
     <header className="site-header site-header-visible js-site-header">
-      <div className="container header-grid">
+      <Container className="header-grid">
         <a href={rootPath} className="nameplate">
           <span>{siteIdentity.name}</span>
           <small>{shortTitle}</small>
@@ -63,7 +64,7 @@ export function Header({
           <LocaleSwitcher currentLocale={locale} label={ui.labels.locale} />
           <ThemeToggle lightLabel={ui.labels.light} darkLabel={ui.labels.dark} />
         </div>
-      </div>
+      </Container>
     </header>
   )
 }

@@ -53,7 +53,7 @@ export const ptBRDictionary: LocaleDictionary = {
       "Sou apaixonado por design de sistemas, performance e software confiável. Fora do trabalho, gosto de explorar novas tecnologias e desenvolver projetos pessoais."
     ],
     focusAreas: [
-      "Engenharia Backend",
+      "Desenvolvimento de Software",
       "Infraestrutura em Nuvem",
       "Sistemas Distribuídos",
       "Design de Sistemas",
@@ -133,7 +133,7 @@ export const ptBRDictionary: LocaleDictionary = {
             ]
           },
           {
-            title: "Estagiário de Engenharia de Software (Presencial)",
+            title: "Estagiário de Desenvolvimento de Software (Presencial)",
             period: "ago. 2022 - jan. 2023 (6 meses)",
             bullets: [
               "Atuei no time de pesquisa, desenvolvimento e inovação.",
@@ -149,7 +149,7 @@ export const ptBRDictionary: LocaleDictionary = {
     home: {
       breadcrumbLabel: "Início",
       keywords: [
-        "Engenharia Backend",
+        "Desenvolvimento de Software",
         "Infraestrutura em Nuvem",
         "Sistemas Distribuídos",
         "Design de Sistemas",
@@ -163,7 +163,8 @@ export const ptBRDictionary: LocaleDictionary = {
     },
     projects: {
       metadataTitle: "Projetos",
-      metadataDescription: "Projetos de engenharia com foco em backend, nuvem e entrega mobile.",
+      metadataDescription:
+        "Projetos de desenvolvimento de software com foco em backend, nuvem e entrega mobile.",
       lead: "Recortes de projetos orientados a resultado, com decisões de arquitetura, restrições de entrega e impacto mensurável.",
       filterHeading: "Filtrar por label",
       allLabels: "Todas as labels",
@@ -185,8 +186,8 @@ export const ptBRDictionary: LocaleDictionary = {
     blog: {
       metadataTitle: "Blog",
       metadataDescription:
-        "Conteúdos sobre engenharia backend, infraestrutura em nuvem e arquitetura escalável.",
-      lead: "Notas de trabalho em engenharia de produção: confiabilidade, infraestrutura, sistemas distribuídos e estratégia de entrega.",
+        "Conteúdos sobre desenvolvimento de software backend, infraestrutura em nuvem e arquitetura escalável.",
+      lead: "Notas de trabalho em desenvolvimento de software: confiabilidade, infraestrutura, sistemas distribuídos e estratégia de entrega.",
       notFoundTitle: "Post não encontrado",
       notFoundDescription: "Post não encontrado para este idioma."
     },

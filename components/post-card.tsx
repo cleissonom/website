@@ -1,3 +1,4 @@
+import { Card, Chip, ChipRow, InlineLink } from "@/components/design-system"
 import type { BlogEntry } from "@/lib/content"
 import type { Locale } from "@/lib/i18n"
 
@@ -18,7 +19,7 @@ export function PostCard({
   const descriptiveLabel = `${readMoreLabel} ${contextLabel}`
 
   return (
-    <article className="card">
+    <Card>
       <p className="card-meta">
         {new Date(post.date).toLocaleDateString(locale, {
           year: "numeric",
@@ -31,21 +32,15 @@ export function PostCard({
         <a href={`/${locale}/blog/${post.slug}`}>{post.title}</a>
       </h3>
       <p>{post.summary}</p>
-      <div className="chip-row">
+      <ChipRow>
         {post.tags.map((tag) => (
-          <span key={`${post.slug}-${tag}`} className="chip">
-            {tag}
-          </span>
+          <Chip key={`${post.slug}-${tag}`}>{tag}</Chip>
         ))}
-      </div>
-      <a
-        className="inline-link"
-        href={`/${locale}/blog/${post.slug}`}
-        aria-label={descriptiveLabel}
-      >
+      </ChipRow>
+      <InlineLink href={`/${locale}/blog/${post.slug}`} aria-label={descriptiveLabel}>
         {readMoreLabel}
         <span className="sr-only"> {contextLabel}</span>
-      </a>
-    </article>
+      </InlineLink>
+    </Card>
   )
 }

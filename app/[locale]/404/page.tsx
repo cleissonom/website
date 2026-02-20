@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 
+import { ButtonLink, MutedText } from "@/components/design-system"
 import { getDictionary } from "@/data/i18n"
 import { isLocale } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, buildPageTitle, createMetadata } from "@/lib/metadata"
@@ -39,10 +40,8 @@ export default async function Localized404Page({
   return (
     <main className="not-found">
       <h1>{ui.labels.notFoundTitle}</h1>
-      <p className="muted">{ui.labels.notFoundDescription}</p>
-      <a href={`/${locale}`} className="primary-button">
-        {ui.labels.goHome}
-      </a>
+      <MutedText>{ui.labels.notFoundDescription}</MutedText>
+      <ButtonLink href={`/${locale}`}>{ui.labels.goHome}</ButtonLink>
     </main>
   )
 }

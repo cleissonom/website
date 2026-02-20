@@ -28,7 +28,7 @@ highlights:
 coverImage: /projects/website.webp
 ---
 
-Criei este website para ter controle da minha narrativa profissional e mostrar trabalho de engenharia real em um único lugar.
+Criei este website para ter controle da minha narrativa profissional e mostrar trabalho de desenvolvimento de software real em um único lugar.
 
 Em vez de depender apenas de perfis sociais, quis uma plataforma rápida e multilíngue para publicar projetos, conteúdo técnico e atualizações do currículo com controle total de estrutura e SEO.
 

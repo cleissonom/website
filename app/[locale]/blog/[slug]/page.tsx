@@ -2,6 +2,15 @@ import { notFound } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
+import {
+  Eyebrow,
+  InlineLink,
+  Lead,
+  MutedText,
+  PageHeader,
+  SectionStack,
+  Surface
+} from "@/components/design-system"
 import { JsonLd } from "@/components/json-ld"
 import { getDictionary } from "@/data/i18n"
 import { getAllPostSlugs, getPostBySlug } from "@/lib/content"
@@ -78,29 +87,27 @@ export default async function BlogDetailPage({
   ])
 
   return (
-    <article className="section-stack">
+    <SectionStack as="article">
       <JsonLd id="blog-post-jsonld" data={blogPostJsonLd(locale, post)} />
       <JsonLd id="blog-post-breadcrumb-jsonld" data={breadcrumbs} />
 
-      <header className="page-header">
-        <p className="eyebrow">{ui.nav.blog}</p>
+      <PageHeader>
+        <Eyebrow>{ui.nav.blog}</Eyebrow>
         <h1>{post.title}</h1>
-        <p className="lead">{post.summary}</p>
-        <p className="muted">
+        <Lead>{post.summary}</Lead>
+        <MutedText>
           {ui.labels.published}: {new Date(post.date).toLocaleDateString(locale)}
           {post.updatedAt
             ? ` | ${ui.labels.updated}: ${new Date(post.updatedAt).toLocaleDateString(locale)}`
             : ""}
-        </p>
-      </header>
+        </MutedText>
+      </PageHeader>
 
-      <section className="surface markdown">
+      <Surface className="markdown">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
-      </section>
+      </Surface>
 
-      <a className="inline-link" href={`/${locale}/blog`}>
-        {ui.labels.backToBlog}
-      </a>
-    </article>
+      <InlineLink href={`/${locale}/blog`}>{ui.labels.backToBlog}</InlineLink>
+    </SectionStack>
   )
 }

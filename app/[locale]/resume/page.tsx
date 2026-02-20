@@ -1,5 +1,13 @@
 import { notFound } from "next/navigation"
 
+import {
+  ButtonLink,
+  Eyebrow,
+  Lead,
+  PageHeader,
+  SectionStack,
+  Surface
+} from "@/components/design-system"
 import { getDictionary } from "@/data/i18n"
 import { siteIdentity } from "@/data/profile"
 import { isLocale, resumePdfPath } from "@/lib/i18n"
@@ -34,29 +42,24 @@ export default async function ResumePage({ params }: { params: Promise<{ locale:
   const ui = dictionary.ui
 
   return (
-    <section className="section-stack">
-      <header className="page-header">
-        <p className="eyebrow">{ui.nav.resume}</p>
+    <SectionStack>
+      <PageHeader>
+        <Eyebrow>{ui.nav.resume}</Eyebrow>
         <h1>{siteIdentity.name}</h1>
-        <p className="lead">{dictionary.content.about[0]}</p>
-      </header>
+        <Lead>{dictionary.content.about[0]}</Lead>
+      </PageHeader>
 
-      <article className="surface">
+      <Surface as="article">
         <p>{dictionary.pages.resume.summary}</p>
         <div className="hero-actions">
-          <a
-            className="primary-button"
-            href={resumePdfPath(locale)}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <ButtonLink href={resumePdfPath(locale)} target="_blank" rel="noreferrer">
             {ui.cta.downloadResume}
-          </a>
-          <a className="secondary-button" href={siteIdentity.links.email}>
+          </ButtonLink>
+          <ButtonLink variant="secondary" href={siteIdentity.links.email}>
             {ui.cta.contact}
-          </a>
+          </ButtonLink>
         </div>
-      </article>
-    </section>
+      </Surface>
+    </SectionStack>
   )
 }
