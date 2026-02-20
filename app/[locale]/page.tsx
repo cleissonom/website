@@ -1,25 +1,26 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound } from "next/navigation"
 
-import { ExperienceTimeline } from "@/components/experience-timeline";
-import { JsonLd } from "@/components/json-ld";
-import { PostCard } from "@/components/post-card";
-import { ProjectCard } from "@/components/project-card";
-import { aboutByLocale, experienceTimeline, focusAreas, siteIdentity, uiByLocale } from "@/data/profile";
-import { getAllPosts, getAllProjects } from "@/lib/content";
-import { isLocale } from "@/lib/i18n";
-import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata";
-import { breadcrumbJsonLd, personJsonLd } from "@/lib/schema";
+import { ExperienceTimeline } from "@/components/experience-timeline"
+import { JsonLd } from "@/components/json-ld"
+import { PostCard } from "@/components/post-card"
+import { ProjectCard } from "@/components/project-card"
+import {
+  aboutByLocale,
+  experienceTimeline,
+  focusAreas,
+  siteIdentity,
+  uiByLocale
+} from "@/data/profile"
+import { getAllPosts, getAllProjects } from "@/lib/content"
+import { isLocale } from "@/lib/i18n"
+import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
+import { breadcrumbJsonLd, personJsonLd } from "@/lib/schema"
 
-export async function generateMetadata({
-  params
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
 
   if (!isLocale(locale)) {
-    return {};
+    return {}
   }
 
   return createMetadata(locale, {
@@ -27,28 +28,22 @@ export async function generateMetadata({
     description: siteIdentity.headline,
     path: "/",
     keywords: [...focusAreas]
-  });
+  })
 }
 
-export default async function LocaleHomePage({
-  params
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export default async function LocaleHomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
 
   if (!isLocale(locale)) {
-    notFound();
+    notFound()
   }
 
-  const ui = uiByLocale[locale];
-  const about = aboutByLocale[locale];
-  const projects = getAllProjects(locale).slice(0, 2);
-  const posts = getAllPosts(locale).slice(0, 2);
+  const ui = uiByLocale[locale]
+  const about = aboutByLocale[locale]
+  const projects = getAllProjects(locale).slice(0, 2)
+  const posts = getAllPosts(locale).slice(0, 2)
 
-  const breadcrumbs = breadcrumbJsonLd([
-    { name: "Home", url: absoluteUrl(`/${locale}`) }
-  ]);
+  const breadcrumbs = breadcrumbJsonLd([{ name: "Home", url: absoluteUrl(`/${locale}`) }])
 
   return (
     <>
@@ -63,7 +58,12 @@ export default async function LocaleHomePage({
           <a className="primary-button" href={siteIdentity.links.email}>
             {ui.cta.contact}
           </a>
-          <a className="secondary-button" href={siteIdentity.links.linkedin} target="_blank" rel="noreferrer">
+          <a
+            className="secondary-button"
+            href={siteIdentity.links.linkedin}
+            target="_blank"
+            rel="noreferrer"
+          >
             {ui.cta.linkedin}
           </a>
         </div>
@@ -96,9 +96,9 @@ export default async function LocaleHomePage({
         <article className="section-stack">
           <div className="page-header">
             <h2>{ui.sections.projects}</h2>
-            <Link className="inline-link" href={`/${locale}/projects`}>
+            <a className="inline-link" href={`/${locale}/projects`}>
               {ui.nav.projects}
-            </Link>
+            </a>
           </div>
           <div className="grid">
             {projects.map((project) => (
@@ -115,9 +115,9 @@ export default async function LocaleHomePage({
         <article className="section-stack">
           <div className="page-header">
             <h2>{ui.sections.blog}</h2>
-            <Link className="inline-link" href={`/${locale}/blog`}>
+            <a className="inline-link" href={`/${locale}/blog`}>
               {ui.nav.blog}
-            </Link>
+            </a>
           </div>
           <div className="grid">
             {posts.map((post) => (
@@ -132,5 +132,5 @@ export default async function LocaleHomePage({
         </article>
       </section>
     </>
-  );
+  )
 }

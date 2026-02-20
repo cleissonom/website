@@ -1,10 +1,8 @@
-import Link from "next/link";
-
-import { siteIdentity } from "@/data/profile";
-import type { Locale } from "@/lib/i18n";
+import { siteIdentity } from "@/data/profile"
+import type { Locale } from "@/lib/i18n"
 
 export function Footer({ locale }: { locale: Locale }) {
-  const year = new Date().getFullYear();
+  const year = new Date().getFullYear()
 
   return (
     <footer className="site-footer">
@@ -20,12 +18,12 @@ export function Footer({ locale }: { locale: Locale }) {
             LinkedIn
           </a>
           <a href={siteIdentity.links.email}>Email</a>
-          <Link href="/rss.xml">RSS</Link>
-          <Link href="/atom.xml">Atom</Link>
-          <Link href="/feed.json">JSON Feed</Link>
-          <Link href={`/${locale}/resume`}>Resume</Link>
+          <a href="/rss.xml">RSS</a>
+          <a href="/atom.xml">Atom</a>
+          <a href="/feed.json">JSON Feed</a>
+          <a href={`/${locale}/resume`}>Resume</a>
         </div>
       </div>
     </footer>
-  );
+  )
 }

@@ -1,14 +1,13 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { notFound } from "next/navigation"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
-import { JsonLd } from "@/components/json-ld";
-import { uiByLocale } from "@/data/profile";
-import { getAllProjectSlugs, getProjectBySlug } from "@/lib/content";
-import { LOCALES, isLocale } from "@/lib/i18n";
-import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata";
-import { breadcrumbJsonLd, projectJsonLd } from "@/lib/schema";
+import { JsonLd } from "@/components/json-ld"
+import { uiByLocale } from "@/data/profile"
+import { getAllProjectSlugs, getProjectBySlug } from "@/lib/content"
+import { LOCALES, isLocale } from "@/lib/i18n"
+import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
+import { breadcrumbJsonLd, projectJsonLd } from "@/lib/schema"
 
 export function generateStaticParams() {
   return LOCALES.flatMap((locale) =>
@@ -16,27 +15,27 @@ export function generateStaticParams() {
       locale,
       slug
     }))
-  );
+  )
 }
 
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>
 }) {
-  const { locale, slug } = await params;
+  const { locale, slug } = await params
 
   if (!isLocale(locale)) {
-    return {};
+    return {}
   }
 
-  const project = getProjectBySlug(locale, slug);
+  const project = getProjectBySlug(locale, slug)
   if (!project) {
     return createMetadata(locale, {
       title: buildPageTitle("Project not found"),
       description: "Project not found for this locale.",
       path: "/projects"
-    });
+    })
   }
 
   return createMetadata(locale, {
@@ -44,36 +43,36 @@ export async function generateMetadata({
     description: project.summary,
     path: `/projects/${project.slug}`,
     keywords: project.tags
-  });
+  })
 }
 
 export default async function ProjectDetailPage({
   params
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>
 }) {
-  const { locale, slug } = await params;
+  const { locale, slug } = await params
 
   if (!isLocale(locale)) {
-    notFound();
+    notFound()
   }
 
-  const ui = uiByLocale[locale];
-  const project = getProjectBySlug(locale, slug);
+  const ui = uiByLocale[locale]
+  const project = getProjectBySlug(locale, slug)
 
   if (!project) {
-    notFound();
+    notFound()
   }
 
   const links = (Object.entries(project.links) as Array<[string, string | undefined]>).flatMap(
     ([label, value]) => (value ? [{ label, value }] : [])
-  );
+  )
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: ui.nav.home, url: absoluteUrl(`/${locale}`) },
     { name: ui.nav.projects, url: absoluteUrl(`/${locale}/projects`) },
     { name: project.title, url: absoluteUrl(`/${locale}/projects/${project.slug}`) }
-  ]);
+  ])
 
   return (
     <article className="section-stack">
@@ -115,7 +114,13 @@ export default async function ProjectDetailPage({
           <h2>Links</h2>
           <div className="chip-row">
             {links.map(({ label, value }) => (
-              <a key={label} href={value} target="_blank" rel="noreferrer" className="secondary-button">
+              <a
+                key={label}
+                href={value}
+                target="_blank"
+                rel="noreferrer"
+                className="secondary-button"
+              >
                 {label}
               </a>
             ))}
@@ -127,9 +132,9 @@ export default async function ProjectDetailPage({
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{project.body}</ReactMarkdown>
       </section>
 
-      <Link className="inline-link" href={`/${locale}/projects`}>
+      <a className="inline-link" href={`/${locale}/projects`}>
         {ui.labels.backToProjects}
-      </Link>
+      </a>
     </article>
-  );
+  )
 }

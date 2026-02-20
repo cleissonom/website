@@ -1,14 +1,13 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { notFound } from "next/navigation"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
-import { JsonLd } from "@/components/json-ld";
-import { uiByLocale } from "@/data/profile";
-import { getAllPostSlugs, getPostBySlug } from "@/lib/content";
-import { LOCALES, isLocale } from "@/lib/i18n";
-import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata";
-import { blogPostJsonLd, breadcrumbJsonLd } from "@/lib/schema";
+import { JsonLd } from "@/components/json-ld"
+import { uiByLocale } from "@/data/profile"
+import { getAllPostSlugs, getPostBySlug } from "@/lib/content"
+import { LOCALES, isLocale } from "@/lib/i18n"
+import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
+import { blogPostJsonLd, breadcrumbJsonLd } from "@/lib/schema"
 
 export function generateStaticParams() {
   return LOCALES.flatMap((locale) =>
@@ -16,27 +15,27 @@ export function generateStaticParams() {
       locale,
       slug
     }))
-  );
+  )
 }
 
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>
 }) {
-  const { locale, slug } = await params;
+  const { locale, slug } = await params
 
   if (!isLocale(locale)) {
-    return {};
+    return {}
   }
 
-  const post = getPostBySlug(locale, slug);
+  const post = getPostBySlug(locale, slug)
   if (!post) {
     return createMetadata(locale, {
       title: buildPageTitle("Post not found"),
       description: "Post not found for this locale.",
       path: "/blog"
-    });
+    })
   }
 
   return createMetadata(locale, {
@@ -44,32 +43,32 @@ export async function generateMetadata({
     description: post.summary,
     path: `/blog/${post.slug}`,
     keywords: post.tags
-  });
+  })
 }
 
 export default async function BlogDetailPage({
   params
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>
 }) {
-  const { locale, slug } = await params;
+  const { locale, slug } = await params
 
   if (!isLocale(locale)) {
-    notFound();
+    notFound()
   }
 
-  const ui = uiByLocale[locale];
-  const post = getPostBySlug(locale, slug);
+  const ui = uiByLocale[locale]
+  const post = getPostBySlug(locale, slug)
 
   if (!post) {
-    notFound();
+    notFound()
   }
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: ui.nav.home, url: absoluteUrl(`/${locale}`) },
     { name: ui.nav.blog, url: absoluteUrl(`/${locale}/blog`) },
     { name: post.title, url: absoluteUrl(`/${locale}/blog/${post.slug}`) }
-  ]);
+  ])
 
   return (
     <article className="section-stack">
@@ -82,7 +81,9 @@ export default async function BlogDetailPage({
         <p className="lead">{post.summary}</p>
         <p className="muted">
           {ui.labels.published}: {new Date(post.date).toLocaleDateString(locale)}
-          {post.updatedAt ? ` | ${ui.labels.updated}: ${new Date(post.updatedAt).toLocaleDateString(locale)}` : ""}
+          {post.updatedAt
+            ? ` | ${ui.labels.updated}: ${new Date(post.updatedAt).toLocaleDateString(locale)}`
+            : ""}
         </p>
       </header>
 
@@ -90,9 +91,9 @@ export default async function BlogDetailPage({
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
       </section>
 
-      <Link className="inline-link" href={`/${locale}/blog`}>
+      <a className="inline-link" href={`/${locale}/blog`}>
         {ui.labels.backToBlog}
-      </Link>
+      </a>
     </article>
-  );
+  )
 }

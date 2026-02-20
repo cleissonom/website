@@ -1,25 +1,25 @@
-import type { Locale } from "@/lib/i18n";
-import { SITE_HEADLINE, SITE_LINKS, SITE_NAME, SITE_SHORT_TITLE } from "@/lib/site";
+import type { Locale } from "@/lib/i18n"
+import { SITE_HEADLINE, SITE_LINKS, SITE_NAME, SITE_SHORT_TITLE } from "@/lib/site"
 
 export type ExperienceRole = {
-  title: string;
-  period: string;
-  bullets: string[];
-};
+  title: string
+  period: string
+  bullets: string[]
+}
 
 export type ExperienceCompany = {
-  company: string;
-  employment: string;
-  location: string;
-  roles: ExperienceRole[];
-};
+  company: string
+  employment: string
+  location: string
+  roles: ExperienceRole[]
+}
 
 export const siteIdentity = {
   name: SITE_NAME,
   shortTitle: SITE_SHORT_TITLE,
   headline: SITE_HEADLINE,
   links: SITE_LINKS
-} as const;
+} as const
 
 export const aboutByLocale: Record<Locale, string[]> = {
   "en-US": [
@@ -34,7 +34,7 @@ export const aboutByLocale: Record<Locale, string[]> = {
     "Tenho experiência em arquitetura e evolução de sistemas backend escaláveis, desenvolvimento e operação de infraestrutura em nuvem, criação de APIs e sistemas distribuídos, atuação em startups e ambientes internacionais, além de contribuir ativamente para decisões técnicas e arquitetura.",
     "Sou apaixonado por design de sistemas, performance e software confiável. Fora do trabalho, gosto de explorar novas tecnologias e desenvolver projetos pessoais."
   ]
-};
+}
 
 export const focusAreas = [
   "Backend Engineering",
@@ -47,7 +47,7 @@ export const focusAreas = [
   "Node.js",
   "Python",
   "AI-powered products"
-] as const;
+] as const
 
 export const experienceTimeline: ExperienceCompany[] = [
   {
@@ -62,7 +62,7 @@ export const experienceTimeline: ExperienceCompany[] = [
       },
       {
         title: "Software Engineer - ThirdEdition Project",
-        period: "May 2024 - Jul 2024",
+        period: "May 2024 - Jul 2024 (2 months)",
         bullets: [
           "This project provided invaluable experience in technology decision-making, comprehensive system infrastructure planning, and front-end development.",
           "Planned and structured the system infrastructure using AWS services.",
@@ -80,7 +80,7 @@ export const experienceTimeline: ExperienceCompany[] = [
     roles: [
       {
         title: "Software Engineer",
-        period: "Jul 2023 - Feb 2025",
+        period: "Jul 2023 - Feb 2025 (1 year and 8 months)",
         bullets: [
           "This early-stage startup experience taught me how to launch a product and drive adoption.",
           "Reached over 2,000 active users within a few months.",
@@ -101,14 +101,14 @@ export const experienceTimeline: ExperienceCompany[] = [
     roles: [
       {
         title: "Software Engineer (Remote)",
-        period: "Feb 2024 - May 2024",
+        period: "Feb 2024 - May 2024 (3 months)",
         bullets: [
           "Planned and developed an e-commerce mobile application built with React Native and Expo."
         ]
       },
       {
         title: "Software Engineer (Remote)",
-        period: "Jan 2023 - Jul 2023",
+        period: "Jan 2023 - Jul 2023 (6 months)",
         bullets: [
           "Successfully developed and deployed mobile applications for major brands.",
           "Developed and maintained software for 150+ users, including applications for GOL, Kopenhagen, and Intelbras on App Store and Play Store.",
@@ -119,7 +119,7 @@ export const experienceTimeline: ExperienceCompany[] = [
       },
       {
         title: "Intern Software Engineer (On-site)",
-        period: "Aug 2022 - Jan 2023",
+        period: "Aug 2022 - Jan 2023 (6 months)",
         bullets: [
           "Joined the research, development, and innovation team.",
           "Worked with the VTEX framework for e-commerce development.",
@@ -128,45 +128,45 @@ export const experienceTimeline: ExperienceCompany[] = [
       }
     ]
   }
-];
+]
 
 export type UiDictionary = {
   nav: {
-    home: string;
-    projects: string;
-    blog: string;
-    resume: string;
-  };
+    home: string
+    projects: string
+    blog: string
+    resume: string
+  }
   cta: {
-    contact: string;
-    linkedin: string;
-    downloadResume: string;
-  };
+    contact: string
+    linkedin: string
+    downloadResume: string
+  }
   sections: {
-    about: string;
-    focusAreas: string;
-    experience: string;
-    projects: string;
-    blog: string;
-  };
+    about: string
+    focusAreas: string
+    experience: string
+    projects: string
+    blog: string
+  }
   labels: {
-    locale: string;
-    light: string;
-    dark: string;
-    readMore: string;
-    published: string;
-    updated: string;
-    role: string;
-    status: string;
-    stack: string;
-    highlights: string;
-    backToProjects: string;
-    backToBlog: string;
-    notFoundTitle: string;
-    notFoundDescription: string;
-    goHome: string;
-  };
-};
+    locale: string
+    light: string
+    dark: string
+    readMore: string
+    published: string
+    updated: string
+    role: string
+    status: string
+    stack: string
+    highlights: string
+    backToProjects: string
+    backToBlog: string
+    notFoundTitle: string
+    notFoundDescription: string
+    goHome: string
+  }
+}
 
 export const uiByLocale: Record<Locale, UiDictionary> = {
   "en-US": {
@@ -243,4 +243,4 @@ export const uiByLocale: Record<Locale, UiDictionary> = {
       goHome: "Ir para o início"
     }
   }
-};
+}

@@ -1,7 +1,6 @@
-import { redirect } from "next/navigation";
-
-import { DEFAULT_LOCALE } from "@/lib/i18n";
+import LocaleHomePage from "@/app/[locale]/page"
+import { DEFAULT_LOCALE } from "@/lib/i18n"
 
 export default function RootPage() {
-  redirect(`/${DEFAULT_LOCALE}`);
+  return <LocaleHomePage params={Promise.resolve({ locale: DEFAULT_LOCALE })} />
 }
