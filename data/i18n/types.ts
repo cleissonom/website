@@ -74,6 +74,9 @@ export type LocaleDictionary = {
       metadataTitle: string
       metadataDescription: string
       lead: string
+      filterHeading: string
+      allLabels: string
+      noResultsDescription: string
       notFoundTitle: string
       notFoundDescription: string
       linksHeading: string

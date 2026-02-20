@@ -359,6 +359,44 @@ h3 {
   padding: 0.25rem 0.55rem;
 }
 
+.projects-filter {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.projects-filter-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chip-button {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.2;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.chip-button:hover,
+.chip-button:focus-visible {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.chip-button-active {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 52%, var(--border));
+  background: var(--accent-soft);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

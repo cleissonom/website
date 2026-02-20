@@ -1,6 +1,11 @@
 import type { ProjectEntry } from "@/lib/content"
 import type { Locale } from "@/lib/i18n"
 
+export type ProjectCardProject = Pick<
+  ProjectEntry,
+  "slug" | "title" | "summary" | "role" | "tags" | "coverImage"
+>
+
 export function ProjectCard({
   project,
   locale,
@@ -8,7 +13,7 @@ export function ProjectCard({
   readMoreAboutPrefix,
   enableWalletHover = false
 }: {
-  project: ProjectEntry
+  project: ProjectCardProject
   locale: Locale
   readMoreLabel: string
   readMoreAboutPrefix: string

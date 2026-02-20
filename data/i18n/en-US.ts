@@ -166,6 +166,9 @@ export const enUSDictionary: LocaleDictionary = {
       metadataDescription:
         "Selected engineering projects spanning backend, cloud, and mobile delivery.",
       lead: "Outcome-focused project snapshots with architecture decisions, delivery constraints, and measurable impact.",
+      filterHeading: "Filter by label",
+      allLabels: "All labels",
+      noResultsDescription: "No projects found for the selected label.",
       notFoundTitle: "Project not found",
       notFoundDescription: "Project not found for this locale.",
       linksHeading: "Links",

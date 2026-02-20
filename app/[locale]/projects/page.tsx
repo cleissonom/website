@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 
 import { JsonLd } from "@/components/json-ld"
-import { ProjectCard } from "@/components/project-card"
+import { ProjectListWithFilters } from "@/components/project-list-with-filters"
 import { getDictionary } from "@/data/i18n"
 import { getAllProjects } from "@/lib/content"
 import { isLocale } from "@/lib/i18n"
@@ -36,6 +36,14 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
   const dictionary = getDictionary(locale)
   const ui = dictionary.ui
   const projects = getAllProjects(locale)
+  const projectCards = projects.map((project) => ({
+    slug: project.slug,
+    title: project.title,
+    summary: project.summary,
+    role: project.role,
+    tags: project.tags,
+    coverImage: project.coverImage
+  }))
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: ui.nav.home, url: absoluteUrl(`/${locale}`) },
@@ -52,18 +60,17 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         <p className="lead">{dictionary.pages.projects.lead}</p>
       </header>
 
-      <div className="grid">
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.slug}
-            project={project}
-            locale={locale}
-            readMoreLabel={ui.labels.readMore}
-            readMoreAboutPrefix={dictionary.snippets.readMoreAboutPrefix}
-            enableWalletHover
-          />
-        ))}
-      </div>
+      <ProjectListWithFilters
+        projects={projectCards}
+        locale={locale}
+        readMoreLabel={ui.labels.readMore}
+        readMoreAboutPrefix={dictionary.snippets.readMoreAboutPrefix}
+        copy={{
+          filterHeading: dictionary.pages.projects.filterHeading,
+          allLabels: dictionary.pages.projects.allLabels,
+          noResultsDescription: dictionary.pages.projects.noResultsDescription
+        }}
+      />
     </section>
   )
 }
