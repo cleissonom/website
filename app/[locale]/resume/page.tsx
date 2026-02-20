@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { aboutByLocale, siteIdentity, uiByLocale } from "@/data/profile";
-import { isLocale } from "@/lib/i18n";
+import { isLocale, resumePdfPath } from "@/lib/i18n";
 import { buildPageTitle, createMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
@@ -48,7 +48,7 @@ export default async function ResumePage({
           {siteIdentity.shortTitle} focused on backend systems, cloud infrastructure, and scalable product delivery.
         </p>
         <div className="hero-actions">
-          <a className="primary-button" href="/resume.pdf" target="_blank" rel="noreferrer">
+          <a className="primary-button" href={resumePdfPath(locale)} target="_blank" rel="noreferrer">
             {ui.cta.downloadResume}
           </a>
           <a className="secondary-button" href={siteIdentity.links.email}>

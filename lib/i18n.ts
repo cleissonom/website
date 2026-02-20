@@ -3,6 +3,10 @@ export type Locale = (typeof LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = "en-US";
 export const LOCALE_COOKIE_NAME = "locale";
+export const RESUME_PDF_BY_LOCALE: Record<Locale, string> = {
+  "en-US": "/resume.en-US.pdf",
+  "pt-BR": "/resume.pt-BR.pdf"
+};
 
 const LOCALE_PATTERN = /^[a-z]{2}-[a-z]{2}$/i;
 
@@ -61,4 +65,8 @@ export function buildLocalizedPath(locale: Locale, pathWithoutLocale = "/"): str
 
 export function pathWithoutLocale(pathname: string): string {
   return removeLocaleFromPath(pathname);
+}
+
+export function resumePdfPath(locale: Locale): string {
+  return RESUME_PDF_BY_LOCALE[locale];
 }
