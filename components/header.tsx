@@ -1,7 +1,3 @@
-"use client"
-
-import { usePathname } from "next/navigation"
-import { useEffect, useRef, useState } from "react"
 import type { UiDictionary } from "@/data/i18n/types"
 import { LocaleSwitcher } from "@/components/locale-switcher"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -17,87 +13,46 @@ export function Header({
   ui: UiDictionary
   shortTitle: string
 }) {
-  const [isVisible, setIsVisible] = useState(true)
-  const lastScrollY = useRef(0)
-  const pathname = usePathname()
-
-  useEffect(() => {
-    const threshold = 6
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY
-
-      if (currentScrollY <= 0) {
-        setIsVisible(true)
-        lastScrollY.current = 0
-        return
-      }
-
-      const delta = currentScrollY - lastScrollY.current
-      if (Math.abs(delta) < threshold) {
-        return
-      }
-
-      setIsVisible(delta < 0)
-      lastScrollY.current = currentScrollY
-    }
-
-    lastScrollY.current = window.scrollY
-    window.addEventListener("scroll", handleScroll, { passive: true })
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
-
   const rootPath = `/${locale}`
-  const normalizedPathname =
-    pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname
 
   const navItems = [
     {
+      key: "home",
       href: rootPath,
-      label: ui.nav.home,
-      isActive: normalizedPathname === rootPath
+      label: ui.nav.home
     },
     {
+      key: "projects",
       href: `${rootPath}/projects`,
-      label: ui.nav.projects,
-      isActive:
-        normalizedPathname === `${rootPath}/projects` ||
-        normalizedPathname.startsWith(`${rootPath}/projects/`)
+      label: ui.nav.projects
     },
     {
+      key: "blog",
       href: `${rootPath}/blog`,
-      label: ui.nav.blog,
-      isActive:
-        normalizedPathname === `${rootPath}/blog` ||
-        normalizedPathname.startsWith(`${rootPath}/blog/`)
+      label: ui.nav.blog
     },
     {
+      key: "resume",
       href: `${rootPath}/resume`,
-      label: ui.nav.resume,
-      isActive:
-        normalizedPathname === `${rootPath}/resume` ||
-        normalizedPathname.startsWith(`${rootPath}/resume/`)
+      label: ui.nav.resume
     }
   ]
 
   return (
-    <header className={`site-header ${isVisible ? "site-header-visible" : "site-header-hidden"}`}>
+    <header className="site-header site-header-visible js-site-header">
       <div className="container header-grid">
         <a href={rootPath} className="nameplate">
           <span>{siteIdentity.name}</span>
           <small>{shortTitle}</small>
         </a>
 
-        <nav className="site-nav" aria-label={ui.labels.mainNavigationAria}>
+        <nav className="site-nav js-site-nav" aria-label={ui.labels.mainNavigationAria}>
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className={`site-nav-link${item.isActive ? " site-nav-link-active" : ""}`}
-              aria-current={item.isActive ? "page" : undefined}
+              className="site-nav-link js-site-nav-link"
+              data-nav-key={item.key}
             >
               {item.label}
             </a>
@@ -105,11 +60,7 @@ export function Header({
         </nav>
 
         <div className="header-actions">
-          <LocaleSwitcher
-            currentLocale={locale}
-            label={ui.labels.locale}
-            pathname={normalizedPathname}
-          />
+          <LocaleSwitcher currentLocale={locale} label={ui.labels.locale} />
           <ThemeToggle lightLabel={ui.labels.light} darkLabel={ui.labels.dark} />
         </div>
       </div>

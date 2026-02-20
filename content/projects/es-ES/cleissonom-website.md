@@ -25,7 +25,7 @@ highlights:
   - Portafolio localizado con rutas en inglés, portugués y español.
   - Flujo de proyectos y blog en Markdown con validación de schema.
   - Base SEO de producción con sitemap, feeds, metadata y JSON-LD.
-coverImage: /projects/website.png
+coverImage: /projects/website.webp
 ---
 
 Construí este sitio para controlar mi narrativa profesional y mostrar trabajo real de ingeniería en un solo lugar.

@@ -77,7 +77,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
 
           <figure className="hero-portrait">
             <img
-              src="/about/profile.png"
+              src="/about/profile.webp"
               alt={siteIdentity.name}
               width={448}
               height={459}

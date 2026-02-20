@@ -25,7 +25,7 @@ highlights:
   - Built a localized portfolio with English, Portuguese, and Spanish routes.
   - Implemented markdown-driven project and blog workflows with schema validation.
   - Added production-ready SEO foundations including sitemap, feeds, metadata, and JSON-LD.
-coverImage: /projects/website.png
+coverImage: /projects/website.webp
 ---
 
 I built this website to own my professional narrative and show real engineering work in one place.

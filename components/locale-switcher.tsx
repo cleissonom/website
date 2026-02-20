@@ -1,20 +1,11 @@
 import { LocaleFlag } from "@/components/locale-flag"
-import { resolveLocaleSwitchPath } from "@/lib/route-availability"
 import { LOCALES, LOCALE_OPTIONS, type Locale } from "@/lib/i18n"
 
-export function LocaleSwitcher({
-  currentLocale,
-  label,
-  pathname
-}: {
-  currentLocale: Locale
-  label: string
-  pathname: string
-}) {
+export function LocaleSwitcher({ currentLocale, label }: { currentLocale: Locale; label: string }) {
   const currentOption = LOCALE_OPTIONS[currentLocale]
 
   return (
-    <details className="locale-dropdown">
+    <details className="locale-dropdown js-locale-switcher">
       <summary className="locale-dropdown-trigger" aria-label={label}>
         <span className="locale-dropdown-current">
           <LocaleFlag locale={currentLocale} />
@@ -29,13 +20,14 @@ export function LocaleSwitcher({
         {LOCALES.map((locale) => {
           const isCurrent = locale === currentLocale
           const option = LOCALE_OPTIONS[locale]
-          const href = resolveLocaleSwitchPath(pathname, locale)
+          const href = `/${locale}`
 
           return (
             <li key={locale}>
               <a
                 href={href}
-                className={`locale-dropdown-option${isCurrent ? " locale-dropdown-option-active" : ""}`}
+                className={`locale-dropdown-option js-locale-option${isCurrent ? " locale-dropdown-option-active" : ""}`}
+                data-target-locale={locale}
                 aria-current={isCurrent ? "true" : undefined}
               >
                 <LocaleFlag locale={locale} />

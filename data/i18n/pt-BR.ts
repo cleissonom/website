@@ -2,9 +2,9 @@ import type { LocaleDictionary } from "@/data/i18n/types"
 
 export const ptBRDictionary: LocaleDictionary = {
   site: {
-    shortTitle: "Engenheiro de Software Sênior",
+    shortTitle: "Desenvolvedor de Software Sênior",
     headline:
-      "Engenheiro de Software Sênior | Especialista em Node.js, Python e AWS | Sistemas Escaláveis | Kubernetes | Design de Sistemas | Construindo Produtos com IA"
+      "Desenvolvedor de Software Sênior | Especialista em Node.js, Python e AWS | Sistemas Escaláveis | Kubernetes | Design de Sistemas | Construindo Produtos com IA"
   },
   ui: {
     nav: {
@@ -71,12 +71,12 @@ export const ptBRDictionary: LocaleDictionary = {
         location: "Estados Unidos - Remoto",
         roles: [
           {
-            title: "Engenheiro de Software Sênior - Projeto Encore",
+            title: "Desenvolvedor de Software Sênior - Projeto Encore",
             period: "jul. 2024 - atual",
             bullets: []
           },
           {
-            title: "Engenheiro de Software - Projeto ThirdEdition",
+            title: "Desenvolvedor de Software - Projeto ThirdEdition",
             period: "mai. 2024 - jul. 2024 (2 meses)",
             bullets: [
               "Esse projeto me proporcionou experiência valiosa em tomada de decisões tecnológicas, planejamento completo de infraestrutura e desenvolvimento front-end.",
@@ -94,7 +94,7 @@ export const ptBRDictionary: LocaleDictionary = {
         location: "Brasil - Remoto",
         roles: [
           {
-            title: "Engenheiro de Software",
+            title: "Desenvolvedor de Software",
             period: "jul. 2023 - fev. 2025 (1 ano e 8 meses)",
             bullets: [
               "A experiência em startup em estágio inicial me ensinou a lançar um produto e impulsionar sua adoção.",
@@ -115,14 +115,14 @@ export const ptBRDictionary: LocaleDictionary = {
         location: "Florianópolis, Santa Catarina, Brasil",
         roles: [
           {
-            title: "Engenheiro de Software (Remoto)",
+            title: "Desenvolvedor de Software (Remoto)",
             period: "fev. 2024 - mai. 2024 (3 meses)",
             bullets: [
               "Planejei e desenvolvi um aplicativo mobile de e-commerce com React Native e Expo."
             ]
           },
           {
-            title: "Engenheiro de Software (Remoto)",
+            title: "Desenvolvedor de Software (Remoto)",
             period: "jan. 2023 - jul. 2023 (6 meses)",
             bullets: [
               "Desenvolvi e publiquei aplicativos mobile para grandes marcas.",
@@ -195,7 +195,7 @@ export const ptBRDictionary: LocaleDictionary = {
       metadataDescription:
         "Visão geral do currículo com download direto em PDF e links de contato.",
       summary:
-        "Engenheiro de Software Sênior focado em sistemas backend, infraestrutura em nuvem e entrega de produtos escaláveis."
+        "Desenvolvedor de Software Sênior focado em sistemas backend, infraestrutura em nuvem e entrega de produtos escaláveis."
     },
     notFound: {
       metadataTitle: "404",
