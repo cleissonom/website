@@ -1,4 +1,4 @@
-import type { ExperienceCompany } from "@/data/profile"
+import type { ExperienceCompany } from "@/data/i18n/types"
 
 export function ExperienceTimeline({
   items,

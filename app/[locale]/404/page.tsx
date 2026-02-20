@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 
-import { uiByLocale } from "@/data/profile"
+import { getDictionary } from "@/data/i18n"
 import { isLocale } from "@/lib/i18n"
 import { buildPageTitle, createMetadata } from "@/lib/metadata"
 
@@ -11,9 +11,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return {}
   }
 
+  const dictionary = getDictionary(locale)
+
   return createMetadata(locale, {
-    title: buildPageTitle("404"),
-    description: "Localized not found route.",
+    title: buildPageTitle(dictionary.pages.notFound.metadataTitle),
+    description: dictionary.pages.notFound.metadataDescription,
     path: "/404"
   })
 }
@@ -29,7 +31,8 @@ export default async function Localized404Page({
     notFound()
   }
 
-  const ui = uiByLocale[locale]
+  const dictionary = getDictionary(locale)
+  const ui = dictionary.ui
 
   return (
     <main className="not-found">

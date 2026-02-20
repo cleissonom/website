@@ -1,14 +1,14 @@
-import type { Locale } from "@/lib/i18n";
+import { LOCALES, type Locale } from "@/lib/i18n"
 
-const projectSlugs = ["ai-photo-verification-platform", "commerce-mobile-application"];
-const blogSlugs = ["designing-reliable-nodejs-services", "scaling-kubernetes-on-aws"];
+const projectSlugs = ["ai-photo-verification-platform", "commerce-mobile-application"]
+const blogSlugs = ["designing-reliable-nodejs-services", "scaling-kubernetes-on-aws"]
 
-export const PROJECT_SLUGS_BY_LOCALE: Record<Locale, string[]> = {
-  "en-US": projectSlugs,
-  "pt-BR": projectSlugs
-};
+function createLocaleSlugIndex(slugs: readonly string[]): Record<Locale, string[]> {
+  return Object.fromEntries(LOCALES.map((locale) => [locale, [...slugs]])) as Record<
+    Locale,
+    string[]
+  >
+}
 
-export const BLOG_SLUGS_BY_LOCALE: Record<Locale, string[]> = {
-  "en-US": blogSlugs,
-  "pt-BR": blogSlugs
-};
+export const PROJECT_SLUGS_BY_LOCALE = createLocaleSlugIndex(projectSlugs)
+export const BLOG_SLUGS_BY_LOCALE = createLocaleSlugIndex(blogSlugs)

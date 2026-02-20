@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
 import { JsonLd } from "@/components/json-ld"
-import { uiByLocale } from "@/data/profile"
+import { getDictionary } from "@/data/i18n"
 import { getAllPostSlugs, getPostBySlug } from "@/lib/content"
 import { LOCALES, isLocale } from "@/lib/i18n"
 import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
@@ -29,11 +29,12 @@ export async function generateMetadata({
     return {}
   }
 
+  const dictionary = getDictionary(locale)
   const post = getPostBySlug(locale, slug)
   if (!post) {
     return createMetadata(locale, {
-      title: buildPageTitle("Post not found"),
-      description: "Post not found for this locale.",
+      title: buildPageTitle(dictionary.pages.blog.notFoundTitle),
+      description: dictionary.pages.blog.notFoundDescription,
       path: "/blog"
     })
   }
@@ -57,7 +58,8 @@ export default async function BlogDetailPage({
     notFound()
   }
 
-  const ui = uiByLocale[locale]
+  const dictionary = getDictionary(locale)
+  const ui = dictionary.ui
   const post = getPostBySlug(locale, slug)
 
   if (!post) {

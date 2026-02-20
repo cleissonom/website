@@ -3,7 +3,8 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
 import { JsonLd } from "@/components/json-ld"
-import { uiByLocale } from "@/data/profile"
+import { getDictionary } from "@/data/i18n"
+import type { ProjectLinkKey } from "@/data/i18n/types"
 import { getAllProjectSlugs, getProjectBySlug } from "@/lib/content"
 import { LOCALES, isLocale } from "@/lib/i18n"
 import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
@@ -29,11 +30,12 @@ export async function generateMetadata({
     return {}
   }
 
+  const dictionary = getDictionary(locale)
   const project = getProjectBySlug(locale, slug)
   if (!project) {
     return createMetadata(locale, {
-      title: buildPageTitle("Project not found"),
-      description: "Project not found for this locale.",
+      title: buildPageTitle(dictionary.pages.projects.notFoundTitle),
+      description: dictionary.pages.projects.notFoundDescription,
       path: "/projects"
     })
   }
@@ -57,16 +59,17 @@ export default async function ProjectDetailPage({
     notFound()
   }
 
-  const ui = uiByLocale[locale]
+  const dictionary = getDictionary(locale)
+  const ui = dictionary.ui
   const project = getProjectBySlug(locale, slug)
 
   if (!project) {
     notFound()
   }
 
-  const links = (Object.entries(project.links) as Array<[string, string | undefined]>).flatMap(
-    ([label, value]) => (value ? [{ label, value }] : [])
-  )
+  const links = (
+    Object.entries(project.links) as Array<[ProjectLinkKey, string | undefined]>
+  ).flatMap(([label, value]) => (value ? [{ label, value }] : []))
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: ui.nav.home, url: absoluteUrl(`/${locale}`) },
@@ -92,7 +95,7 @@ export default async function ProjectDetailPage({
         </article>
         <article>
           <p className="muted">{ui.labels.status}</p>
-          <p>{project.status}</p>
+          <p>{dictionary.pages.projects.statusLabels[project.status]}</p>
         </article>
         <article>
           <p className="muted">{ui.labels.stack}</p>
@@ -111,7 +114,7 @@ export default async function ProjectDetailPage({
 
       {links.length > 0 ? (
         <section className="surface">
-          <h2>Links</h2>
+          <h2>{dictionary.pages.projects.linksHeading}</h2>
           <div className="chip-row">
             {links.map(({ label, value }) => (
               <a
@@ -121,7 +124,7 @@ export default async function ProjectDetailPage({
                 rel="noreferrer"
                 className="secondary-button"
               >
-                {label}
+                {dictionary.pages.projects.linkLabels[label]}
               </a>
             ))}
           </div>

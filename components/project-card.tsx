@@ -4,13 +4,15 @@ import type { Locale } from "@/lib/i18n"
 export function ProjectCard({
   project,
   locale,
-  readMoreLabel
+  readMoreLabel,
+  readMoreAboutPrefix
 }: {
   project: ProjectEntry
   locale: Locale
   readMoreLabel: string
+  readMoreAboutPrefix: string
 }) {
-  const contextLabel = locale === "pt-BR" ? `sobre ${project.title}` : `about ${project.title}`
+  const contextLabel = `${readMoreAboutPrefix} ${project.title}`
   const descriptiveLabel = `${readMoreLabel} ${contextLabel}`
 
   return (

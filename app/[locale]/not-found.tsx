@@ -1,4 +1,4 @@
-import { uiByLocale } from "@/data/profile"
+import { uiByLocale } from "@/data/i18n"
 import { DEFAULT_LOCALE, LOCALES, type Locale } from "@/lib/i18n"
 
 type NotFoundProps = {

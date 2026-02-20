@@ -1,22 +1,50 @@
-import { LOCALES, type Locale } from "@/lib/i18n"
+import { LocaleFlag } from "@/components/locale-flag"
+import { resolveLocaleSwitchPath } from "@/lib/route-availability"
+import { LOCALES, LOCALE_OPTIONS, type Locale } from "@/lib/i18n"
 
-export function LocaleSwitcher({ currentLocale, label }: { currentLocale: Locale; label: string }) {
+export function LocaleSwitcher({
+  currentLocale,
+  label,
+  pathname
+}: {
+  currentLocale: Locale
+  label: string
+  pathname: string
+}) {
+  const currentOption = LOCALE_OPTIONS[currentLocale]
+
   return (
-    <div className="locale-switcher" role="group" aria-label={label}>
-      {LOCALES.map((locale) => {
-        const isCurrent = locale === currentLocale
+    <details className="locale-dropdown">
+      <summary className="locale-dropdown-trigger" aria-label={label}>
+        <span className="locale-dropdown-current">
+          <LocaleFlag locale={currentLocale} />
+          <span>{currentOption.shortLabel}</span>
+        </span>
+        <svg className="locale-caret" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M4 6l4 4 4-4" />
+        </svg>
+      </summary>
 
-        return (
-          <a
-            key={locale}
-            href={`/${locale}`}
-            className={`locale-option${isCurrent ? " locale-option-active" : ""}`}
-            aria-current={isCurrent ? "true" : undefined}
-          >
-            {locale}
-          </a>
-        )
-      })}
-    </div>
+      <ul className="locale-dropdown-menu" role="listbox" aria-label={label}>
+        {LOCALES.map((locale) => {
+          const isCurrent = locale === currentLocale
+          const option = LOCALE_OPTIONS[locale]
+          const href = resolveLocaleSwitchPath(pathname, locale)
+
+          return (
+            <li key={locale}>
+              <a
+                href={href}
+                className={`locale-dropdown-option${isCurrent ? " locale-dropdown-option-active" : ""}`}
+                aria-current={isCurrent ? "true" : undefined}
+              >
+                <LocaleFlag locale={locale} />
+                <span>{option.label}</span>
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </details>
   )
 }

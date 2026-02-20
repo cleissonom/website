@@ -1,55 +1,62 @@
-import type { Metadata } from "next";
-import type { ReactNode } from "react";
-import { notFound } from "next/navigation";
+import type { Metadata } from "next"
+import type { ReactNode } from "react"
+import { notFound } from "next/navigation"
 
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { siteIdentity, uiByLocale } from "@/data/profile";
-import { LOCALES, isLocale } from "@/lib/i18n";
-import { buildPageTitle, createMetadata } from "@/lib/metadata";
+import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"
+import { getDictionary } from "@/data/i18n"
+import { siteIdentity } from "@/data/profile"
+import { LOCALES, isLocale } from "@/lib/i18n"
+import { buildPageTitle, createMetadata } from "@/lib/metadata"
 
 export function generateStaticParams() {
-  return LOCALES.map((locale) => ({ locale }));
+  return LOCALES.map((locale) => ({ locale }))
 }
 
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = await params
 
   if (!isLocale(locale)) {
-    return {};
+    return {}
   }
+
+  const dictionary = getDictionary(locale)
 
   return createMetadata(locale, {
     title: buildPageTitle(siteIdentity.name),
-    description: siteIdentity.headline,
+    description: dictionary.site.headline,
     path: "/"
-  });
+  })
 }
 
 export default async function LocaleLayout({
   children,
   params
 }: {
-  children: ReactNode;
-  params: Promise<{ locale: string }>;
+  children: ReactNode
+  params: Promise<{ locale: string }>
 }) {
-  const { locale } = await params;
+  const { locale } = await params
 
   if (!isLocale(locale)) {
-    notFound();
+    notFound()
   }
 
-  const ui = uiByLocale[locale];
+  const dictionary = getDictionary(locale)
 
   return (
     <>
-      <Header locale={locale} ui={ui} />
+      <Header locale={locale} ui={dictionary.ui} shortTitle={dictionary.site.shortTitle} />
       <main className="site-main container">{children}</main>
-      <Footer locale={locale} />
+      <Footer
+        locale={locale}
+        resumeLabel={dictionary.ui.nav.resume}
+        contactLabel={dictionary.ui.cta.contact}
+      />
     </>
-  );
+  )
 }

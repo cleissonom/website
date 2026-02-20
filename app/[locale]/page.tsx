@@ -4,13 +4,8 @@ import { ExperienceTimeline } from "@/components/experience-timeline"
 import { JsonLd } from "@/components/json-ld"
 import { PostCard } from "@/components/post-card"
 import { ProjectCard } from "@/components/project-card"
-import {
-  aboutByLocale,
-  experienceTimelineByLocale,
-  focusAreas,
-  siteIdentity,
-  uiByLocale
-} from "@/data/profile"
+import { getDictionary } from "@/data/i18n"
+import { siteIdentity } from "@/data/profile"
 import { getAllPosts, getAllProjects } from "@/lib/content"
 import { isLocale } from "@/lib/i18n"
 import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
@@ -23,11 +18,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return {}
   }
 
+  const dictionary = getDictionary(locale)
+
   return createMetadata(locale, {
     title: buildPageTitle(siteIdentity.name),
-    description: siteIdentity.headline,
+    description: dictionary.site.headline,
     path: "/",
-    keywords: [...focusAreas]
+    keywords: [...dictionary.pages.home.keywords]
   })
 }
 
@@ -38,13 +35,17 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
     notFound()
   }
 
-  const ui = uiByLocale[locale]
-  const about = aboutByLocale[locale]
-  const experienceTimeline = experienceTimelineByLocale[locale]
+  const dictionary = getDictionary(locale)
+  const ui = dictionary.ui
+  const about = dictionary.content.about
+  const experienceTimeline = dictionary.content.experienceTimeline
+  const focusAreas = dictionary.content.focusAreas
   const projects = getAllProjects(locale).slice(0, 2)
   const posts = getAllPosts(locale).slice(0, 2)
 
-  const breadcrumbs = breadcrumbJsonLd([{ name: "Home", url: absoluteUrl(`/${locale}`) }])
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: dictionary.pages.home.breadcrumbLabel, url: absoluteUrl(`/${locale}`) }
+  ])
 
   return (
     <>
@@ -52,9 +53,9 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
       <JsonLd id="home-breadcrumb-jsonld" data={breadcrumbs} />
 
       <section className="hero surface">
-        <p className="eyebrow">{siteIdentity.shortTitle}</p>
+        <p className="eyebrow">{dictionary.site.shortTitle}</p>
         <h1>{siteIdentity.name}</h1>
-        <p className="lead">{siteIdentity.headline}</p>
+        <p className="lead">{dictionary.site.headline}</p>
         <div className="hero-actions">
           <a className="primary-button" href={siteIdentity.links.email}>
             {ui.cta.contact}
@@ -111,6 +112,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
                 project={project}
                 locale={locale}
                 readMoreLabel={ui.labels.readMore}
+                readMoreAboutPrefix={dictionary.snippets.readMoreAboutPrefix}
               />
             ))}
           </div>
@@ -130,6 +132,8 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
                 post={post}
                 locale={locale}
                 readMoreLabel={ui.labels.readMore}
+                readMoreAboutPrefix={dictionary.snippets.readMoreAboutPrefix}
+                readingMinutesLabel={dictionary.snippets.readingMinutesShort}
               />
             ))}
           </div>

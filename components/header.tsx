@@ -2,13 +2,21 @@
 
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
-import type { UiDictionary } from "@/data/profile"
+import type { UiDictionary } from "@/data/i18n/types"
 import { LocaleSwitcher } from "@/components/locale-switcher"
 import { ThemeToggle } from "@/components/theme-toggle"
 import type { Locale } from "@/lib/i18n"
 import { siteIdentity } from "@/data/profile"
 
-export function Header({ locale, ui }: { locale: Locale; ui: UiDictionary }) {
+export function Header({
+  locale,
+  ui,
+  shortTitle
+}: {
+  locale: Locale
+  ui: UiDictionary
+  shortTitle: string
+}) {
   const [isVisible, setIsVisible] = useState(true)
   const lastScrollY = useRef(0)
   const pathname = usePathname()
@@ -80,10 +88,10 @@ export function Header({ locale, ui }: { locale: Locale; ui: UiDictionary }) {
       <div className="container header-grid">
         <a href={rootPath} className="nameplate">
           <span>{siteIdentity.name}</span>
-          <small>{siteIdentity.shortTitle}</small>
+          <small>{shortTitle}</small>
         </a>
 
-        <nav className="site-nav" aria-label="Main navigation">
+        <nav className="site-nav" aria-label={ui.labels.mainNavigationAria}>
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -97,7 +105,11 @@ export function Header({ locale, ui }: { locale: Locale; ui: UiDictionary }) {
         </nav>
 
         <div className="header-actions">
-          <LocaleSwitcher currentLocale={locale} label={ui.labels.locale} />
+          <LocaleSwitcher
+            currentLocale={locale}
+            label={ui.labels.locale}
+            pathname={normalizedPathname}
+          />
           <ThemeToggle lightLabel={ui.labels.light} darkLabel={ui.labels.dark} />
         </div>
       </div>

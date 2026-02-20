@@ -145,25 +145,102 @@ a {
   gap: 0.7rem;
 }
 
-.locale-switcher {
-  display: inline-flex;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  overflow: hidden;
-  background: var(--surface);
+.locale-dropdown {
+  position: relative;
 }
 
-.locale-option {
-  padding: 0.32rem 0.68rem;
-  text-decoration: none;
+.locale-dropdown summary {
+  list-style: none;
+}
+
+.locale-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.locale-dropdown-trigger {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.32rem 0.65rem;
   font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.locale-dropdown[open] .locale-dropdown-trigger {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.locale-dropdown-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.locale-caret {
+  width: 0.82rem;
+  height: 0.82rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  transition: transform 140ms ease;
+}
+
+.locale-dropdown[open] .locale-caret {
+  transform: rotate(180deg);
+}
+
+.locale-dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.4rem);
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  min-width: 11.25rem;
+  display: grid;
+  gap: 0.2rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  z-index: 30;
+}
+
+.locale-dropdown:not([open]) .locale-dropdown-menu {
+  display: none;
+}
+
+.locale-dropdown-option {
+  text-decoration: none;
+  font-size: 0.8rem;
   color: var(--muted);
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.38rem 0.5rem;
 }
 
-.locale-option-active {
+.locale-dropdown-option-active {
   background: var(--accent-soft);
   color: var(--text);
+}
+
+.locale-flag {
+  width: 1rem;
+  height: 0.75rem;
+  border-radius: 3px;
+  border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  overflow: hidden;
+  flex: 0 0 auto;
 }
 
 .ghost-button {
@@ -327,12 +404,14 @@ h3 {
 .primary-button:hover,
 .secondary-button:hover,
 .ghost-button:hover,
-.locale-option:hover {
+.locale-dropdown-trigger:hover,
+.locale-dropdown-option:hover {
   transform: translateY(-1px);
 }
 
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+summary:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }

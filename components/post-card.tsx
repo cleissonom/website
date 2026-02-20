@@ -4,13 +4,17 @@ import type { Locale } from "@/lib/i18n"
 export function PostCard({
   post,
   locale,
-  readMoreLabel
+  readMoreLabel,
+  readMoreAboutPrefix,
+  readingMinutesLabel
 }: {
   post: BlogEntry
   locale: Locale
   readMoreLabel: string
+  readMoreAboutPrefix: string
+  readingMinutesLabel: string
 }) {
-  const contextLabel = locale === "pt-BR" ? `sobre ${post.title}` : `about ${post.title}`
+  const contextLabel = `${readMoreAboutPrefix} ${post.title}`
   const descriptiveLabel = `${readMoreLabel} ${contextLabel}`
 
   return (
@@ -21,7 +25,7 @@ export function PostCard({
           month: "short",
           day: "numeric"
         })}
-        {` | ${post.readingTimeMinutes} min`}
+        {` | ${post.readingTimeMinutes} ${readingMinutesLabel}`}
       </p>
       <h3>
         <a href={`/${locale}/blog/${post.slug}`}>{post.title}</a>

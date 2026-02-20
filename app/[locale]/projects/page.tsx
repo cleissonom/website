@@ -1,49 +1,44 @@
-import { notFound } from "next/navigation";
+import { notFound } from "next/navigation"
 
-import { JsonLd } from "@/components/json-ld";
-import { ProjectCard } from "@/components/project-card";
-import { uiByLocale } from "@/data/profile";
-import { getAllProjects } from "@/lib/content";
-import { isLocale } from "@/lib/i18n";
-import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata";
-import { breadcrumbJsonLd } from "@/lib/schema";
+import { JsonLd } from "@/components/json-ld"
+import { ProjectCard } from "@/components/project-card"
+import { getDictionary } from "@/data/i18n"
+import { getAllProjects } from "@/lib/content"
+import { isLocale } from "@/lib/i18n"
+import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
+import { breadcrumbJsonLd } from "@/lib/schema"
 
-export async function generateMetadata({
-  params
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
 
   if (!isLocale(locale)) {
-    return {};
+    return {}
   }
+
+  const dictionary = getDictionary(locale)
 
   return createMetadata(locale, {
-    title: buildPageTitle("Projects"),
-    description: "Selected engineering projects spanning backend, cloud, and mobile delivery.",
+    title: buildPageTitle(dictionary.pages.projects.metadataTitle),
+    description: dictionary.pages.projects.metadataDescription,
     path: "/projects"
-  });
+  })
 }
 
-export default async function ProjectsPage({
-  params
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export default async function ProjectsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
 
   if (!isLocale(locale)) {
-    notFound();
+    notFound()
   }
 
-  const ui = uiByLocale[locale];
-  const projects = getAllProjects(locale);
+  const dictionary = getDictionary(locale)
+  const ui = dictionary.ui
+  const projects = getAllProjects(locale)
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: ui.nav.home, url: absoluteUrl(`/${locale}`) },
     { name: ui.nav.projects, url: absoluteUrl(`/${locale}/projects`) }
-  ]);
+  ])
 
   return (
     <section className="section-stack">
@@ -52,9 +47,7 @@ export default async function ProjectsPage({
       <header className="page-header">
         <p className="eyebrow">{ui.nav.projects}</p>
         <h1>{ui.sections.projects}</h1>
-        <p className="lead">
-          Outcome-focused project snapshots with architecture decisions, delivery constraints, and measurable impact.
-        </p>
+        <p className="lead">{dictionary.pages.projects.lead}</p>
       </header>
 
       <div className="grid">
@@ -64,9 +57,10 @@ export default async function ProjectsPage({
             project={project}
             locale={locale}
             readMoreLabel={ui.labels.readMore}
+            readMoreAboutPrefix={dictionary.snippets.readMoreAboutPrefix}
           />
         ))}
       </div>
     </section>
-  );
+  )
 }
