@@ -9,8 +9,12 @@
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
-    "format": "npm run lint:fix",
-    "format:check": "npm run lint"
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "prepare": "husky",
+    "precommit:lint": "lint-staged",
+    "precommit:secrets": "gitleaks git --staged --redact --config .gitleaks.toml",
+    "precommit:checks": "npm run precommit:secrets && npm run precommit:lint"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -27,6 +31,18 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^10.0.0",
     "eslint-config-next": "^16.1.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
     "typescript": "^5.9.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "eslint --max-warnings=0 --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,mdx,css,scss,html,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }

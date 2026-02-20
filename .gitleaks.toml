@@ -1,0 +1,4 @@
+title = "cleissonom-dev gitleaks configuration"
+
+[extend]
+useDefault = true
