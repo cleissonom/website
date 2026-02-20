@@ -1,5 +1,5 @@
 ---
-title: Sitio personal cleissonom.dev
+title: Sitio personal - cleissonom.dev
 slug: cleissonom-website
 summary: Sitio web y portafolio personal multilingüe creado para presentar mi trabajo, publicar contenido técnico y centralizar contacto y currículum.
 dateStart: 2026-02-01

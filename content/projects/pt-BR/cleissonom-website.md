@@ -1,5 +1,5 @@
 ---
-title: Website pessoal cleissonom.dev
+title: Website pessoal - cleissonom.dev
 slug: cleissonom-website
 summary: Website e portfólio pessoal multilíngue criado para apresentar meu trabalho, publicar conteúdo técnico e centralizar contato e currículo.
 dateStart: 2026-02-01
