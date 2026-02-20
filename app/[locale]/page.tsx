@@ -55,21 +55,36 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
       <JsonLd id="home-breadcrumb-jsonld" data={breadcrumbs} />
 
       <section className="hero surface">
-        <p className="eyebrow">{dictionary.site.shortTitle}</p>
-        <h1>{siteIdentity.name}</h1>
-        <p className="lead">{dictionary.site.headline}</p>
-        <div className="hero-actions">
-          <a className="primary-button" href={siteIdentity.links.email}>
-            {ui.cta.contact}
-          </a>
-          <a
-            className="secondary-button"
-            href={siteIdentity.links.linkedin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {ui.cta.linkedin}
-          </a>
+        <div className="hero-layout">
+          <div className="hero-copy">
+            <p className="eyebrow">{dictionary.site.shortTitle}</p>
+            <h1>{siteIdentity.name}</h1>
+            <p className="lead">{dictionary.site.headline}</p>
+            <div className="hero-actions">
+              <a className="primary-button" href={siteIdentity.links.email}>
+                {ui.cta.contact}
+              </a>
+              <a
+                className="secondary-button"
+                href={siteIdentity.links.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {ui.cta.linkedin}
+              </a>
+            </div>
+          </div>
+
+          <figure className="hero-portrait">
+            <img
+              src="/about/profile.png"
+              alt={siteIdentity.name}
+              width={448}
+              height={459}
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
         </div>
       </section>
 
