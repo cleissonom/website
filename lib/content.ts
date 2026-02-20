@@ -8,6 +8,18 @@ import { z } from "zod";
 import type { Locale } from "@/lib/i18n";
 
 const contentRoot = path.join(process.cwd(), "content");
+const allowedExternalProtocols = new Set(["http:", "https:"]);
+
+const safeExternalUrlSchema = z
+  .string()
+  .url()
+  .refine((value) => {
+    try {
+      return allowedExternalProtocols.has(new URL(value).protocol);
+    } catch {
+      return false;
+    }
+  }, "URL must use http or https protocol");
 
 const dateStringSchema = z.union([z.string().min(1), z.date()]).transform((value) => {
   if (typeof value === "string") {
@@ -29,10 +41,10 @@ const projectFrontmatterSchema = z.object({
   stack: z.array(z.string().min(1)).min(1),
   links: z
     .object({
-      repo: z.string().url().optional(),
-      live: z.string().url().optional(),
-      caseStudy: z.string().url().optional(),
-      demo: z.string().url().optional()
+      repo: safeExternalUrlSchema.optional(),
+      live: safeExternalUrlSchema.optional(),
+      caseStudy: safeExternalUrlSchema.optional(),
+      demo: safeExternalUrlSchema.optional()
     })
     .default({}),
   highlights: z.array(z.string().min(1)).min(1),
@@ -47,7 +59,7 @@ const blogFrontmatterSchema = z.object({
   updatedAt: dateStringSchema.optional(),
   tags: z.array(z.string().min(1)).min(1),
   coverImage: z.string().optional(),
-  canonicalUrl: z.string().url().optional(),
+  canonicalUrl: safeExternalUrlSchema.optional(),
   lang: z.union([z.literal("en-US"), z.literal("pt-BR")])
 });
 
@@ -81,7 +93,15 @@ function listMarkdownFiles(dir: string): string[] {
 }
 
 function readMarkdownFile(filePath: string): { frontmatter: Record<string, unknown>; body: string } {
-  const source = fs.readFileSync(filePath, "utf8");
+  const source = fs.readFileSync(filePath, "utf8").replace(/^\uFEFF/, "");
+  const firstLine = source.split(/\r?\n/, 1)[0]?.trim() ?? "";
+
+  // `gray-matter` supports `---js` frontmatter and evaluates it with `eval`.
+  // Reject non-YAML frontmatter markers to prevent code execution paths.
+  if (firstLine.startsWith("---") && firstLine !== "---") {
+    throw new Error(`Unsupported frontmatter language in ${filePath}. Only YAML frontmatter is allowed.`);
+  }
+
   const { data, content } = matter(source);
   return { frontmatter: data, body: content.trim() };
 }

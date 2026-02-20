@@ -29,10 +29,10 @@ export const aboutByLocale: Record<Locale, string[]> = {
     "I am passionate about system design, performance, and building reliable software. Outside of work, I explore new technologies and build personal projects."
   ],
   "pt-BR": [
-    "Desenvolvedor de Software Senior especializado em desenvolvimento backend, infraestrutura em nuvem e sistemas escalaveis.",
-    "Trabalho no design e desenvolvimento de software de producao utilizando Node.js, Python, AWS, Kubernetes e tecnologias modernas nativas da nuvem.",
-    "Minha experiencia inclui design de sistemas backend escalaveis, desenvolvimento e gerenciamento de infraestrutura em nuvem, desenvolvimento de APIs e sistemas distribuidos, atuacao em startups e ambientes internacionais e contribuicao para arquitetura e tomada de decisoes tecnicas.",
-    "Sou apaixonado por design de sistemas, performance e desenvolvimento de software confiavel. Fora do trabalho, exploro novas tecnologias e desenvolvo projetos pessoais."
+    "Desenvolvedor de Software Sênior especializado em desenvolvimento backend, infraestrutura em nuvem e sistemas escaláveis.",
+    "Atuo no design e desenvolvimento de software em produção usando Node.js, Python, AWS, Kubernetes e tecnologias modernas cloud-native.",
+    "Tenho experiência em arquitetura e evolução de sistemas backend escaláveis, desenvolvimento e operação de infraestrutura em nuvem, criação de APIs e sistemas distribuídos, atuação em startups e ambientes internacionais, além de contribuir ativamente para decisões técnicas e arquitetura.",
+    "Sou apaixonado por design de sistemas, performance e software confiável. Fora do trabalho, gosto de explorar novas tecnologias e desenvolver projetos pessoais."
   ]
 };
 

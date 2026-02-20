@@ -35,7 +35,9 @@ function withLocaleCookie(response: NextResponse, locale: Locale): NextResponse 
     value: locale,
     maxAge: 60 * 60 * 24 * 365,
     path: "/",
-    sameSite: "lax"
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    httpOnly: true
   });
 
   return response;
