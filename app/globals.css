@@ -9,6 +9,10 @@
   --accent: #b11e2f;
   --accent-soft: #f6d9de;
   --shadow: 0 18px 46px rgba(17, 17, 17, 0.09);
+  --page-bg:
+    radial-gradient(1000px circle at 95% -5%, rgba(177, 30, 47, 0.18), transparent 65%),
+    radial-gradient(900px circle at -5% 20%, rgba(177, 30, 47, 0.09), transparent 60%),
+    linear-gradient(160deg, var(--bg) 0%, var(--bg-shade) 100%);
   --font-body: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
   --font-display: "Sora", "Trebuchet MS", sans-serif;
 }
@@ -39,18 +43,21 @@ body {
 
 html {
   background-color: var(--bg-shade);
-  overscroll-behavior-y: none;
+  background-image: var(--page-bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overscroll-behavior-y: contain;
 }
 
 body {
   min-height: 100vh;
   min-height: 100dvh;
   color: var(--text);
-  background:
-    radial-gradient(1000px circle at 95% -5%, rgba(177, 30, 47, 0.18), transparent 65%),
-    radial-gradient(900px circle at -5% 20%, rgba(177, 30, 47, 0.09), transparent 60%),
-    linear-gradient(160deg, var(--bg) 0%, var(--bg-shade) 100%);
-  overscroll-behavior-y: none;
+  background-color: var(--bg-shade);
+  background-image: var(--page-bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overscroll-behavior-y: contain;
   font-family: var(--font-body);
   line-height: 1.55;
 }
