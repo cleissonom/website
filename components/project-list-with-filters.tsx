@@ -74,7 +74,7 @@ export function ProjectListWithFilters({
       </section>
 
       {filteredProjects.length > 0 ? (
-        <div className="grid">
+        <div className="grid projects-grid">
           {filteredProjects.map((project) => (
             <ProjectCard
               key={project.slug}
