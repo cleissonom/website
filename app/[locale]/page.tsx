@@ -6,7 +6,7 @@ import { PostCard } from "@/components/post-card"
 import { ProjectCard } from "@/components/project-card"
 import {
   aboutByLocale,
-  experienceTimeline,
+  experienceTimelineByLocale,
   focusAreas,
   siteIdentity,
   uiByLocale
@@ -40,6 +40,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
 
   const ui = uiByLocale[locale]
   const about = aboutByLocale[locale]
+  const experienceTimeline = experienceTimelineByLocale[locale]
   const projects = getAllProjects(locale).slice(0, 2)
   const posts = getAllPosts(locale).slice(0, 2)
 
@@ -90,7 +91,10 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
 
         <article className="surface">
           <h2>{ui.sections.experience}</h2>
-          <ExperienceTimeline items={experienceTimeline} />
+          <ExperienceTimeline
+            items={experienceTimeline}
+            ariaLabel={ui.labels.experienceTimelineAria}
+          />
         </article>
 
         <article className="section-stack">
