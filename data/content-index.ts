@@ -1,6 +1,10 @@
 import { LOCALES, type Locale } from "@/lib/i18n"
 
-const projectSlugs = ["ai-photo-verification-platform", "commerce-mobile-application"]
+const projectSlugs = [
+  "ai-photo-verification-platform",
+  "commerce-mobile-application",
+  "cleissonom-website"
+]
 const blogSlugs = ["designing-reliable-nodejs-services", "scaling-kubernetes-on-aws"]
 
 function createLocaleSlugIndex(slugs: readonly string[]): Record<Locale, string[]> {

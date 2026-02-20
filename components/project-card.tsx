@@ -5,18 +5,35 @@ export function ProjectCard({
   project,
   locale,
   readMoreLabel,
-  readMoreAboutPrefix
+  readMoreAboutPrefix,
+  enableWalletHover = false
 }: {
   project: ProjectEntry
   locale: Locale
   readMoreLabel: string
   readMoreAboutPrefix: string
+  enableWalletHover?: boolean
 }) {
   const contextLabel = `${readMoreAboutPrefix} ${project.title}`
   const descriptiveLabel = `${readMoreLabel} ${contextLabel}`
+  const cardClassName = enableWalletHover ? "card card-wallet" : "card"
 
   return (
-    <article className="card">
+    <article className={cardClassName}>
+      {enableWalletHover ? (
+        <div className="card-banner-shell">
+          {project.coverImage ? (
+            <img
+              className="card-banner-image"
+              src={project.coverImage}
+              alt={`${project.title} preview`}
+              loading="lazy"
+            />
+          ) : (
+            <div className="card-banner-fallback" aria-hidden="true" />
+          )}
+        </div>
+      ) : null}
       <p className="card-meta">{project.role}</p>
       <h3>
         <a href={`/${locale}/projects/${project.slug}`}>{project.title}</a>

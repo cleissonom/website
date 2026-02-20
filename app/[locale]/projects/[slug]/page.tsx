@@ -92,6 +92,12 @@ export default async function ProjectDetailPage({
         <p className="lead">{project.summary}</p>
       </header>
 
+      {project.coverImage ? (
+        <figure className="project-banner">
+          <img src={project.coverImage} alt={`${project.title} banner`} />
+        </figure>
+      ) : null}
+
       <section className="meta-grid">
         <article>
           <p className="muted">{ui.labels.role}</p>

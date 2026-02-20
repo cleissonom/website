@@ -372,6 +372,75 @@ h3 {
   padding: 1rem;
   display: grid;
   gap: 0.75rem;
+  position: relative;
+}
+
+.card-wallet {
+  overflow: hidden;
+  transform: translateY(0) scale(1);
+  transform-origin: center bottom;
+  transition:
+    transform 340ms cubic-bezier(0.2, 0.92, 0.24, 1),
+    box-shadow 340ms cubic-bezier(0.2, 0.92, 0.24, 1),
+    border-color 220ms ease;
+  will-change: transform;
+}
+
+.card-wallet:hover,
+.card-wallet:focus-within {
+  transform: translateY(-12px) scale(1.03);
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+  box-shadow: 0 26px 56px color-mix(in srgb, var(--text) 24%, transparent);
+  z-index: 2;
+}
+
+.card-banner-shell {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transform-origin: top center;
+  transform: translateY(-14px) scale(0.97);
+  margin: 0 0 -0.75rem;
+  pointer-events: none;
+  transition:
+    max-height 360ms cubic-bezier(0.2, 0.92, 0.24, 1),
+    opacity 220ms ease,
+    transform 360ms cubic-bezier(0.2, 0.92, 0.24, 1),
+    margin-bottom 320ms cubic-bezier(0.2, 0.92, 0.24, 1),
+    border-color 220ms ease;
+}
+
+.card-wallet:hover .card-banner-shell,
+.card-wallet:focus-within .card-banner-shell {
+  max-height: 220px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  margin-bottom: 0.05rem;
+  border-color: var(--border);
+}
+
+.card-banner-image,
+.card-banner-fallback {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.card-banner-image {
+  object-fit: cover;
+}
+
+.card-banner-fallback {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 28%, transparent) 0%, transparent 58%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surface-strong) 78%, var(--bg-shade)) 0%,
+      var(--bg-shade) 100%
+    );
 }
 
 .card-meta {
@@ -465,6 +534,21 @@ summary:focus-visible {
   margin-bottom: 1.3rem;
 }
 
+.project-banner {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+}
+
+.project-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .markdown {
   display: grid;
   gap: 0.9rem;
@@ -549,6 +633,21 @@ summary:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .site-header {
     transition: none;
+  }
+
+  .card-wallet,
+  .card-banner-shell {
+    transition: none;
+  }
+
+  .card-wallet:hover,
+  .card-wallet:focus-within {
+    transform: none;
+  }
+
+  .card-wallet:hover .card-banner-shell,
+  .card-wallet:focus-within .card-banner-shell {
+    transform: none;
   }
 }
 

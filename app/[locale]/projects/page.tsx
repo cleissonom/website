@@ -60,6 +60,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
             locale={locale}
             readMoreLabel={ui.labels.readMore}
             readMoreAboutPrefix={dictionary.snippets.readMoreAboutPrefix}
+            enableWalletHover
           />
         ))}
       </div>
