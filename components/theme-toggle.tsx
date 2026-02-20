@@ -11,6 +11,7 @@ export function ThemeToggle({ lightLabel, darkLabel }: ThemeToggleProps) {
       data-light-label={lightLabel}
       data-dark-label={darkLabel}
       aria-label={darkLabel}
+      suppressHydrationWarning
     >
       {darkLabel}
     </button>
