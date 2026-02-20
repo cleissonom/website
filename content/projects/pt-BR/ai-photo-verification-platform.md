@@ -1,7 +1,7 @@
 ---
-title: Plataforma de Verificacao de Fotos com IA
+title: Plataforma de Verificação de Fotos com IA
 slug: ai-photo-verification-platform
-summary: Pipeline escalavel para verificacao de idade e correspondencia facial em aplicativo de consumo.
+summary: Pipeline escalável para verificação de idade e correspondência facial em aplicativo de consumo.
 dateStart: 2023-07-01
 dateEnd: 2025-02-01
 role: Software Engineer
@@ -21,17 +21,17 @@ links:
   repo: https://github.com/cleissonom
   live: https://cleissonom.dev
 highlights:
-  - Construiu fluxos cloud-native para ingestao e validacao de imagens.
-  - Suportou crescimento para mais de 2.000 usuarios ativos nos primeiros meses.
-  - Integracao de verificacoes com IA para idade e consistencia de identidade.
+  - Construiu fluxos cloud-native para ingestão e validação de imagens.
+  - Suportou crescimento para mais de 2.000 usuários ativos nos primeiros meses.
+  - Integração de verificações com IA para idade e consistência de identidade.
 ---
 
 Este projeto focou em confiabilidade e velocidade para um produto mobile-first.
 
-A arquitetura utilizou processamento orientado a eventos e servicos AWS para manter baixa latencia durante picos de upload.
+A arquitetura utilizou processamento orientado a eventos e serviços AWS para manter baixa latência durante picos de upload.
 
 ## Entregas principais
 
-- Desenvolvimento de APIs de upload, moderacao e verificacao de perfil.
-- Introducao de observabilidade e recuperacao para falhas de processamento.
-- Melhoria de recomendacoes com relacionamentos entre usuarios em grafo.
+- Desenvolvimento de APIs de upload, moderação e verificação de perfil.
+- Introdução de observabilidade e recuperação para falhas de processamento.
+- Melhoria de recomendações com relacionamentos entre usuários em grafo.

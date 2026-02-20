@@ -211,17 +211,17 @@ export const uiByLocale: Record<Locale, UiDictionary> = {
       home: "Sobre",
       projects: "Projetos",
       blog: "Blog",
-      resume: "Curriculo"
+      resume: "Currículo"
     },
     cta: {
       contact: "Contato",
       linkedin: "Ver LinkedIn",
-      downloadResume: "Baixar curriculo em PDF"
+      downloadResume: "Baixar currículo em PDF"
     },
     sections: {
       about: "Sobre",
-      focusAreas: "Areas de foco",
-      experience: "Experiencia",
+      focusAreas: "Áreas de foco",
+      experience: "Experiência",
       projects: "Projetos",
       blog: "Blog"
     },
@@ -232,15 +232,15 @@ export const uiByLocale: Record<Locale, UiDictionary> = {
       readMore: "Ler mais",
       published: "Publicado",
       updated: "Atualizado",
-      role: "Funcao",
+      role: "Função",
       status: "Status",
       stack: "Stack",
       highlights: "Destaques",
       backToProjects: "Voltar para projetos",
       backToBlog: "Voltar para o blog",
-      notFoundTitle: "Pagina nao encontrada",
-      notFoundDescription: "A pagina solicitada nao existe para este idioma.",
-      goHome: "Ir para o inicio"
+      notFoundTitle: "Página não encontrada",
+      notFoundDescription: "A página solicitada não existe para este idioma.",
+      goHome: "Ir para o início"
     }
   }
 };

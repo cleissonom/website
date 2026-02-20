@@ -34,15 +34,23 @@ html,
 body {
   margin: 0;
   padding: 0;
+  min-height: 100%;
+}
+
+html {
+  background-color: var(--bg-shade);
+  overscroll-behavior-y: none;
 }
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   color: var(--text);
   background:
     radial-gradient(1000px circle at 95% -5%, rgba(177, 30, 47, 0.18), transparent 65%),
     radial-gradient(900px circle at -5% 20%, rgba(177, 30, 47, 0.09), transparent 60%),
     linear-gradient(160deg, var(--bg) 0%, var(--bg-shade) 100%);
+  overscroll-behavior-y: none;
   font-family: var(--font-body);
   line-height: 1.55;
 }
