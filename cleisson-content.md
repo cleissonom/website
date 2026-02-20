@@ -107,7 +107,7 @@ May 2024 – Jul 2024 · 3 mos
 
 ---
 
-### In Love — Full-time (Brazil · Remote)
+### MeMima.com.br — Full-time (Brazil · Remote)
 **Software Engineer**  
 Jul 2023 – Feb 2025 · 1 yr 8 mos  
 - Key achievement: This experience in an early-stage startup taught me a lot about launching a product and ensuring its success.

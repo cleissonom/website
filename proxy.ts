@@ -62,7 +62,7 @@ export function proxy(request: NextRequest) {
   if (!firstSegment) {
     const url = request.nextUrl.clone();
     url.pathname = `/${locale}`;
-    return withLocaleCookie(NextResponse.redirect(url), locale);
+    return withLocaleCookie(NextResponse.rewrite(url), locale);
   }
 
   if (isLocale(firstSegment)) {

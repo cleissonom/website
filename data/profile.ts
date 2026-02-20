@@ -74,7 +74,7 @@ export const experienceTimeline: ExperienceCompany[] = [
     ]
   },
   {
-    company: "In Love",
+    company: "MeMima.com.br",
     employment: "Full-time",
     location: "Brazil - Remote",
     roles: [
