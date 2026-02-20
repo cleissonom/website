@@ -1,5 +1,6 @@
 "use client"
 
+import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import type { UiDictionary } from "@/data/profile"
 import { LocaleSwitcher } from "@/components/locale-switcher"
@@ -10,6 +11,7 @@ import { siteIdentity } from "@/data/profile"
 export function Header({ locale, ui }: { locale: Locale; ui: UiDictionary }) {
   const [isVisible, setIsVisible] = useState(true)
   const lastScrollY = useRef(0)
+  const pathname = usePathname()
 
   useEffect(() => {
     const threshold = 6
@@ -40,19 +42,58 @@ export function Header({ locale, ui }: { locale: Locale; ui: UiDictionary }) {
     }
   }, [])
 
+  const rootPath = `/${locale}`
+  const normalizedPathname =
+    pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname
+
+  const navItems = [
+    {
+      href: rootPath,
+      label: ui.nav.home,
+      isActive: normalizedPathname === rootPath
+    },
+    {
+      href: `${rootPath}/projects`,
+      label: ui.nav.projects,
+      isActive:
+        normalizedPathname === `${rootPath}/projects` ||
+        normalizedPathname.startsWith(`${rootPath}/projects/`)
+    },
+    {
+      href: `${rootPath}/blog`,
+      label: ui.nav.blog,
+      isActive:
+        normalizedPathname === `${rootPath}/blog` ||
+        normalizedPathname.startsWith(`${rootPath}/blog/`)
+    },
+    {
+      href: `${rootPath}/resume`,
+      label: ui.nav.resume,
+      isActive:
+        normalizedPathname === `${rootPath}/resume` ||
+        normalizedPathname.startsWith(`${rootPath}/resume/`)
+    }
+  ]
+
   return (
     <header className={`site-header ${isVisible ? "site-header-visible" : "site-header-hidden"}`}>
       <div className="container header-grid">
-        <a href={`/${locale}`} className="nameplate">
+        <a href={rootPath} className="nameplate">
           <span>{siteIdentity.name}</span>
           <small>{siteIdentity.shortTitle}</small>
         </a>
 
         <nav className="site-nav" aria-label="Main navigation">
-          <a href={`/${locale}`}>{ui.nav.home}</a>
-          <a href={`/${locale}/projects`}>{ui.nav.projects}</a>
-          <a href={`/${locale}/blog`}>{ui.nav.blog}</a>
-          <a href={`/${locale}/resume`}>{ui.nav.resume}</a>
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className={`site-nav-link${item.isActive ? " site-nav-link-active" : ""}`}
+              aria-current={item.isActive ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         <div className="header-actions">

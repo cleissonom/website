@@ -117,15 +117,26 @@ a {
   gap: 0.85rem;
 }
 
-.site-nav a {
+.site-nav-link {
   text-decoration: none;
   font-size: 0.95rem;
   color: var(--muted);
+  font-weight: 500;
 }
 
-.site-nav a:hover,
-.site-nav a:focus-visible {
+.site-nav-link:hover,
+.site-nav-link:focus-visible {
   color: var(--text);
+}
+
+.site-nav-link-active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.site-nav-link-active:hover,
+.site-nav-link-active:focus-visible {
+  color: var(--accent);
 }
 
 .header-actions {
