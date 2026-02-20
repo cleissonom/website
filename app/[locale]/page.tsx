@@ -8,7 +8,7 @@ import { getDictionary } from "@/data/i18n"
 import { siteIdentity } from "@/data/profile"
 import { getAllPosts, getAllProjects } from "@/lib/content"
 import { isLocale } from "@/lib/i18n"
-import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
+import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
 import { breadcrumbJsonLd, personJsonLd } from "@/lib/schema"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -24,6 +24,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: buildPageTitle(siteIdentity.name),
     description: dictionary.site.headline,
     path: "/",
+    imagePath: SEO_IMAGE_PATHS.home,
+    imageAlt: `${siteIdentity.name} homepage preview`,
     keywords: [...dictionary.pages.home.keywords]
   })
 }

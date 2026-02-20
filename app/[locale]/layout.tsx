@@ -7,7 +7,7 @@ import { Header } from "@/components/header"
 import { getDictionary } from "@/data/i18n"
 import { siteIdentity } from "@/data/profile"
 import { LOCALES, isLocale } from "@/lib/i18n"
-import { buildPageTitle, createMetadata } from "@/lib/metadata"
+import { SEO_IMAGE_PATHS, buildPageTitle, createMetadata } from "@/lib/metadata"
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }))
@@ -29,7 +29,9 @@ export async function generateMetadata({
   return createMetadata(locale, {
     title: buildPageTitle(siteIdentity.name),
     description: dictionary.site.headline,
-    path: "/"
+    path: "/",
+    imagePath: SEO_IMAGE_PATHS.home,
+    imageAlt: `${siteIdentity.name} homepage preview`
   })
 }
 

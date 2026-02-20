@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/json-ld"
 import { getDictionary } from "@/data/i18n"
 import { getAllPostSlugs, getPostBySlug } from "@/lib/content"
 import { LOCALES, isLocale } from "@/lib/i18n"
-import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
+import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
 import { blogPostJsonLd, breadcrumbJsonLd } from "@/lib/schema"
 
 export function generateStaticParams() {
@@ -35,7 +35,9 @@ export async function generateMetadata({
     return createMetadata(locale, {
       title: buildPageTitle(dictionary.pages.blog.notFoundTitle),
       description: dictionary.pages.blog.notFoundDescription,
-      path: "/blog"
+      path: "/blog",
+      imagePath: SEO_IMAGE_PATHS.blog,
+      imageAlt: `${dictionary.pages.blog.metadataTitle} social preview`
     })
   }
 
@@ -43,6 +45,9 @@ export async function generateMetadata({
     title: buildPageTitle(post.title),
     description: post.summary,
     path: `/blog/${post.slug}`,
+    imagePath: SEO_IMAGE_PATHS.blog,
+    imageAlt: `${post.title} social preview`,
+    openGraphType: "article",
     keywords: post.tags
   })
 }

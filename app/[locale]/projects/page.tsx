@@ -5,7 +5,7 @@ import { ProjectCard } from "@/components/project-card"
 import { getDictionary } from "@/data/i18n"
 import { getAllProjects } from "@/lib/content"
 import { isLocale } from "@/lib/i18n"
-import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
+import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
 import { breadcrumbJsonLd } from "@/lib/schema"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -20,7 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return createMetadata(locale, {
     title: buildPageTitle(dictionary.pages.projects.metadataTitle),
     description: dictionary.pages.projects.metadataDescription,
-    path: "/projects"
+    path: "/projects",
+    imagePath: SEO_IMAGE_PATHS.projects,
+    imageAlt: `${dictionary.pages.projects.metadataTitle} social preview`
   })
 }
 

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import type { Metadata } from "next"
+import type { ReactNode } from "react"
 
-import "@/app/globals.css";
+import "@/app/globals.css"
 
-import { ThemeScript } from "@/components/theme-script";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { ThemeScript } from "@/components/theme-script"
+import { SITE_NAME, SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -17,6 +17,32 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   icons: {
     icon: [
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      {
+        url: "/favicon-48x48-light.png",
+        sizes: "48x48",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)"
+      },
+      {
+        url: "/favicon-48x48-dark.png",
+        sizes: "48x48",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)"
+      },
+      {
+        url: "/favicon-96x96-light.png",
+        sizes: "96x96",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)"
+      },
+      {
+        url: "/favicon-96x96-dark.png",
+        sizes: "96x96",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)"
+      },
       { url: "/favicon-light.svg", media: "(prefers-color-scheme: light)" },
       { url: "/favicon-dark.svg", media: "(prefers-color-scheme: dark)" },
       {
@@ -46,7 +72,7 @@ export const metadata: Metadata = {
       }
     ]
   }
-};
+}
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -56,5 +82,5 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {children}
       </body>
     </html>
-  );
+  )
 }

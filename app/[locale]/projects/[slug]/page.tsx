@@ -7,7 +7,7 @@ import { getDictionary } from "@/data/i18n"
 import type { ProjectLinkKey } from "@/data/i18n/types"
 import { getAllProjectSlugs, getProjectBySlug } from "@/lib/content"
 import { LOCALES, isLocale } from "@/lib/i18n"
-import { absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
+import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
 import { breadcrumbJsonLd, projectJsonLd } from "@/lib/schema"
 
 export function generateStaticParams() {
@@ -36,7 +36,9 @@ export async function generateMetadata({
     return createMetadata(locale, {
       title: buildPageTitle(dictionary.pages.projects.notFoundTitle),
       description: dictionary.pages.projects.notFoundDescription,
-      path: "/projects"
+      path: "/projects",
+      imagePath: SEO_IMAGE_PATHS.projects,
+      imageAlt: `${dictionary.pages.projects.metadataTitle} social preview`
     })
   }
 
@@ -44,6 +46,8 @@ export async function generateMetadata({
     title: buildPageTitle(project.title),
     description: project.summary,
     path: `/projects/${project.slug}`,
+    imagePath: SEO_IMAGE_PATHS.projects,
+    imageAlt: `${project.title} social preview`,
     keywords: project.tags
   })
 }

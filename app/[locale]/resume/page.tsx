@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { getDictionary } from "@/data/i18n"
 import { siteIdentity } from "@/data/profile"
 import { isLocale, resumePdfPath } from "@/lib/i18n"
-import { buildPageTitle, createMetadata } from "@/lib/metadata"
+import { SEO_IMAGE_PATHS, buildPageTitle, createMetadata } from "@/lib/metadata"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -17,7 +17,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return createMetadata(locale, {
     title: buildPageTitle(dictionary.pages.resume.metadataTitle),
     description: dictionary.pages.resume.metadataDescription,
-    path: "/resume"
+    path: "/resume",
+    imagePath: SEO_IMAGE_PATHS.resume,
+    imageAlt: `${dictionary.pages.resume.metadataTitle} social preview`
   })
 }
 
