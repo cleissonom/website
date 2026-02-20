@@ -71,6 +71,15 @@ a {
   backdrop-filter: blur(8px);
   background: color-mix(in srgb, var(--bg) 82%, transparent);
   border-bottom: 1px solid var(--border);
+  transition: transform 180ms ease;
+}
+
+.site-header-visible {
+  transform: translateY(0);
+}
+
+.site-header-hidden {
+  transform: translateY(calc(-100% - 1px));
 }
 
 .header-grid {
@@ -445,6 +454,12 @@ button:focus-visible {
   place-content: center;
   gap: 0.75rem;
   text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none;
+  }
 }
 
 @media (max-width: 960px) {
