@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description:
     "Senior Software Engineer focused on backend systems, cloud infrastructure, and scalable software.",
   applicationName: SITE_NAME,
+  manifest: "/manifest.webmanifest",
   icons: {
     icon: [
       { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
