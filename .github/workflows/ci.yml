@@ -8,6 +8,7 @@ on:
 
 jobs:
   validate:
+    name: Validate Code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -45,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: validate
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    environment: prod
+    environment: Production
     concurrency:
       group: vercel-production
       cancel-in-progress: true
