@@ -1,3 +1,5 @@
+import bundleAnalyzer from "@next/bundle-analyzer"
+
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
@@ -23,4 +25,8 @@ const nextConfig = {
   }
 }
 
-export default nextConfig
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true"
+})
+
+export default withBundleAnalyzer(nextConfig)
