@@ -1,4 +1,6 @@
 import { Container } from "@/components/design-system"
+import type { Route } from "next"
+import Link from "next/link"
 import type { UiDictionary } from "@/data/i18n/types"
 import { LocaleSwitcher } from "@/components/locale-switcher"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -42,21 +44,21 @@ export function Header({
   return (
     <header className="site-header site-header-visible js-site-header">
       <Container className="header-grid">
-        <a href={rootPath} className="nameplate">
+        <Link href={rootPath as Route} className="nameplate">
           <span>{siteIdentity.name}</span>
           <small>{shortTitle}</small>
-        </a>
+        </Link>
 
         <nav className="site-nav js-site-nav" aria-label={ui.labels.mainNavigationAria}>
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              href={item.href as Route}
               className="site-nav-link js-site-nav-link"
               data-nav-key={item.key}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

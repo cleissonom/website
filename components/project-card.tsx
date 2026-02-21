@@ -1,4 +1,7 @@
 import { Card, Chip, ChipRow, InlineLink } from "@/components/design-system"
+import type { Route } from "next"
+import Image from "next/image"
+import Link from "next/link"
 import type { ProjectEntry } from "@/lib/content"
 import type { Locale } from "@/lib/i18n"
 
@@ -28,10 +31,12 @@ export function ProjectCard({
       {enableWalletHover ? (
         <div className="card-banner-shell">
           {project.coverImage ? (
-            <img
+            <Image
               className="card-banner-image"
               src={project.coverImage}
               alt={`${project.title} preview`}
+              width={640}
+              height={360}
               loading="lazy"
             />
           ) : (
@@ -41,7 +46,7 @@ export function ProjectCard({
       ) : null}
       <p className="card-meta">{project.role}</p>
       <h3>
-        <a href={`/${locale}/projects/${project.slug}`}>{project.title}</a>
+        <Link href={`/${locale}/projects/${project.slug}` as Route}>{project.title}</Link>
       </h3>
       <p>{project.summary}</p>
       <ChipRow>

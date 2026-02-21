@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import Image from "next/image"
 
 import {
   ButtonLink,
@@ -86,13 +87,12 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
           </div>
 
           <figure className="hero-portrait">
-            <img
+            <Image
               src="/about/profile.webp"
               alt={siteIdentity.name}
               width={448}
               height={459}
-              loading="eager"
-              decoding="async"
+              priority
             />
           </figure>
         </div>

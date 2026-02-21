@@ -1,4 +1,6 @@
 import { Card, Chip, ChipRow, InlineLink } from "@/components/design-system"
+import type { Route } from "next"
+import Link from "next/link"
 import type { BlogEntry } from "@/lib/content"
 import type { Locale } from "@/lib/i18n"
 
@@ -29,7 +31,7 @@ export function PostCard({
         {` | ${post.readingTimeMinutes} ${readingMinutesLabel}`}
       </p>
       <h3>
-        <a href={`/${locale}/blog/${post.slug}`}>{post.title}</a>
+        <Link href={`/${locale}/blog/${post.slug}` as Route}>{post.title}</Link>
       </h3>
       <p>{post.summary}</p>
       <ChipRow>

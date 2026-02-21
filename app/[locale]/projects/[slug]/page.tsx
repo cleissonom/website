@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import Image from "next/image"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
@@ -105,7 +106,12 @@ export default async function ProjectDetailPage({
 
       {project.coverImage ? (
         <figure className="project-banner">
-          <img src={project.coverImage} alt={`${project.title} banner`} />
+          <Image
+            src={project.coverImage}
+            alt={`${project.title} banner`}
+            width={1200}
+            height={630}
+          />
         </figure>
       ) : null}
 
