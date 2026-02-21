@@ -744,6 +744,11 @@ summary:focus-visible {
     justify-content: flex-start;
   }
 
+  .locale-dropdown-menu {
+    left: 0;
+    right: auto;
+  }
+
   .grid,
   .meta-grid {
     grid-template-columns: 1fr;
