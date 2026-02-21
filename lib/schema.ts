@@ -1,7 +1,7 @@
-import type { BlogEntry, ProjectEntry } from "@/lib/content";
-import type { Locale } from "@/lib/i18n";
-import { absoluteUrl } from "@/lib/metadata";
-import { SITE_LINKS, SITE_NAME, SITE_SHORT_TITLE } from "@/lib/site";
+import type { BlogEntry, ProjectEntry } from "@/lib/content"
+import type { Locale } from "@/lib/i18n"
+import { SEO_IMAGE_PATHS, absoluteUrl } from "@/lib/metadata"
+import { SITE_LINKS, SITE_NAME, SITE_SHORT_TITLE } from "@/lib/site"
 
 export function personJsonLd(locale: Locale) {
   return {
@@ -12,10 +12,14 @@ export function personJsonLd(locale: Locale) {
     url: absoluteUrl(`/${locale}`),
     sameAs: [SITE_LINKS.linkedin, SITE_LINKS.github, SITE_LINKS.website],
     email: SITE_LINKS.email.replace("mailto:", "")
-  };
+  }
 }
 
 export function projectJsonLd(locale: Locale, project: ProjectEntry) {
+  const image = project.coverImage
+    ? absoluteUrl(project.coverImage)
+    : absoluteUrl(SEO_IMAGE_PATHS.projects)
+
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -28,11 +32,15 @@ export function projectJsonLd(locale: Locale, project: ProjectEntry) {
       "@type": "Person",
       name: SITE_NAME
     },
+    image,
+    mainEntityOfPage: absoluteUrl(`/${locale}/projects/${project.slug}`),
     url: absoluteUrl(`/${locale}/projects/${project.slug}`)
-  };
+  }
 }
 
 export function blogPostJsonLd(locale: Locale, post: BlogEntry) {
+  const image = post.coverImage ? absoluteUrl(post.coverImage) : absoluteUrl(SEO_IMAGE_PATHS.blog)
+
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -45,8 +53,10 @@ export function blogPostJsonLd(locale: Locale, post: BlogEntry) {
       "@type": "Person",
       name: SITE_NAME
     },
+    image,
+    mainEntityOfPage: absoluteUrl(`/${locale}/blog/${post.slug}`),
     url: absoluteUrl(`/${locale}/blog/${post.slug}`)
-  };
+  }
 }
 
 export function breadcrumbJsonLd(items: Array<{ name: string; url: string }>) {
@@ -59,5 +69,5 @@ export function breadcrumbJsonLd(items: Array<{ name: string; url: string }>) {
       name: item.name,
       item: item.url
     }))
-  };
+  }
 }

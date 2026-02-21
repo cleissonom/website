@@ -13,6 +13,7 @@ import {
 } from "@/components/design-system"
 import { JsonLd } from "@/components/json-ld"
 import { getDictionary } from "@/data/i18n"
+import { siteIdentity } from "@/data/profile"
 import { getAllPostSlugs, getPostBySlug } from "@/lib/content"
 import { LOCALES, isLocale } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
@@ -57,7 +58,11 @@ export async function generateMetadata({
     imagePath: SEO_IMAGE_PATHS.blog,
     imageAlt: `${post.title} social preview`,
     openGraphType: "article",
-    keywords: post.tags
+    keywords: post.tags,
+    authors: [siteIdentity.name],
+    publishedTime: post.date,
+    modifiedTime: post.updatedAt ?? post.date,
+    canonicalUrl: post.canonicalUrl
   })
 }
 

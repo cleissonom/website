@@ -11,6 +11,10 @@ type MetadataInput = {
   imagePath?: string
   imageAlt?: string
   openGraphType?: "website" | "article"
+  authors?: string[]
+  publishedTime?: string
+  modifiedTime?: string
+  canonicalUrl?: string
 }
 
 export const SEO_IMAGE_PATHS = {
@@ -54,15 +58,39 @@ export function buildAlternates(locale: Locale, pathWithoutLocale = "/"): Metada
 
 export function createMetadata(locale: Locale, input: MetadataInput): Metadata {
   const pathWithoutLocale = input.path ?? "/"
+  const pageUrl = absoluteUrl(buildLocalizedPath(locale, pathWithoutLocale))
   const socialImagePath = input.imagePath ?? SEO_IMAGE_PATHS.default
   const socialImageAlt = input.imageAlt ?? `${input.title} social preview`
   const socialImageUrl = absoluteUrl(socialImagePath)
+  const alternates: NonNullable<Metadata["alternates"]> =
+    buildAlternates(locale, pathWithoutLocale) ?? {}
+
+  if (input.canonicalUrl) {
+    alternates.canonical = input.canonicalUrl
+  }
+
+  const openGraphBase = {
+    type: input.openGraphType ?? "website",
+    title: input.title,
+    description: input.description,
+    url: pageUrl,
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: socialImageUrl,
+        width: SOCIAL_IMAGE_WIDTH,
+        height: SOCIAL_IMAGE_HEIGHT,
+        alt: socialImageAlt
+      }
+    ]
+  }
 
   return {
     title: input.title,
     description: input.description,
     keywords: input.keywords,
-    alternates: buildAlternates(locale, pathWithoutLocale),
+    alternates,
+    authors: input.authors?.map((author) => ({ name: author })),
     robots: {
       index: true,
       follow: true,
@@ -70,21 +98,16 @@ export function createMetadata(locale: Locale, input: MetadataInput): Metadata {
         "max-image-preview": "large"
       }
     },
-    openGraph: {
-      type: input.openGraphType ?? "website",
-      title: input.title,
-      description: input.description,
-      url: absoluteUrl(buildLocalizedPath(locale, pathWithoutLocale)),
-      siteName: SITE_NAME,
-      images: [
-        {
-          url: socialImageUrl,
-          width: SOCIAL_IMAGE_WIDTH,
-          height: SOCIAL_IMAGE_HEIGHT,
-          alt: socialImageAlt
-        }
-      ]
-    },
+    openGraph:
+      input.openGraphType === "article"
+        ? {
+            ...openGraphBase,
+            type: "article",
+            publishedTime: input.publishedTime,
+            modifiedTime: input.modifiedTime,
+            authors: input.authors
+          }
+        : openGraphBase,
     twitter: {
       card: "summary_large_image",
       title: input.title,

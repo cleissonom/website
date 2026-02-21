@@ -16,6 +16,7 @@ import {
 } from "@/components/design-system"
 import { JsonLd } from "@/components/json-ld"
 import { getDictionary } from "@/data/i18n"
+import { siteIdentity } from "@/data/profile"
 import type { ProjectLinkKey } from "@/data/i18n/types"
 import { getAllProjectSlugs, getProjectBySlug } from "@/lib/content"
 import { LOCALES, isLocale } from "@/lib/i18n"
@@ -60,7 +61,8 @@ export async function generateMetadata({
     path: `/projects/${project.slug}`,
     imagePath: SEO_IMAGE_PATHS.projects,
     imageAlt: `${project.title} social preview`,
-    keywords: project.tags
+    keywords: project.tags,
+    authors: [siteIdentity.name]
   })
 }
 
