@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: validate
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    environment: production
+    environment: prod
     concurrency:
       group: vercel-production
       cancel-in-progress: true
