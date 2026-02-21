@@ -39,3 +39,12 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  deploy_prod:
+    name: Deploy Production (Vercel Hook)
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel production deploy
+        run: curl -fsS -X POST "${{ secrets.VERCEL_PROD_DEPLOY_HOOK }}"
