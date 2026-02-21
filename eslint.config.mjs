@@ -1,8 +1,10 @@
-import tsParser from "@typescript-eslint/parser";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
-import { defineConfig, globalIgnores } from "eslint/config";
+import tsParser from "@typescript-eslint/parser"
+import tsPlugin from "@typescript-eslint/eslint-plugin"
+import { defineConfig, globalIgnores } from "eslint/config"
+import nextVitals from "eslint-config-next/core-web-vitals"
 
 export default defineConfig([
+  ...nextVitals,
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
@@ -29,11 +31,5 @@ export default defineConfig([
       ]
     }
   },
-  globalIgnores([
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-    "node_modules/**"
-  ])
-]);
+  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "node_modules/**"])
+])
