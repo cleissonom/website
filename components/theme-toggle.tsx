@@ -1,8 +1,4 @@
-"use client"
-
-import { useState } from "react"
-
-import { THEME_COOKIE_KEY, type Theme } from "@/lib/theme"
+import type { Theme } from "@/lib/theme"
 
 type ThemeToggleProps = {
   lightLabel: string
@@ -11,19 +7,16 @@ type ThemeToggleProps = {
 }
 
 export function ThemeToggle({ lightLabel, darkLabel, initialTheme }: ThemeToggleProps) {
-  const [theme, setTheme] = useState<Theme>(initialTheme)
-
-  function toggleTheme() {
-    const nextTheme = theme === "dark" ? "light" : "dark"
-    document.documentElement.setAttribute("data-theme", nextTheme)
-    document.cookie = `${THEME_COOKIE_KEY}=${encodeURIComponent(nextTheme)}; path=/; max-age=31536000; samesite=lax`
-    setTheme(nextTheme)
-  }
-
-  const nextLabel = theme === "dark" ? lightLabel : darkLabel
+  const nextLabel = initialTheme === "dark" ? lightLabel : darkLabel
 
   return (
-    <button type="button" className="ghost-button" aria-label={nextLabel} onClick={toggleTheme}>
+    <button
+      type="button"
+      className="ghost-button js-theme-toggle"
+      aria-label={nextLabel}
+      data-light-label={lightLabel}
+      data-dark-label={darkLabel}
+    >
       {nextLabel}
     </button>
   )
