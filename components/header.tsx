@@ -1,13 +1,15 @@
 import { Container } from "@/components/design-system"
 import type { Route } from "next"
 import Link from "next/link"
+import { cookies } from "next/headers"
 import type { UiDictionary } from "@/data/i18n/types"
 import { LocaleSwitcher } from "@/components/locale-switcher"
 import { ThemeToggle } from "@/components/theme-toggle"
 import type { Locale } from "@/lib/i18n"
 import { siteIdentity } from "@/data/profile"
+import { THEME_COOKIE_KEY, parseTheme } from "@/lib/theme"
 
-export function Header({
+export async function Header({
   locale,
   ui,
   shortTitle
@@ -16,6 +18,8 @@ export function Header({
   ui: UiDictionary
   shortTitle: string
 }) {
+  const cookieStore = await cookies()
+  const initialTheme = parseTheme(cookieStore.get(THEME_COOKIE_KEY)?.value) ?? "light"
   const rootPath = `/${locale}`
 
   const navItems = [
@@ -64,7 +68,11 @@ export function Header({
 
         <div className="header-actions">
           <LocaleSwitcher currentLocale={locale} label={ui.labels.locale} />
-          <ThemeToggle lightLabel={ui.labels.light} darkLabel={ui.labels.dark} />
+          <ThemeToggle
+            lightLabel={ui.labels.light}
+            darkLabel={ui.labels.dark}
+            initialTheme={initialTheme}
+          />
         </div>
       </Container>
     </header>

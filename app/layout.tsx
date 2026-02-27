@@ -2,11 +2,13 @@ import type { Metadata } from "next"
 import type { ReactNode } from "react"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { cookies } from "next/headers"
 
 import "@/app/globals.css"
 
 import { ThemeScript } from "@/components/theme-script"
 import { SITE_NAME, SITE_URL } from "@/lib/site"
+import { THEME_COOKIE_KEY, parseTheme } from "@/lib/theme"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -77,9 +79,12 @@ export const metadata: Metadata = {
   }
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const cookieStore = await cookies()
+  const initialTheme = parseTheme(cookieStore.get(THEME_COOKIE_KEY)?.value) ?? "light"
+
   return (
-    <html lang="en-US" suppressHydrationWarning data-theme="light">
+    <html lang="en-US" suppressHydrationWarning data-theme={initialTheme}>
       <body>
         <ThemeScript />
         {children}
