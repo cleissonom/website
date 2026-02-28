@@ -73,7 +73,17 @@ export const ptBRDictionary: LocaleDictionary = {
           {
             title: "Desenvolvedor de Software Sênior - Projeto Encore",
             period: "jul. 2024 - atual",
-            bullets: []
+            bullets: [
+              "Migrei um monólito Django para microsserviços usando Kubernetes (EKS) e Python, melhorando escalabilidade e confiabilidade dos deploys.",
+              "Desenhei serviços cloud-native aproveitando AWS (RDS, Bedrock, SSM, SQS, EventBridge, EKS).",
+              "Migrei a infraestrutura de Terraform e Helm para AWS CDK, padronizando infraestrutura como código.",
+              "Construí e mantive pipelines de CI/CD com Octopus Deploy, manifests do Kubernetes e automações em shell.",
+              "Arquitetei sistemas orientados a eventos usando SQS e SNS, workers em background e Redis para cache e processamento distribuído.",
+              "Desenvolvi recursos com IA, incluindo transcrição de áudio, destaque de conteúdo e transformação de dados.",
+              "Integrei provedores de LLM como OpenAI, Perplexity e Anthropic (via Brock) para análise, sumarização e automação.",
+              "Desenhei arquiteturas escaláveis, defini limites de serviços e liderei o planejamento de implementação.",
+              "Colaborei em funcionalidades focadas no usuário, garantindo performance, conformidade e confiabilidade em ambientes de produção."
+            ]
           },
           {
             title: "Desenvolvedor de Software - Projeto ThirdEdition",

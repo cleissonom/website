@@ -73,7 +73,17 @@ export const enUSDictionary: LocaleDictionary = {
           {
             title: "Senior Software Engineer - Encore Project",
             period: "Jul 2024 - Present",
-            bullets: []
+            bullets: [
+              "Migrated a Django monolith to microservices using Kubernetes (EKS) and Python, improving scalability and deployment reliability.",
+              "Designed cloud-native services leveraging AWS (RDS, Bedrock, SSM, SQS, EventBridge, EKS).",
+              "Migrated infrastructure from Terraform and Helm to AWS CDK, standardizing infrastructure as code.",
+              "Built and maintained CI/CD pipelines with Octopus Deploy, Kubernetes manifests, and shell automation.",
+              "Architected event-driven systems using SQS and SNS, background workers, and Redis for caching and distributed processing.",
+              "Developed AI-powered features including audio transcription, content highlighting, and data transformation.",
+              "Integrated LLM providers such as OpenAI, Perplexity, and Anthropic (via Brock) for analysis, summarization, and automation.",
+              "Designed scalable architectures, defined service boundaries, and led implementation planning.",
+              "Collaborated on user-focused features, ensuring performance, compliance, and reliability in production environments."
+            ]
           },
           {
             title: "Software Engineer - ThirdEdition Project",
