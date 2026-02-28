@@ -80,7 +80,7 @@ export const esESDictionary: LocaleDictionary = {
               "Construí y mantuve pipelines de CI/CD con Octopus Deploy, manifiestos de Kubernetes y automatización en shell.",
               "Arquitecté sistemas orientados a eventos usando SQS y SNS, workers en segundo plano y Redis para caché y procesamiento distribuido.",
               "Desarrollé funcionalidades impulsadas por IA, incluyendo transcripción de audio, resaltado de contenido y transformación de datos.",
-              "Integré proveedores de LLM como OpenAI, Perplexity y Anthropic (vía Brock) para análisis, resumen y automatización.",
+              "Integré proveedores de LLM como OpenAI, Perplexity y Anthropic (vía Bedrock) para análisis, resumen y automatización.",
               "Diseñé arquitecturas escalables, definí límites de servicios y lideré la planificación de la implementación.",
               "Colaboré en funcionalidades centradas en el usuario, asegurando rendimiento, cumplimiento y confiabilidad en entornos de producción."
             ]
