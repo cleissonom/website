@@ -142,7 +142,7 @@ function updateActiveNav(pathname: string): void {
     const navKey = link.getAttribute("data-nav-key")
     const isHome = navKey === "home"
     const isActive = isHome
-      ? pathname === hrefPath
+      ? pathname === hrefPath || pathname === "/"
       : pathname === hrefPath || pathname.startsWith(`${hrefPath}/`)
 
     link.classList.toggle("site-nav-link-active", isActive)
