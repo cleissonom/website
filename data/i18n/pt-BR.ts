@@ -1,4 +1,5 @@
 import type { LocaleDictionary } from "@/data/i18n/types"
+import { recommendations } from "@/data/recommendations"
 
 export const ptBRDictionary: LocaleDictionary = {
   site: {
@@ -154,7 +155,8 @@ export const ptBRDictionary: LocaleDictionary = {
           }
         ]
       }
-    ]
+    ],
+    recommendations
   },
   pages: {
     home: {
@@ -176,7 +178,11 @@ export const ptBRDictionary: LocaleDictionary = {
       metadataTitle: "Experiência",
       metadataDescription:
         "Linha do tempo completa da experiência profissional com escopo de funções, contexto de entrega e contribuições técnicas.",
-      lead: "Histórico profissional completo com responsabilidades e resultados detalhados por função."
+      lead: "Histórico profissional completo com responsabilidades e resultados detalhados por função.",
+      timelineHeading: "Experiência Profissional",
+      recommendationsHeading: "Recomendações",
+      recommendationsLead: "Recomendações recebidas de colegas e lideranças.",
+      viewProfileLabel: "Ver perfil no LinkedIn"
     },
     projects: {
       metadataTitle: "Projetos",

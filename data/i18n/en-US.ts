@@ -1,4 +1,5 @@
 import type { LocaleDictionary } from "@/data/i18n/types"
+import { recommendations } from "@/data/recommendations"
 
 export const enUSDictionary: LocaleDictionary = {
   site: {
@@ -154,7 +155,8 @@ export const enUSDictionary: LocaleDictionary = {
           }
         ]
       }
-    ]
+    ],
+    recommendations
   },
   pages: {
     home: {
@@ -176,7 +178,11 @@ export const enUSDictionary: LocaleDictionary = {
       metadataTitle: "Experience",
       metadataDescription:
         "Full professional experience timeline with role scope, delivery context, and technical contributions.",
-      lead: "Complete work history with detailed responsibilities and outcomes by role."
+      lead: "Complete work history with detailed responsibilities and outcomes by role.",
+      timelineHeading: "Professional Experience",
+      recommendationsHeading: "Recommendations",
+      recommendationsLead: "Recommendations received from colleagues and leaders.",
+      viewProfileLabel: "View LinkedIn profile"
     },
     projects: {
       metadataTitle: "Projects",

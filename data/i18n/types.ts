@@ -11,6 +11,14 @@ export type ExperienceCompany = {
   roles: ExperienceRole[]
 }
 
+export type Recommendation = {
+  name: string
+  profileUrl: string
+  headline: string
+  context: string
+  quote: string[]
+}
+
 export type UiDictionary = {
   nav: {
     home: string
@@ -65,6 +73,7 @@ export type LocaleDictionary = {
     about: string[]
     focusAreas: string[]
     experienceTimeline: ExperienceCompany[]
+    recommendations: Recommendation[]
   }
   pages: {
     home: {
@@ -75,6 +84,10 @@ export type LocaleDictionary = {
       metadataTitle: string
       metadataDescription: string
       lead: string
+      timelineHeading: string
+      recommendationsHeading: string
+      recommendationsLead: string
+      viewProfileLabel: string
     }
     projects: {
       metadataTitle: string
