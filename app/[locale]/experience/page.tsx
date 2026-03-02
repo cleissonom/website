@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { Eyebrow, Lead, PageHeader, SectionStack, Surface } from "@/components/design-system"
 import { ExperienceTimeline } from "@/components/experience-timeline"
 import { JsonLd } from "@/components/json-ld"
+import { RecommendationsList } from "@/components/recommendations-list"
 import { getDictionary } from "@/data/i18n"
 import { isLocale } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
@@ -52,9 +53,22 @@ export default async function ExperiencePage({ params }: { params: Promise<{ loc
       </PageHeader>
 
       <Surface as="article">
+        <h2 className="experience-section-title">{dictionary.pages.experience.timelineHeading}</h2>
         <ExperienceTimeline
           items={dictionary.content.experienceTimeline}
           ariaLabel={ui.labels.experienceTimelineAria}
+          collapsibleCompanies
+        />
+      </Surface>
+
+      <Surface as="article">
+        <h2 className="experience-section-title">
+          {dictionary.pages.experience.recommendationsHeading}
+        </h2>
+        <p className="recommendations-lead">{dictionary.pages.experience.recommendationsLead}</p>
+        <RecommendationsList
+          items={dictionary.content.recommendations}
+          viewProfileLabel={dictionary.pages.experience.viewProfileLabel}
         />
       </Surface>
     </SectionStack>
