@@ -18,7 +18,7 @@ stack:
   - PostgreSQL
   - AWS SNS
 links:
-  live: https://cleissonom.dev
+  live: https://cleisson.com
 highlights:
   - Planejamento e entrega de aplicação mobile de compras em produção.
   - Integração de analytics, CMS e APIs de pedidos.

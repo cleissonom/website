@@ -1,5 +1,5 @@
 ---
-title: Website pessoal - cleissonom.dev
+title: Website pessoal - cleisson.com
 slug: cleissonom-website
 summary: Website e portfólio pessoal multilíngue criado para apresentar meu trabalho, publicar conteúdo técnico e centralizar contato e currículo.
 dateStart: 2026-02-01
@@ -19,8 +19,8 @@ stack:
   - Markdown
   - App Router
 links:
-  repo: https://github.cleissonom.dev/website
-  live: https://cleissonom.dev
+  repo: https://github.cleisson.com/website
+  live: https://cleisson.com
 highlights:
   - Portfólio localizado com rotas em inglês, português e espanhol.
   - Fluxo de projetos e blog em Markdown com validação de schema.

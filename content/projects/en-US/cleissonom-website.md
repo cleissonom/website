@@ -1,5 +1,5 @@
 ---
-title: Personal Website - cleissonom.dev
+title: Personal Website - cleisson.com
 slug: cleissonom-website
 summary: Multilingual personal website and portfolio built to present my work, publish technical content, and centralize contact and resume information.
 dateStart: 2026-02-01
@@ -19,8 +19,8 @@ stack:
   - Markdown
   - App Router
 links:
-  repo: https://github.cleissonom.dev/website
-  live: https://cleissonom.dev
+  repo: https://github.cleisson.com/website
+  live: https://cleisson.com
 highlights:
   - Built a localized portfolio with English, Portuguese, and Spanish routes.
   - Implemented markdown-driven project and blog workflows with schema validation.

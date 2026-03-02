@@ -1,4 +1,4 @@
-# cleissonom.dev
+# cleisson.com
 
 Personal website and portfolio for Cleisson de Oliveira Moura, built with Next.js App Router and TypeScript.
 

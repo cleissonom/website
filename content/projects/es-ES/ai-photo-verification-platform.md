@@ -19,7 +19,7 @@ stack:
   - Kubernetes
 links:
   repo: https://github.com/cleissonom
-  live: https://cleissonom.dev
+  live: https://cleisson.com
 highlights:
   - Construí flujos cloud-native para la ingesta y validación de imágenes.
   - Soporté el crecimiento a más de 2.000 usuarios activos en los primeros meses.
