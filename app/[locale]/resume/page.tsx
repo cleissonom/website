@@ -12,6 +12,7 @@ import { getDictionary } from "@/data/i18n"
 import { siteIdentity } from "@/data/profile"
 import { isLocale, resumePdfPath } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, buildPageTitle, createMetadata } from "@/lib/metadata"
+import { siteEmailHref } from "@/lib/site"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -55,7 +56,7 @@ export default async function ResumePage({ params }: { params: Promise<{ locale:
           <ButtonLink href={resumePdfPath(locale)} target="_blank" rel="noreferrer">
             {ui.cta.downloadResume}
           </ButtonLink>
-          <ButtonLink variant="secondary" href={siteIdentity.links.email}>
+          <ButtonLink variant="secondary" href={siteEmailHref(locale)}>
             {ui.cta.contact}
           </ButtonLink>
         </div>

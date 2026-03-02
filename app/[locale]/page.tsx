@@ -23,6 +23,7 @@ import { getAllPosts, getAllProjects } from "@/lib/content"
 import { isLocale } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
 import { breadcrumbJsonLd, personJsonLd } from "@/lib/schema"
+import { siteEmailHref } from "@/lib/site"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -74,7 +75,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
             <h1>{siteIdentity.name}</h1>
             <Lead>{dictionary.site.headline}</Lead>
             <div className="hero-actions">
-              <ButtonLink href={siteIdentity.links.email}>{ui.cta.contact}</ButtonLink>
+              <ButtonLink href={siteEmailHref(locale)}>{ui.cta.contact}</ButtonLink>
               <ButtonLink
                 variant="secondary"
                 href={siteIdentity.links.linkedin}

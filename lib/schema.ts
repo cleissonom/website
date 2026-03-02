@@ -1,7 +1,7 @@
 import type { BlogEntry, ProjectEntry } from "@/lib/content"
 import type { Locale } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, absoluteUrl } from "@/lib/metadata"
-import { SITE_LINKS, SITE_NAME, SITE_SHORT_TITLE } from "@/lib/site"
+import { SITE_LINKS, SITE_NAME, SITE_SHORT_TITLE, siteEmailAddress } from "@/lib/site"
 
 export function personJsonLd(locale: Locale) {
   return {
@@ -11,7 +11,7 @@ export function personJsonLd(locale: Locale) {
     jobTitle: SITE_SHORT_TITLE,
     url: absoluteUrl(`/${locale}`),
     sameAs: [SITE_LINKS.linkedin, SITE_LINKS.github, SITE_LINKS.website],
-    email: SITE_LINKS.email.replace("mailto:", "")
+    email: siteEmailAddress(locale)
   }
 }
 

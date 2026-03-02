@@ -3,6 +3,7 @@ import type { Route } from "next"
 import Link from "next/link"
 import { siteIdentity } from "@/data/profile"
 import type { Locale } from "@/lib/i18n"
+import { siteEmailHref } from "@/lib/site"
 
 export function Footer({
   locale,
@@ -28,7 +29,7 @@ export function Footer({
           <a href={siteIdentity.links.linkedin} target="_blank" rel="noreferrer">
             LinkedIn
           </a>
-          <a href={siteIdentity.links.email}>{contactLabel}</a>
+          <a href={siteEmailHref(locale)}>{contactLabel}</a>
           <a href="/rss.xml">RSS</a>
           <a href="/atom.xml">Atom</a>
           <a href="/feed.json">JSON Feed</a>
