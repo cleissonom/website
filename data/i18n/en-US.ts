@@ -1,5 +1,52 @@
 import type { LocaleDictionary } from "@/data/i18n/types"
-import { recommendations } from "@/data/recommendations"
+import { buildRecommendations, type RecommendationTranslationsById } from "@/data/recommendations"
+
+const recommendationTranslations: RecommendationTranslationsById = {
+  "valeriia-kruchinina": {
+    context: "July 9, 2024, Valeriia managed Cleisson directly",
+    quote: [
+      "I was the product manager on a project where Cleisson worked as a front-end, or I would even say full-stack developer.",
+      "I was impressed by how quickly and efficiently he worked. He was also deeply involved in the project and proposed solutions that significantly improved the user experience. I was delighted to work with such an amazing professional like him!"
+    ]
+  },
+  "cristian-karsten": {
+    context: "July 17, 2023, Cristian managed Cleisson directly",
+    quote: [
+      "I led Cleisson for around nine months in the research and development department, and overall it was a privilege to know and work with him. From the start, he embraced the challenge of building a mobile-first application from scratch, which he executed with expertise and quality far above other professionals I have met. Overall, he is one of the developers with the highest future potential I have ever worked with."
+    ]
+  },
+  "gabriel-lobo": {
+    context: "April 20, 2023, Gabriel was senior to Cleisson but did not manage Cleisson directly",
+    quote: [
+      "It is with satisfaction that I express my admiration for Cleisson's competence and commitment. He shows constant interest and enthusiasm in understanding the challenges that are presented to him, being extremely proactive and curious in the search for knowledge.",
+      "I reinforce my recommendation to Cleisson as an exceptional professional! He dedicates himself intensely to each activity, always aiming to deliver high quality results."
+    ]
+  },
+  "andrezza-de-melo-troian": {
+    context: "July 14, 2023, Andrezza worked with Cleisson on the same team",
+    quote: [
+      "I recommend Cleisson as a talented developer with whom I had the pleasure of working. While managing the team, I was able to witness his impressive technical ability and commitment to excellence. Cleisson was essential to the success of the projects, contributing with his expertise and collaboration."
+    ]
+  },
+  "matheus-goulart": {
+    context: "July 14, 2023, Matheus worked with Cleisson on the same team",
+    quote: [
+      "It is with great satisfaction that I recommend Cleisson as a React Native developer. I had the pleasure of working alongside him on several projects, and his expertise in this area is impressive. Cleisson has deep technical knowledge, solid development skills, and meticulous attention to detail. His ability to build high-quality applications using React Native is remarkable. In addition, Cleisson is an extremely collaborative team member, always willing to share knowledge and help colleagues. I recommend Cleisson without hesitation as a highly competent React Native developer."
+    ]
+  },
+  "vinicius-dos-santos-bueno": {
+    context: "July 14, 2023, Vinicius worked with Cleisson on the same team",
+    quote: [
+      "I worked with Cleisson in the same internship program and in the same department. He always stood out as an example of dedication, responsibility, and quality in development. It was a pleasure to work with Cleisson and I recommend him 100%. His work ethic, skills, and collaboration make him an outstanding professional."
+    ]
+  },
+  "luisa-foppa": {
+    context: "July 14, 2023, Luísa worked with Cleisson on the same team",
+    quote: [
+      "Cleisson is an excellent developer and had a very good relationship with everyone on the team I worked with. His communication is exceptional, and his organization and dedication to delivering projects are admirable. Considering the qualities mentioned, he has great potential to join and bring success to any team and project."
+    ]
+  }
+}
 
 export const enUSDictionary: LocaleDictionary = {
   site: {
@@ -156,7 +203,7 @@ export const enUSDictionary: LocaleDictionary = {
         ]
       }
     ],
-    recommendations
+    recommendations: buildRecommendations(recommendationTranslations)
   },
   pages: {
     home: {

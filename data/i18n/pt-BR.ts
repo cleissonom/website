@@ -1,5 +1,53 @@
 import type { LocaleDictionary } from "@/data/i18n/types"
-import { recommendations } from "@/data/recommendations"
+import { buildRecommendations, type RecommendationTranslationsById } from "@/data/recommendations"
+
+const recommendationTranslations: RecommendationTranslationsById = {
+  "valeriia-kruchinina": {
+    context: "9 de julho de 2024, Valeriia gerenciou Cleisson diretamente",
+    quote: [
+      "Fui product manager em um projeto no qual o Cleisson atuou como desenvolvedor front-end, ou eu diria até full-stack.",
+      "Fiquei impressionada com a rapidez e eficiência com que ele trabalhava. Ele também estava profundamente envolvido no projeto e propôs soluções que melhoraram significativamente a experiência do usuário. Foi um prazer trabalhar com um profissional tão incrível quanto ele!"
+    ]
+  },
+  "cristian-karsten": {
+    context: "17 de julho de 2023, Cristian gerenciou Cleisson diretamente",
+    quote: [
+      "Fui líder do Cleisson durante um período de em torno de nove meses no setor de pesquisa e desenvolvimento e, de maneira geral, foi um privilégio conhecer e trabalhar com ele. Abraçou desde o início o desafio de desenvolver do zero uma aplicação mobile first, o qual executou com perícia e qualidade muito superior à de outros profissionais que já conheci. Em geral, é um dos desenvolvedores com maior potencial futuro com quem já trabalhei."
+    ]
+  },
+  "gabriel-lobo": {
+    context:
+      "20 de abril de 2023, Gabriel era sênior ao Cleisson, mas não o gerenciava diretamente",
+    quote: [
+      "É com satisfação que expresso minha admiração pela competência e comprometimento do Cleisson. Ele demonstra interesse e entusiasmo constantes em compreender os desafios que lhe são apresentados, sendo extremamente proativo e curioso na busca por conhecimento.",
+      "Reforço minha recomendação ao Cleisson como um profissional excepcional! Ele se dedica intensamente a cada atividade, sempre buscando entregar resultados de alta qualidade."
+    ]
+  },
+  "andrezza-de-melo-troian": {
+    context: "14 de julho de 2023, Andrezza trabalhou com Cleisson no mesmo time",
+    quote: [
+      "Recomendo o Cleisson como um talentoso desenvolvedor com quem tive o prazer de trabalhar. Atuando na gestão da equipe, pude testemunhar sua habilidade técnica impressionante e compromisso com a excelência. Cleisson foi fundamental para o sucesso dos projetos, contribuindo com sua expertise e colaboração."
+    ]
+  },
+  "matheus-goulart": {
+    context: "14 de julho de 2023, Matheus trabalhou com Cleisson no mesmo time",
+    quote: [
+      "É com grande satisfação que recomendo Cleisson como desenvolvedor React Native. Tive o prazer de trabalhar ao lado dele em vários projetos e sua expertise nessa área é impressionante. Cleisson possui um profundo conhecimento técnico, habilidades sólidas em desenvolvimento e um olhar meticuloso para os detalhes. Sua capacidade de criar aplicações de alta qualidade usando o React Native é notável. Além disso, Cleisson é um membro de equipe extremamente colaborativo, sempre disposto a compartilhar conhecimentos e ajudar os colegas. Recomendo Cleisson sem dúvidas como um desenvolvedor React Native altamente competente."
+    ]
+  },
+  "vinicius-dos-santos-bueno": {
+    context: "14 de julho de 2023, Vinicius trabalhou com Cleisson no mesmo time",
+    quote: [
+      "Trabalhei junto com Cleisson no mesmo programa de estágio e no mesmo setor. Ele sempre se destacou como exemplo de dedicação, responsabilidade e qualidade no desenvolvimento. Foi um prazer trabalhar com Cleisson e eu o recomendo 100%. Sua ética de trabalho, habilidades e colaboração o tornam um profissional de destaque."
+    ]
+  },
+  "luisa-foppa": {
+    context: "14 de julho de 2023, Luísa trabalhou com Cleisson no mesmo time",
+    quote: [
+      "Cleisson é um desenvolvedor excelente e tinha um relacionamento muito bom com todos da equipe em que trabalhei. A comunicação dele é excepcional, e sua organização e dedicação para realizar os projetos são admiráveis. Considerando as qualidades citadas, ele tem muito potencial para ingressar e trazer sucesso para qualquer equipe e projeto."
+    ]
+  }
+}
 
 export const ptBRDictionary: LocaleDictionary = {
   site: {
@@ -156,7 +204,7 @@ export const ptBRDictionary: LocaleDictionary = {
         ]
       }
     ],
-    recommendations
+    recommendations: buildRecommendations(recommendationTranslations)
   },
   pages: {
     home: {

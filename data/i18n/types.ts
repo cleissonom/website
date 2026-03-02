@@ -12,12 +12,16 @@ export type ExperienceCompany = {
 }
 
 export type Recommendation = {
+  id: string
   name: string
   profileUrl: string
   headline: string
   context: string
   quote: string[]
 }
+
+export type RecommendationLocalizedFields = Pick<Recommendation, "context" | "quote">
+export type RecommendationBaseFields = Omit<Recommendation, keyof RecommendationLocalizedFields>
 
 export type UiDictionary = {
   nav: {
