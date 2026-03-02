@@ -29,6 +29,11 @@ export async function Header({
       label: ui.nav.home
     },
     {
+      key: "experience",
+      href: `${rootPath}/experience`,
+      label: ui.nav.experience
+    },
+    {
       key: "projects",
       href: `${rootPath}/projects`,
       label: ui.nav.projects

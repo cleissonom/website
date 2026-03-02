@@ -9,6 +9,7 @@ export const ptBRDictionary: LocaleDictionary = {
   ui: {
     nav: {
       home: "Sobre",
+      experience: "Experiência",
       projects: "Projetos",
       blog: "Blog",
       resume: "Currículo"
@@ -170,6 +171,12 @@ export const ptBRDictionary: LocaleDictionary = {
         "Python",
         "Produtos com IA"
       ]
+    },
+    experience: {
+      metadataTitle: "Experiência",
+      metadataDescription:
+        "Linha do tempo completa da experiência profissional com escopo de funções, contexto de entrega e contribuições técnicas.",
+      lead: "Histórico profissional completo com responsabilidades e resultados detalhados por função."
     },
     projects: {
       metadataTitle: "Projetos",

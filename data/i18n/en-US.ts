@@ -9,6 +9,7 @@ export const enUSDictionary: LocaleDictionary = {
   ui: {
     nav: {
       home: "About",
+      experience: "Experience",
       projects: "Projects",
       blog: "Blog",
       resume: "Resume"
@@ -170,6 +171,12 @@ export const enUSDictionary: LocaleDictionary = {
         "Python",
         "AI-powered products"
       ]
+    },
+    experience: {
+      metadataTitle: "Experience",
+      metadataDescription:
+        "Full professional experience timeline with role scope, delivery context, and technical contributions.",
+      lead: "Complete work history with detailed responsibilities and outcomes by role."
     },
     projects: {
       metadataTitle: "Projects",

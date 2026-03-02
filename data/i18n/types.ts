@@ -14,6 +14,7 @@ export type ExperienceCompany = {
 export type UiDictionary = {
   nav: {
     home: string
+    experience: string
     projects: string
     blog: string
     resume: string
@@ -69,6 +70,11 @@ export type LocaleDictionary = {
     home: {
       breadcrumbLabel: string
       keywords: string[]
+    }
+    experience: {
+      metadataTitle: string
+      metadataDescription: string
+      lead: string
     }
     projects: {
       metadataTitle: string

@@ -9,6 +9,7 @@ export const esESDictionary: LocaleDictionary = {
   ui: {
     nav: {
       home: "Sobre mí",
+      experience: "Experiencia",
       projects: "Proyectos",
       blog: "Blog",
       resume: "Currículum"
@@ -170,6 +171,12 @@ export const esESDictionary: LocaleDictionary = {
         "Python",
         "Productos impulsados por IA"
       ]
+    },
+    experience: {
+      metadataTitle: "Experiencia",
+      metadataDescription:
+        "Línea de tiempo completa de experiencia profesional con alcance de roles, contexto de entrega y contribuciones técnicas.",
+      lead: "Trayectoria profesional completa con responsabilidades y resultados detallados por rol."
     },
     projects: {
       metadataTitle: "Proyectos",
