@@ -20,6 +20,7 @@ import { ProjectCard } from "@/components/project-card"
 import { getDictionary } from "@/data/i18n"
 import { siteIdentity } from "@/data/profile"
 import { getAllPosts, getAllProjects } from "@/lib/content"
+import { summarizeExperienceTimeline } from "@/lib/experience"
 import { isLocale } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
 import { breadcrumbJsonLd, personJsonLd } from "@/lib/schema"
@@ -54,7 +55,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
   const dictionary = getDictionary(locale)
   const ui = dictionary.ui
   const about = dictionary.content.about
-  const experienceTimeline = dictionary.content.experienceTimeline
+  const experienceTimeline = summarizeExperienceTimeline(dictionary.content.experienceTimeline)
   const focusAreas = dictionary.content.focusAreas
   const projects = getAllProjects(locale).slice(0, 2)
   const posts = getAllPosts(locale).slice(0, 2)
