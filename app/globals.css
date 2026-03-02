@@ -610,6 +610,123 @@ summary:focus-visible {
   gap: 0.2rem;
 }
 
+.timeline-company-collapsible {
+  border-top: none;
+  padding-top: 0;
+}
+
+.timeline-company-collapsible details {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-strong);
+  padding: 0.35rem 0.75rem;
+}
+
+.timeline-company-summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0.3rem 1.45rem 0.3rem 0;
+}
+
+.timeline-company-summary::-webkit-details-marker {
+  display: none;
+}
+
+.timeline-company-summary::after {
+  content: "+";
+  position: absolute;
+  right: 0.2rem;
+  top: 0.3rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.timeline-company-collapsible details[open] > .timeline-company-summary::after {
+  content: "-";
+}
+
+.timeline-company-content {
+  display: grid;
+  gap: 0.85rem;
+  padding: 0.1rem 0 0.35rem;
+}
+
+.experience-section-title {
+  margin-bottom: 0.95rem;
+}
+
+.recommendations-lead {
+  margin: -0.2rem 0 0.9rem;
+  color: var(--muted);
+}
+
+.recommendations {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.recommendation-item details {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-strong);
+  padding: 0.6rem 0.8rem;
+}
+
+.recommendation-summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding-right: 1.45rem;
+  display: grid;
+  gap: 0.32rem;
+}
+
+.recommendation-summary::-webkit-details-marker {
+  display: none;
+}
+
+.recommendation-summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 0.1rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.recommendation-item details[open] > .recommendation-summary::after {
+  content: "-";
+}
+
+.recommendation-context {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.recommendation-content {
+  margin-top: 0.6rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.recommendation-content p {
+  margin: 0;
+}
+
+.recommendation-headline {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .page-header {
   display: grid;
   gap: 0.8rem;
