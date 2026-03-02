@@ -62,7 +62,7 @@ function resolveLocaleSwitchPath(
   const segments = path.split("/").filter(Boolean)
   if (segments.length === 1) {
     const top = segments[0]
-    if (top === "projects" || top === "blog" || top === "resume") {
+    if (top === "projects" || top === "blog" || top === "resume" || top === "experience") {
       return localePath(targetLocale, `/${top}`)
     }
 

@@ -4,7 +4,7 @@ import { getAllPosts, getAllProjects } from "@/lib/content"
 import { LOCALES, buildLocalizedPath } from "@/lib/i18n"
 import { absoluteUrl } from "@/lib/metadata"
 
-const staticPaths = ["/", "/projects", "/blog", "/resume"] as const
+const staticPaths = ["/", "/experience", "/projects", "/blog", "/resume"] as const
 
 function toValidDate(value: string | undefined, fallback: Date): Date {
   if (!value) {
