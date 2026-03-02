@@ -109,7 +109,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
         </Surface>
 
         <Surface as="article">
-          <h2>{ui.sections.focusAreas}</h2>
+          <h2 style={{ marginBottom: "16px" }}>{ui.sections.focusAreas}</h2>
           <ChipRow>
             {focusAreas.map((area) => (
               <Chip key={area}>{area}</Chip>
@@ -118,7 +118,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
         </Surface>
 
         <Surface as="article">
-          <h2>{ui.sections.experience}</h2>
+          <h2 style={{ marginBottom: "16px" }}>{ui.sections.experience}</h2>
           <ExperienceTimeline
             items={experienceTimeline}
             ariaLabel={ui.labels.experienceTimelineAria}
