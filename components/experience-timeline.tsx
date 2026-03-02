@@ -1,4 +1,6 @@
+import Image from "next/image"
 import type { ExperienceCompany } from "@/data/i18n/types"
+import { COMPANY_LOGOS, COMPANY_LOGO_SIZE } from "@/lib/company-logos"
 
 export function ExperienceTimeline({
   items,
@@ -14,6 +16,29 @@ export function ExperienceTimeline({
   return (
     <ol className="timeline" aria-label={ariaLabel}>
       {items.map((company, companyIndex) => {
+        const logoSrc = COMPANY_LOGOS[company.company]
+
+        const companyHeader = (
+          <div className="timeline-company-header">
+            {logoSrc ? (
+              <Image
+                src={logoSrc}
+                alt={`${company.company} logo`}
+                width={COMPANY_LOGO_SIZE}
+                height={COMPANY_LOGO_SIZE}
+                className="timeline-company-logo"
+              />
+            ) : null}
+
+            <div className="timeline-company-header-text">
+              <h3>{company.company}</h3>
+              <p>
+                {company.employment} | {company.location}
+              </p>
+            </div>
+          </div>
+        )
+
         const roles = company.roles.map((role, roleIndex) => (
           <article
             key={`${company.company}-${role.title}-${role.period}-${roleIndex}`}
@@ -38,12 +63,7 @@ export function ExperienceTimeline({
         if (!collapsibleCompanies) {
           return (
             <li key={company.company} className="timeline-company">
-              <div className="timeline-company-header">
-                <h3>{company.company}</h3>
-                <p>
-                  {company.employment} | {company.location}
-                </p>
-              </div>
+              {companyHeader}
               {roles}
             </li>
           )
@@ -52,14 +72,7 @@ export function ExperienceTimeline({
         return (
           <li key={company.company} className="timeline-company timeline-company-collapsible">
             <details open={companyIndex < defaultOpenCompanies}>
-              <summary className="timeline-company-summary">
-                <div className="timeline-company-header">
-                  <h3>{company.company}</h3>
-                  <p>
-                    {company.employment} | {company.location}
-                  </p>
-                </div>
-              </summary>
+              <summary className="timeline-company-summary">{companyHeader}</summary>
               <div className="timeline-company-content">{roles}</div>
             </details>
           </li>

@@ -592,6 +592,27 @@ summary:focus-visible {
   color: var(--muted);
 }
 
+.timeline-company-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.timeline-company-header-text {
+  min-width: 0;
+}
+
+.timeline-company-logo {
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-strong);
+  object-fit: contain;
+  flex: 0 0 auto;
+  padding: 0.3rem;
+}
+
 .timeline-role {
   display: grid;
   gap: 0.35rem;
