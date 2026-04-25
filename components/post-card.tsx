@@ -21,7 +21,7 @@ export function PostCard({
   const descriptiveLabel = `${readMoreLabel} ${contextLabel}`
 
   return (
-    <Card>
+    <Card className="post-card">
       <p className="card-meta">
         {new Date(post.date).toLocaleDateString(locale, {
           year: "numeric",

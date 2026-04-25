@@ -1,6 +1,15 @@
 import { notFound } from "next/navigation"
 
-import { Eyebrow, Grid, Lead, PageHeader, SectionStack } from "@/components/design-system"
+import {
+  Chip,
+  ChipRow,
+  Eyebrow,
+  Grid,
+  Lead,
+  PageHeader,
+  SectionStack,
+  Surface
+} from "@/components/design-system"
 import { JsonLd } from "@/components/json-ld"
 import { PostCard } from "@/components/post-card"
 import { getDictionary } from "@/data/i18n"
@@ -37,6 +46,10 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   const dictionary = getDictionary(locale)
   const ui = dictionary.ui
   const posts = getAllPosts(locale)
+  const postLabels = Array.from(new Set(posts.flatMap((post) => post.tags))).sort((a, b) =>
+    a.localeCompare(b, locale, { sensitivity: "base" })
+  )
+  const latestPost = posts[0]
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: ui.nav.home, url: absoluteUrl(`/${locale}`) },
@@ -47,11 +60,34 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
     <SectionStack>
       <JsonLd id="blog-breadcrumb-jsonld" data={breadcrumbs} />
 
-      <PageHeader>
-        <Eyebrow>{ui.nav.blog}</Eyebrow>
-        <h1>{ui.sections.blog}</h1>
-        <Lead>{dictionary.pages.blog.lead}</Lead>
-      </PageHeader>
+      <Surface as="section" className="page-overview" aria-labelledby="blog-title">
+        <PageHeader className="page-overview-copy">
+          <Eyebrow>{ui.nav.blog}</Eyebrow>
+          <h1 id="blog-title">{ui.sections.blog}</h1>
+          <Lead>{dictionary.pages.blog.lead}</Lead>
+        </PageHeader>
+
+        <dl className="metric-grid page-overview-metrics">
+          <div>
+            <dt>{posts.length}</dt>
+            <dd>{ui.sections.blog}</dd>
+          </div>
+          <div>
+            <dt>{postLabels.length}</dt>
+            <dd>{ui.labels.topics}</dd>
+          </div>
+          <div>
+            <dt>{latestPost ? new Date(latestPost.date).getFullYear() : "-"}</dt>
+            <dd>{ui.labels.updated}</dd>
+          </div>
+        </dl>
+
+        <ChipRow className="overview-chip-row">
+          {postLabels.slice(0, 6).map((label) => (
+            <Chip key={label}>{label}</Chip>
+          ))}
+        </ChipRow>
+      </Surface>
 
       <Grid>
         {posts.map((post) => (

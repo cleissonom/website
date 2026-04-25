@@ -1,6 +1,6 @@
-import type { BlogEntry } from "@/lib/content";
-import { absoluteUrl } from "@/lib/metadata";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import type { BlogEntry } from "@/lib/content"
+import { absoluteUrl } from "@/lib/metadata"
+import { SITE_NAME, SITE_URL } from "@/lib/site"
 
 function escapeXml(value: string): string {
   return value
@@ -8,18 +8,18 @@ function escapeXml(value: string): string {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&apos;");
+    .replace(/'/g, "&apos;")
 }
 
 type FeedItem = {
-  id: string;
-  title: string;
-  summary: string;
-  date: string;
-  updatedAt?: string;
-  url: string;
-  locale: string;
-};
+  id: string
+  title: string
+  summary: string
+  date: string
+  updatedAt?: string
+  url: string
+  locale: string
+}
 
 export function toFeedItems(posts: BlogEntry[]): FeedItem[] {
   return posts.map((post) => ({
@@ -30,7 +30,7 @@ export function toFeedItems(posts: BlogEntry[]): FeedItem[] {
     updatedAt: post.updatedAt,
     url: absoluteUrl(`/${post.locale}/blog/${post.slug}`),
     locale: post.locale
-  }));
+  }))
 }
 
 export function buildRss(items: FeedItem[]): string {
@@ -45,7 +45,7 @@ export function buildRss(items: FeedItem[]): string {
         <pubDate>${new Date(item.date).toUTCString()}</pubDate>
       </item>`
     )
-    .join("\n");
+    .join("\n")
 
   return `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
@@ -54,11 +54,11 @@ export function buildRss(items: FeedItem[]): string {
     <link>${escapeXml(SITE_URL)}</link>
     <description>${escapeXml(`${SITE_NAME} writing feed`)}</description>${content}
   </channel>
-</rss>`;
+</rss>`
 }
 
 export function buildAtom(items: FeedItem[]): string {
-  const updated = items[0]?.updatedAt ?? items[0]?.date ?? new Date().toISOString();
+  const updated = items[0]?.updatedAt ?? items[0]?.date ?? new Date().toISOString()
 
   const content = items
     .map(
@@ -72,7 +72,7 @@ export function buildAtom(items: FeedItem[]): string {
     <summary>${escapeXml(item.summary)}</summary>
   </entry>`
     )
-    .join("\n");
+    .join("\n")
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -80,7 +80,7 @@ export function buildAtom(items: FeedItem[]): string {
   <title>${escapeXml(SITE_NAME)}</title>
   <updated>${new Date(updated).toISOString()}</updated>
   <link href="${escapeXml(SITE_URL)}"/>${content}
-</feed>`;
+</feed>`
 }
 
 export function buildJsonFeed(items: FeedItem[]): string {
@@ -102,5 +102,5 @@ export function buildJsonFeed(items: FeedItem[]): string {
     },
     null,
     2
-  );
+  )
 }

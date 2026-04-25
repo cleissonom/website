@@ -20,6 +20,7 @@ type MetadataInput = {
 export const SEO_IMAGE_PATHS = {
   default: "/seo/og-default-1200x630.png",
   home: "/seo/og-home-1200x630.png",
+  experience: "/seo/og-experience-1200x630.png",
   blog: "/seo/og-blog-1200x630.png",
   projects: "/seo/og-projects-1200x630.png",
   resume: "/seo/og-resume-1200x630.png"

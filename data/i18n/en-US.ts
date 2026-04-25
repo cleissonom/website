@@ -81,9 +81,11 @@ export const enUSDictionary: LocaleDictionary = {
       readMore: "Read more",
       published: "Published",
       updated: "Updated",
+      period: "Period",
       role: "Role",
       status: "Status",
       stack: "Stack",
+      topics: "Topics",
       highlights: "Highlights",
       experienceTimelineAria: "Experience timeline",
       mainNavigationAria: "Main navigation",
@@ -91,7 +93,8 @@ export const enUSDictionary: LocaleDictionary = {
       backToBlog: "Back to blog",
       notFoundTitle: "Page not found",
       notFoundDescription: "The page you requested does not exist for this locale.",
-      goHome: "Go to home"
+      goHome: "Go to home",
+      opensInNewTab: "opens in a new tab"
     }
   },
   content: {
@@ -224,8 +227,16 @@ export const enUSDictionary: LocaleDictionary = {
     experience: {
       metadataTitle: "Experience",
       metadataDescription:
-        "Full professional experience timeline with role scope, delivery context, and technical contributions.",
-      lead: "Complete work history with detailed responsibilities and outcomes by role.",
+        "Senior software engineer experience across Node.js, Python, AWS, Kubernetes, microservices, AI products, and cloud infrastructure.",
+      lead: "A detailed view of the teams, systems, and outcomes behind my software engineering work.",
+      overviewHeading: "Professional profile",
+      currentRoleLabel: "Current role",
+      focusLabel: "Core focus",
+      statsLabels: {
+        recommendations: "Recommendations"
+      },
+      latestRoleLabel: "Latest role",
+      opensInNewTabLabel: "opens in a new tab",
       timelineHeading: "Professional Experience",
       recommendationsHeading: "Recommendations",
       recommendationsLead: "Recommendations received from colleagues and leaders.",

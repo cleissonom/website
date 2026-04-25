@@ -15,6 +15,7 @@ import {
 } from "@/components/design-system"
 import { ExperienceTimeline } from "@/components/experience-timeline"
 import { JsonLd } from "@/components/json-ld"
+import { LinkedInButton } from "@/components/linkedin-button"
 import { PostCard } from "@/components/post-card"
 import { ProjectCard } from "@/components/project-card"
 import { getDictionary } from "@/data/i18n"
@@ -56,9 +57,14 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
   const ui = dictionary.ui
   const about = dictionary.content.about
   const experienceTimeline = summarizeExperienceTimeline(dictionary.content.experienceTimeline)
+  const fullExperienceTimeline = dictionary.content.experienceTimeline
   const focusAreas = dictionary.content.focusAreas
-  const projects = getAllProjects(locale).slice(0, 2)
-  const posts = getAllPosts(locale).slice(0, 2)
+  const allProjects = getAllProjects(locale)
+  const allPosts = getAllPosts(locale)
+  const projects = allProjects.slice(0, 2)
+  const posts = allPosts.slice(0, 2)
+  const currentCompany = fullExperienceTimeline[0]
+  const currentRole = currentCompany?.roles[0]
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: dictionary.pages.home.breadcrumbLabel, url: absoluteUrl(`/${locale}`) }
@@ -75,16 +81,20 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
             <Eyebrow>{dictionary.site.shortTitle}</Eyebrow>
             <h1>{siteIdentity.name}</h1>
             <Lead>{dictionary.site.headline}</Lead>
+            <div className="hero-proof" aria-label={ui.sections.focusAreas}>
+              <span>{focusAreas[0]}</span>
+              <span>{focusAreas[1]}</span>
+              <span>{focusAreas[2]}</span>
+            </div>
             <div className="hero-actions">
               <ButtonLink href={siteEmailHref(locale)}>{ui.cta.contact}</ButtonLink>
-              <ButtonLink
-                variant="secondary"
-                href={siteIdentity.links.linkedin}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {ui.cta.linkedin}
+              <ButtonLink variant="secondary" href={`/${locale}/experience`}>
+                {ui.nav.experience}
               </ButtonLink>
+              <LinkedInButton
+                label={ui.cta.linkedin}
+                opensInNewTabLabel={ui.labels.opensInNewTab}
+              />
             </div>
           </div>
 
@@ -101,15 +111,38 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
       </Surface>
 
       <SectionStack>
-        <Surface as="article">
-          <h2>{ui.sections.about}</h2>
-          {about.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+        <Surface as="section" className="home-snapshot" aria-labelledby="home-snapshot-title">
+          <div className="section-heading-row">
+            <div>
+              <p className="card-meta">{dictionary.site.shortTitle}</p>
+              <h2 id="home-snapshot-title">{ui.sections.about}</h2>
+            </div>
+            <InlineLink href={`/${locale}/resume`}>{ui.nav.resume}</InlineLink>
+          </div>
+
+          <div className="snapshot-grid">
+            <div className="snapshot-copy">
+              {about.slice(0, 3).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            <dl className="metric-grid">
+              <div>
+                <dt>{allProjects.length}</dt>
+                <dd>{ui.sections.projects}</dd>
+              </div>
+              <div>
+                <dt>{allPosts.length}</dt>
+                <dd>{ui.sections.blog}</dd>
+              </div>
+            </dl>
+          </div>
         </Surface>
 
-        <Surface as="article">
-          <h2 style={{ marginBottom: "16px" }}>{ui.sections.focusAreas}</h2>
+        <Surface as="section">
+          <div className="section-heading-row">
+            <h2>{ui.sections.focusAreas}</h2>
+          </div>
           <ChipRow>
             {focusAreas.map((area) => (
               <Chip key={area}>{area}</Chip>
@@ -117,16 +150,26 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
           </ChipRow>
         </Surface>
 
-        <Surface as="article">
-          <h2 style={{ marginBottom: "16px" }}>{ui.sections.experience}</h2>
+        <Surface as="section" className="preview-section" aria-labelledby="home-experience-title">
+          <div className="section-heading-row">
+            <div>
+              <h2 id="home-experience-title">{ui.sections.experience}</h2>
+              {currentCompany && currentRole ? (
+                <p className="muted">
+                  {currentRole.title} | {currentCompany.company}
+                </p>
+              ) : null}
+            </div>
+            <InlineLink href={`/${locale}/experience`}>{ui.nav.experience}</InlineLink>
+          </div>
           <ExperienceTimeline
             items={experienceTimeline}
             ariaLabel={ui.labels.experienceTimelineAria}
           />
         </Surface>
 
-        <SectionStack as="article">
-          <PageHeader as="div">
+        <SectionStack as="section" className="preview-section">
+          <PageHeader as="div" className="section-heading-row">
             <h2>{ui.sections.projects}</h2>
             <InlineLink href={`/${locale}/projects`}>{ui.nav.projects}</InlineLink>
           </PageHeader>
@@ -143,8 +186,8 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
           </Grid>
         </SectionStack>
 
-        <SectionStack as="article">
-          <PageHeader as="div">
+        <SectionStack as="section" className="preview-section">
+          <PageHeader as="div" className="section-heading-row">
             <h2>{ui.sections.blog}</h2>
             <InlineLink href={`/${locale}/blog`}>{ui.nav.blog}</InlineLink>
           </PageHeader>

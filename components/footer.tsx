@@ -8,11 +8,13 @@ import { siteEmailHref } from "@/lib/site"
 export function Footer({
   locale,
   resumeLabel,
-  contactLabel
+  contactLabel,
+  opensInNewTabLabel
 }: {
   locale: Locale
   resumeLabel: string
   contactLabel: string
+  opensInNewTabLabel: string
 }) {
   const year = new Date().getFullYear()
 
@@ -25,9 +27,11 @@ export function Footer({
         <div className="footer-links">
           <a href={siteIdentity.links.github} target="_blank" rel="noreferrer">
             GitHub
+            <span className="sr-only"> ({opensInNewTabLabel})</span>
           </a>
           <a href={siteIdentity.links.linkedin} target="_blank" rel="noreferrer">
             LinkedIn
+            <span className="sr-only"> ({opensInNewTabLabel})</span>
           </a>
           <a href={siteEmailHref(locale)}>{contactLabel}</a>
           <a href="/rss.xml">RSS</a>

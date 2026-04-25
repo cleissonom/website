@@ -24,7 +24,15 @@ export default function LocaleNotFound({ params }: NotFoundProps) {
     <main className="not-found">
       <h1>{ui.labels.notFoundTitle}</h1>
       <MutedText>{ui.labels.notFoundDescription}</MutedText>
-      <ButtonLink href={`/${locale}`}>{ui.labels.goHome}</ButtonLink>
+      <div className="not-found-actions">
+        <ButtonLink href={`/${locale}`}>{ui.labels.goHome}</ButtonLink>
+        <ButtonLink variant="secondary" href={`/${locale}/experience`}>
+          {ui.nav.experience}
+        </ButtonLink>
+        <ButtonLink variant="ghost" href={`/${locale}/projects`}>
+          {ui.nav.projects}
+        </ButtonLink>
+      </div>
     </main>
   )
 }

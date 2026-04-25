@@ -3,6 +3,8 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
 import {
+  Chip,
+  ChipRow,
   Eyebrow,
   InlineLink,
   Lead,
@@ -96,23 +98,41 @@ export default async function BlogDetailPage({
       <JsonLd id="blog-post-jsonld" data={blogPostJsonLd(locale, post)} />
       <JsonLd id="blog-post-breadcrumb-jsonld" data={breadcrumbs} />
 
-      <PageHeader>
-        <Eyebrow>{ui.nav.blog}</Eyebrow>
-        <h1>{post.title}</h1>
-        <Lead>{post.summary}</Lead>
-        <MutedText>
-          {ui.labels.published}: {new Date(post.date).toLocaleDateString(locale)}
-          {post.updatedAt
-            ? ` | ${ui.labels.updated}: ${new Date(post.updatedAt).toLocaleDateString(locale)}`
-            : ""}
-        </MutedText>
-      </PageHeader>
+      <Surface as="section" className="article-hero" aria-labelledby="blog-post-title">
+        <PageHeader className="article-hero-copy">
+          <Eyebrow>{ui.nav.blog}</Eyebrow>
+          <h1 id="blog-post-title">{post.title}</h1>
+          <Lead>{post.summary}</Lead>
+        </PageHeader>
 
-      <Surface className="markdown">
+        <div className="article-meta-row">
+          <MutedText>
+            {ui.labels.published}: {new Date(post.date).toLocaleDateString(locale)}
+          </MutedText>
+          {post.updatedAt ? (
+            <MutedText>
+              {ui.labels.updated}: {new Date(post.updatedAt).toLocaleDateString(locale)}
+            </MutedText>
+          ) : null}
+          <MutedText>
+            {post.readingTimeMinutes} {dictionary.snippets.readingMinutesShort}
+          </MutedText>
+        </div>
+
+        <ChipRow>
+          {post.tags.map((tag) => (
+            <Chip key={`${post.slug}-${tag}`}>{tag}</Chip>
+          ))}
+        </ChipRow>
+      </Surface>
+
+      <Surface className="markdown content-prose article-prose">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
       </Surface>
 
-      <InlineLink href={`/${locale}/blog`}>{ui.labels.backToBlog}</InlineLink>
+      <nav className="detail-footer-nav" aria-label={ui.labels.backToBlog}>
+        <InlineLink href={`/${locale}/blog`}>{ui.labels.backToBlog}</InlineLink>
+      </nav>
     </SectionStack>
   )
 }

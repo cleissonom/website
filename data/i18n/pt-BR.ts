@@ -82,9 +82,11 @@ export const ptBRDictionary: LocaleDictionary = {
       readMore: "Ler mais",
       published: "Publicado",
       updated: "Atualizado",
+      period: "Período",
       role: "Função",
       status: "Status",
       stack: "Stack",
+      topics: "Tópicos",
       highlights: "Destaques",
       experienceTimelineAria: "Linha do tempo de experiência",
       mainNavigationAria: "Navegação principal",
@@ -92,7 +94,8 @@ export const ptBRDictionary: LocaleDictionary = {
       backToBlog: "Voltar para o blog",
       notFoundTitle: "Página não encontrada",
       notFoundDescription: "A página solicitada não existe para este idioma.",
-      goHome: "Ir para o início"
+      goHome: "Ir para o início",
+      opensInNewTab: "abre em uma nova aba"
     }
   },
   content: {
@@ -225,8 +228,16 @@ export const ptBRDictionary: LocaleDictionary = {
     experience: {
       metadataTitle: "Experiência",
       metadataDescription:
-        "Linha do tempo completa da experiência profissional com escopo de funções, contexto de entrega e contribuições técnicas.",
-      lead: "Histórico profissional completo com responsabilidades e resultados detalhados por função.",
+        "Experiência de engenharia de software com Node.js, Python, AWS, Kubernetes, microsserviços, produtos com IA e infraestrutura em nuvem.",
+      lead: "Uma visão detalhada dos times, sistemas e resultados por trás do meu trabalho em engenharia de software.",
+      overviewHeading: "Perfil profissional",
+      currentRoleLabel: "Função atual",
+      focusLabel: "Foco principal",
+      statsLabels: {
+        recommendations: "Recomendações"
+      },
+      latestRoleLabel: "Função mais recente",
+      opensInNewTabLabel: "abre em uma nova aba",
       timelineHeading: "Experiência Profissional",
       recommendationsHeading: "Recomendações",
       recommendationsLead: "Recomendações recebidas de colegas e lideranças.",

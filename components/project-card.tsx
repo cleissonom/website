@@ -28,22 +28,20 @@ export function ProjectCard({
 
   return (
     <Card enableWalletHover={enableWalletHover}>
-      {enableWalletHover ? (
-        <div className="card-banner-shell">
-          {project.coverImage ? (
-            <Image
-              className="card-banner-image"
-              src={project.coverImage}
-              alt={`${project.title} preview`}
-              width={640}
-              height={360}
-              loading="lazy"
-            />
-          ) : (
-            <div className="card-banner-fallback" aria-hidden="true" />
-          )}
-        </div>
-      ) : null}
+      <div className="card-banner-shell">
+        {project.coverImage ? (
+          <Image
+            className="card-banner-image"
+            src={project.coverImage}
+            alt={`${project.title} preview`}
+            width={640}
+            height={360}
+            loading="lazy"
+          />
+        ) : (
+          <div className="card-banner-fallback" aria-hidden="true" />
+        )}
+      </div>
       <p className="card-meta">{project.role}</p>
       <h3>
         <Link href={`/${locale}/projects/${project.slug}` as Route}>{project.title}</Link>

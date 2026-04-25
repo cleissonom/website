@@ -3,10 +3,12 @@ import { InlineLink } from "@/components/design-system"
 
 export function RecommendationsList({
   items,
-  viewProfileLabel
+  viewProfileLabel,
+  opensInNewTabLabel = "opens in a new tab"
 }: {
   items: Recommendation[]
   viewProfileLabel: string
+  opensInNewTabLabel?: string
 }) {
   return (
     <ol className="recommendations">
@@ -14,8 +16,11 @@ export function RecommendationsList({
         <li key={recommendation.id} className="recommendation-item">
           <details open={index < 2}>
             <summary className="recommendation-summary">
-              <h3>{recommendation.name}</h3>
-              <p className="recommendation-context">{recommendation.context}</p>
+              <span className="recommendation-summary-text">
+                <span className="recommendation-name">{recommendation.name}</span>
+                <span className="recommendation-context">{recommendation.context}</span>
+              </span>
+              <span className="recommendation-chevron" aria-hidden="true" />
             </summary>
             <div className="recommendation-content">
               <p className="recommendation-headline">{recommendation.headline}</p>
@@ -24,6 +29,7 @@ export function RecommendationsList({
               ))}
               <InlineLink href={recommendation.profileUrl} target="_blank" rel="noreferrer">
                 {viewProfileLabel}
+                <span className="sr-only"> ({opensInNewTabLabel})</span>
               </InlineLink>
             </div>
           </details>

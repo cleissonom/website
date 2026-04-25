@@ -5,11 +5,11 @@ import remarkGfm from "remark-gfm"
 
 import {
   ButtonLink,
+  Chip,
   ChipRow,
   Eyebrow,
   InlineLink,
   Lead,
-  MutedText,
   PageHeader,
   SectionStack,
   Surface
@@ -88,6 +88,11 @@ export default async function ProjectDetailPage({
   const links = (
     Object.entries(project.links) as Array<[ProjectLinkKey, string | undefined]>
   ).flatMap(([label, value]) => (value ? [{ label, value }] : []))
+  const projectPeriod = project.dateEnd
+    ? `${new Date(project.dateStart).toLocaleDateString(locale)} - ${new Date(
+        project.dateEnd
+      ).toLocaleDateString(locale)}`
+    : new Date(project.dateStart).toLocaleDateString(locale)
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: ui.nav.home, url: absoluteUrl(`/${locale}`) },
@@ -100,11 +105,56 @@ export default async function ProjectDetailPage({
       <JsonLd id="project-jsonld" data={projectJsonLd(locale, project)} />
       <JsonLd id="project-breadcrumb-jsonld" data={breadcrumbs} />
 
-      <PageHeader>
-        <Eyebrow>{ui.nav.projects}</Eyebrow>
-        <h1>{project.title}</h1>
-        <Lead>{project.summary}</Lead>
-      </PageHeader>
+      <Surface as="section" className="detail-hero" aria-labelledby="project-title">
+        <div className="detail-hero-grid">
+          <PageHeader className="detail-hero-copy">
+            <Eyebrow>{ui.nav.projects}</Eyebrow>
+            <h1 id="project-title">{project.title}</h1>
+            <Lead>{project.summary}</Lead>
+            <ChipRow>
+              {project.tags.map((tag) => (
+                <Chip key={`${project.slug}-${tag}`}>{tag}</Chip>
+              ))}
+            </ChipRow>
+          </PageHeader>
+
+          <dl className="detail-facts">
+            <div>
+              <dt>{ui.labels.role}</dt>
+              <dd>{project.role}</dd>
+            </div>
+            <div>
+              <dt>{ui.labels.status}</dt>
+              <dd>{dictionary.pages.projects.statusLabels[project.status]}</dd>
+            </div>
+            <div>
+              <dt>{ui.labels.stack}</dt>
+              <dd>{project.stack.join(", ")}</dd>
+            </div>
+            <div>
+              <dt>{ui.labels.period}</dt>
+              <dd>{projectPeriod}</dd>
+            </div>
+          </dl>
+        </div>
+
+        {links.length > 0 ? (
+          <div className="detail-actions">
+            {links.map(({ label, value }) => (
+              <ButtonLink
+                key={label}
+                href={value}
+                target="_blank"
+                rel="noreferrer"
+                variant={label === "live" ? "primary" : "secondary"}
+              >
+                {dictionary.pages.projects.linkLabels[label]}
+                <span className="sr-only"> ({ui.labels.opensInNewTab})</span>
+              </ButtonLink>
+            ))}
+          </div>
+        ) : null}
+      </Surface>
 
       {project.coverImage ? (
         <figure className="project-banner">
@@ -117,50 +167,16 @@ export default async function ProjectDetailPage({
         </figure>
       ) : null}
 
-      <section className="meta-grid">
-        <article>
-          <MutedText>{ui.labels.role}</MutedText>
-          <p>{project.role}</p>
-        </article>
-        <article>
-          <MutedText>{ui.labels.status}</MutedText>
-          <p>{dictionary.pages.projects.statusLabels[project.status]}</p>
-        </article>
-        <article>
-          <MutedText>{ui.labels.stack}</MutedText>
-          <p>{project.stack.join(", ")}</p>
-        </article>
-      </section>
-
       <Surface>
         <h2>{ui.labels.highlights}</h2>
-        <ul>
+        <ul className="outcome-list">
           {project.highlights.map((highlight) => (
             <li key={highlight}>{highlight}</li>
           ))}
         </ul>
       </Surface>
 
-      {links.length > 0 ? (
-        <Surface>
-          <h2>{dictionary.pages.projects.linksHeading}</h2>
-          <ChipRow>
-            {links.map(({ label, value }) => (
-              <ButtonLink
-                key={label}
-                href={value}
-                target="_blank"
-                rel="noreferrer"
-                variant="secondary"
-              >
-                {dictionary.pages.projects.linkLabels[label]}
-              </ButtonLink>
-            ))}
-          </ChipRow>
-        </Surface>
-      ) : null}
-
-      <Surface className="markdown">
+      <Surface className="markdown content-prose">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{project.body}</ReactMarkdown>
       </Surface>
 

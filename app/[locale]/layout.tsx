@@ -59,6 +59,7 @@ export default async function LocaleLayout({
         locale={locale}
         resumeLabel={dictionary.ui.nav.resume}
         contactLabel={dictionary.ui.cta.contact}
+        opensInNewTabLabel={dictionary.ui.labels.opensInNewTab}
       />
     </>
   )

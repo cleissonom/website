@@ -50,9 +50,11 @@ export type UiDictionary = {
     readMore: string
     published: string
     updated: string
+    period: string
     role: string
     status: string
     stack: string
+    topics: string
     highlights: string
     experienceTimelineAria: string
     mainNavigationAria: string
@@ -61,6 +63,7 @@ export type UiDictionary = {
     notFoundTitle: string
     notFoundDescription: string
     goHome: string
+    opensInNewTab: string
   }
 }
 
@@ -88,6 +91,14 @@ export type LocaleDictionary = {
       metadataTitle: string
       metadataDescription: string
       lead: string
+      overviewHeading: string
+      currentRoleLabel: string
+      focusLabel: string
+      statsLabels: {
+        recommendations: string
+      }
+      latestRoleLabel: string
+      opensInNewTabLabel: string
       timelineHeading: string
       recommendationsHeading: string
       recommendationsLead: string

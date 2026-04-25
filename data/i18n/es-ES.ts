@@ -82,9 +82,11 @@ export const esESDictionary: LocaleDictionary = {
       readMore: "Leer más",
       published: "Publicado",
       updated: "Actualizado",
+      period: "Período",
       role: "Rol",
       status: "Estado",
       stack: "Stack",
+      topics: "Temas",
       highlights: "Aspectos clave",
       experienceTimelineAria: "Línea de tiempo de experiencia",
       mainNavigationAria: "Navegación principal",
@@ -92,7 +94,8 @@ export const esESDictionary: LocaleDictionary = {
       backToBlog: "Volver al blog",
       notFoundTitle: "Página no encontrada",
       notFoundDescription: "La página solicitada no existe para este idioma.",
-      goHome: "Ir al inicio"
+      goHome: "Ir al inicio",
+      opensInNewTab: "se abre en una nueva pestaña"
     }
   },
   content: {
@@ -225,8 +228,16 @@ export const esESDictionary: LocaleDictionary = {
     experience: {
       metadataTitle: "Experiencia",
       metadataDescription:
-        "Línea de tiempo completa de experiencia profesional con alcance de roles, contexto de entrega y contribuciones técnicas.",
-      lead: "Trayectoria profesional completa con responsabilidades y resultados detallados por rol.",
+        "Experiencia en ingeniería de software con Node.js, Python, AWS, Kubernetes, microservicios, productos con IA e infraestructura cloud.",
+      lead: "Una vista detallada de los equipos, sistemas y resultados detrás de mi trabajo en ingeniería de software.",
+      overviewHeading: "Perfil profesional",
+      currentRoleLabel: "Rol actual",
+      focusLabel: "Enfoque principal",
+      statsLabels: {
+        recommendations: "Recomendaciones"
+      },
+      latestRoleLabel: "Rol más reciente",
+      opensInNewTabLabel: "se abre en una nueva pestaña",
       timelineHeading: "Experiencia Profesional",
       recommendationsHeading: "Recomendaciones",
       recommendationsLead: "Recomendaciones recibidas de colegas y lideres.",
