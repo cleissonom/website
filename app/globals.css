@@ -533,6 +533,208 @@ h3 {
   text-transform: uppercase;
 }
 
+.projects-label-dropdown {
+  position: relative;
+  width: min(100%, 28rem);
+}
+
+.projects-label-dropdown summary {
+  list-style: none;
+}
+
+.projects-label-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.projects-label-dropdown-trigger {
+  min-height: 2.75rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-strong);
+  color: var(--text);
+  cursor: pointer;
+  padding: 0.55rem 0.7rem;
+  user-select: none;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.projects-label-dropdown-trigger:hover,
+.projects-label-dropdown[open] .projects-label-dropdown-trigger {
+  border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
+  background: color-mix(in srgb, var(--surface-strong) 88%, var(--accent-soft));
+}
+
+.projects-label-dropdown-summary,
+.projects-label-option-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.projects-label-dropdown-summary {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.projects-label-dropdown-count {
+  min-width: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border));
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0.24rem 0.45rem;
+  text-align: center;
+}
+
+.projects-label-dropdown-caret {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  transition: transform 140ms ease;
+}
+
+.projects-label-dropdown[open] .projects-label-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.projects-label-dropdown-menu {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.45rem);
+  z-index: 15;
+  width: 100%;
+  max-height: min(22rem, calc(100vh - 12rem));
+  overflow: auto;
+  display: grid;
+  gap: 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  padding: 0.45rem;
+}
+
+.projects-label-dropdown:not([open]) .projects-label-dropdown-menu {
+  display: none;
+}
+
+.projects-label-dropdown-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.35rem 0.5rem;
+  text-transform: uppercase;
+}
+
+.projects-label-clear {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.74rem;
+  padding: 0.2rem 0;
+}
+
+.projects-label-clear:disabled {
+  color: var(--muted);
+  cursor: default;
+  opacity: 0.5;
+}
+
+.projects-label-options {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.projects-label-option {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 12px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 650;
+  padding: 0.5rem 0.55rem;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.projects-label-option:hover,
+.projects-label-option:focus-within,
+.projects-label-option-active {
+  background: color-mix(in srgb, var(--accent-soft) 72%, transparent);
+  color: var(--text);
+}
+
+.projects-label-option:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.projects-label-checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.projects-label-checkmark {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.projects-label-checkbox:checked + .projects-label-checkmark {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.projects-label-checkbox:checked + .projects-label-checkmark::after {
+  content: "";
+  position: absolute;
+  left: 0.32rem;
+  top: 0.16rem;
+  width: 0.28rem;
+  height: 0.5rem;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(45deg);
+}
+
 .chip-button {
   appearance: none;
   -webkit-appearance: none;
@@ -1328,7 +1530,11 @@ summary:focus-visible {
   .timeline-company-summary,
   .timeline-company-chevron,
   .recommendation-summary,
-  .recommendation-chevron {
+  .recommendation-chevron,
+  .projects-label-dropdown-trigger,
+  .projects-label-dropdown-caret,
+  .projects-label-option,
+  .projects-label-checkmark {
     transition: none;
   }
 }
@@ -1441,5 +1647,13 @@ summary:focus-visible {
 
   .timeline-company-content {
     padding: 0.95rem 0.9rem 1rem;
+  }
+
+  .projects-label-dropdown {
+    width: 100%;
+  }
+
+  .projects-label-dropdown-menu {
+    max-height: min(20rem, 62vh);
   }
 }

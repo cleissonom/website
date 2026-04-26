@@ -110,6 +110,7 @@ export type LocaleDictionary = {
       lead: string
       filterHeading: string
       allLabels: string
+      clearLabels: string
       noResultsDescription: string
       notFoundTitle: string
       notFoundDescription: string

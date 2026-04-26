@@ -2,13 +2,14 @@
 
 import { useMemo, useState } from "react"
 
-import { ChipButton, ChipRow, Grid, MutedText } from "@/components/design-system"
+import { Grid, MutedText } from "@/components/design-system"
 import { ProjectCard, type ProjectCardProject } from "@/components/project-card"
 import type { Locale } from "@/lib/i18n"
 
 type ProjectsFilterCopy = {
   filterHeading: string
   allLabels: string
+  clearLabels: string
   noResultsDescription: string
 }
 
@@ -25,8 +26,7 @@ export function ProjectListWithFilters({
   readMoreAboutPrefix: string
   copy: ProjectsFilterCopy
 }) {
-  const [selectedLabel, setSelectedLabel] = useState<string | null>(null)
-  const selectedLabelKey = selectedLabel?.toLocaleLowerCase(locale) ?? null
+  const [selectedLabels, setSelectedLabels] = useState<string[]>([])
   const availableLabels = useMemo(
     () =>
       Array.from(new Set(projects.flatMap((project) => project.tags))).sort((a, b) =>
@@ -34,44 +34,102 @@ export function ProjectListWithFilters({
       ),
     [projects, locale]
   )
+  const selectedLabelKeys = useMemo(
+    () => new Set(selectedLabels.map((label) => label.toLocaleLowerCase(locale))),
+    [selectedLabels, locale]
+  )
   const filteredProjects = useMemo(
     () =>
-      selectedLabelKey
+      selectedLabelKeys.size > 0
         ? projects.filter((project) =>
-            project.tags.some((tag) => tag.toLocaleLowerCase(locale) === selectedLabelKey)
+            project.tags.some((tag) => selectedLabelKeys.has(tag.toLocaleLowerCase(locale)))
           )
         : projects,
-    [projects, selectedLabelKey, locale]
+    [projects, selectedLabelKeys, locale]
   )
+  const selectedLabelSummary =
+    selectedLabels.length === 0
+      ? copy.allLabels
+      : selectedLabels.length <= 2
+        ? selectedLabels.join(", ")
+        : `${selectedLabels.slice(0, 2).join(", ")} +${selectedLabels.length - 2}`
+
+  function toggleLabel(label: string) {
+    const labelKey = label.toLocaleLowerCase(locale)
+
+    setSelectedLabels((currentLabels) =>
+      currentLabels.some((currentLabel) => currentLabel.toLocaleLowerCase(locale) === labelKey)
+        ? currentLabels.filter(
+            (currentLabel) => currentLabel.toLocaleLowerCase(locale) !== labelKey
+          )
+        : [...currentLabels, label]
+    )
+  }
 
   return (
     <>
       <section className="projects-filter" aria-label={copy.filterHeading}>
         <p className="projects-filter-label">{copy.filterHeading}</p>
-        <ChipRow>
-          <ChipButton
-            type="button"
-            active={!selectedLabelKey}
-            onClick={() => setSelectedLabel(null)}
+
+        <details className="projects-label-dropdown">
+          <summary
+            className="projects-label-dropdown-trigger"
+            aria-label={`${copy.filterHeading}: ${selectedLabelSummary}`}
           >
-            {copy.allLabels}
-          </ChipButton>
+            <span className="projects-label-dropdown-summary">{selectedLabelSummary}</span>
+            {selectedLabels.length > 0 ? (
+              <span className="projects-label-dropdown-count">{selectedLabels.length}</span>
+            ) : null}
+            <svg
+              className="projects-label-dropdown-caret"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 6l4 4 4-4" />
+            </svg>
+          </summary>
 
-          {availableLabels.map((label) => {
-            const isActive = label.toLocaleLowerCase(locale) === selectedLabelKey
-
-            return (
-              <ChipButton
-                key={label}
+          <div className="projects-label-dropdown-menu">
+            <div className="projects-label-dropdown-actions">
+              <span>{copy.allLabels}</span>
+              <button
+                className="projects-label-clear"
                 type="button"
-                active={isActive}
-                onClick={() => setSelectedLabel(label)}
+                disabled={selectedLabels.length === 0}
+                onClick={() => setSelectedLabels([])}
               >
-                {label}
-              </ChipButton>
-            )
-          })}
-        </ChipRow>
+                {copy.clearLabels}
+              </button>
+            </div>
+
+            <div className="projects-label-options">
+              {availableLabels.map((label, index) => {
+                const labelKey = label.toLocaleLowerCase(locale)
+                const isChecked = selectedLabelKeys.has(labelKey)
+                const inputId = `projects-label-filter-${index}`
+
+                return (
+                  <label
+                    key={label}
+                    className={`projects-label-option${isChecked ? " projects-label-option-active" : ""}`}
+                    htmlFor={inputId}
+                  >
+                    <input
+                      id={inputId}
+                      className="projects-label-checkbox"
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => toggleLabel(label)}
+                    />
+                    <span className="projects-label-checkmark" aria-hidden="true" />
+                    <span className="projects-label-option-text">{label}</span>
+                  </label>
+                )
+              })}
+            </div>
+          </div>
+        </details>
       </section>
 
       {filteredProjects.length > 0 ? (

@@ -103,6 +103,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         copy={{
           filterHeading: dictionary.pages.projects.filterHeading,
           allLabels: dictionary.pages.projects.allLabels,
+          clearLabels: dictionary.pages.projects.clearLabels,
           noResultsDescription: dictionary.pages.projects.noResultsDescription
         }}
       />
