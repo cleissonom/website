@@ -846,6 +846,24 @@ h3 {
   letter-spacing: 0.07em;
 }
 
+.project-card-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.project-card-meta-row span {
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  padding: 0.22rem 0.5rem;
+  text-transform: uppercase;
+}
+
 .post-card {
   border-left: 3px solid color-mix(in srgb, var(--accent) 70%, var(--border));
 }
@@ -1378,6 +1396,11 @@ summary:focus-visible {
 }
 
 .content-prose {
+  min-width: 0;
+  width: 100%;
+}
+
+.content-prose > * {
   max-width: 82ch;
 }
 

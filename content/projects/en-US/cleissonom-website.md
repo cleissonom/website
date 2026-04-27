@@ -2,9 +2,11 @@
 title: Personal Website - cleisson.com
 slug: cleissonom-website
 summary: Multilingual personal website and portfolio built to present my work, publish technical content, and centralize contact and resume information.
-dateStart: 2026-02-01
+dateStart: "2026-02-01T12:00:00.000Z"
 role: Software Engineer
 status: active
+type: website
+stage: live
 tags:
   - Portfolio
   - Personal Branding

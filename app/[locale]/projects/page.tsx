@@ -53,9 +53,13 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
     title: project.title,
     summary: project.summary,
     role: project.role,
+    type: project.type,
+    stage: project.stage,
     tags: project.tags,
     coverImage: project.coverImage
   }))
+  const developerToolsCount = projects.filter((project) => project.type === "developer-tool").length
+  const maintainedCount = projects.filter((project) => project.stage === "maintained").length
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: ui.nav.home, url: absoluteUrl(`/${locale}`) },
@@ -69,7 +73,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
       <Surface as="section" className="page-overview" aria-labelledby="projects-title">
         <PageHeader className="page-overview-copy">
           <Eyebrow>{ui.nav.projects}</Eyebrow>
-          <h1 id="projects-title">{ui.sections.projects}</h1>
+          <h1 id="projects-title">{dictionary.pages.projects.metadataTitle}</h1>
           <Lead>{dictionary.pages.projects.lead}</Lead>
         </PageHeader>
 
@@ -79,12 +83,12 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
             <dd>{ui.sections.projects}</dd>
           </div>
           <div>
-            <dt>{projectLabels.length}</dt>
-            <dd>{dictionary.pages.projects.filterHeading}</dd>
+            <dt>{developerToolsCount}</dt>
+            <dd>{dictionary.pages.projects.typeLabels["developer-tool"]}</dd>
           </div>
           <div>
-            <dt>{projects.filter((project) => project.status === "active").length}</dt>
-            <dd>{dictionary.pages.projects.statusLabels.active}</dd>
+            <dt>{maintainedCount}</dt>
+            <dd>{dictionary.pages.projects.stageLabels.maintained}</dd>
           </div>
         </dl>
 
@@ -100,6 +104,8 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         locale={locale}
         readMoreLabel={ui.labels.readMore}
         readMoreAboutPrefix={dictionary.snippets.readMoreAboutPrefix}
+        typeLabels={dictionary.pages.projects.typeLabels}
+        stageLabels={dictionary.pages.projects.stageLabels}
         copy={{
           filterHeading: dictionary.pages.projects.filterHeading,
           allLabels: dictionary.pages.projects.allLabels,

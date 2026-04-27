@@ -68,6 +68,14 @@ export type UiDictionary = {
 }
 
 export type ProjectStatus = "active" | "archived"
+export type ProjectType =
+  | "product"
+  | "developer-tool"
+  | "website"
+  | "systems-lab"
+  | "game"
+  | "experiment"
+export type ProjectStage = "live" | "in-progress" | "maintained" | "lab" | "archived"
 export type ProjectLinkKey = "repo" | "live" | "caseStudy" | "demo"
 
 export type LocaleDictionary = {
@@ -115,7 +123,11 @@ export type LocaleDictionary = {
       notFoundTitle: string
       notFoundDescription: string
       linksHeading: string
+      typeHeading: string
+      stageHeading: string
       statusLabels: Record<ProjectStatus, string>
+      typeLabels: Record<ProjectType, string>
+      stageLabels: Record<ProjectStage, string>
       linkLabels: Record<ProjectLinkKey, string>
     }
     blog: {

@@ -120,6 +120,14 @@ export default async function ProjectDetailPage({
 
           <dl className="detail-facts">
             <div>
+              <dt>{dictionary.pages.projects.typeHeading}</dt>
+              <dd>{dictionary.pages.projects.typeLabels[project.type]}</dd>
+            </div>
+            <div>
+              <dt>{dictionary.pages.projects.stageHeading}</dt>
+              <dd>{dictionary.pages.projects.stageLabels[project.stage]}</dd>
+            </div>
+            <div>
               <dt>{ui.labels.role}</dt>
               <dd>{project.role}</dd>
             </div>

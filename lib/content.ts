@@ -5,6 +5,7 @@ import path from "node:path"
 import matter from "gray-matter"
 import { z } from "zod"
 
+import type { ProjectStage, ProjectType } from "@/data/i18n/types"
 import { LOCALES, type Locale } from "@/lib/i18n"
 
 const contentRoot = path.join(process.cwd(), "content")
@@ -29,27 +30,52 @@ const dateStringSchema = z.union([z.string().min(1), z.date()]).transform((value
   return value.toISOString()
 })
 
-const projectFrontmatterSchema = z.object({
-  title: z.string().min(1),
-  slug: z.string().min(1),
-  summary: z.string().min(1),
-  dateStart: dateStringSchema,
-  dateEnd: dateStringSchema.optional(),
-  role: z.string().min(1),
-  status: z.enum(["active", "archived"]),
-  tags: z.array(z.string().min(1)).min(1),
-  stack: z.array(z.string().min(1)).min(1),
-  links: z
-    .object({
-      repo: safeExternalUrlSchema.optional(),
-      live: safeExternalUrlSchema.optional(),
-      caseStudy: safeExternalUrlSchema.optional(),
-      demo: safeExternalUrlSchema.optional()
-    })
-    .default({}),
-  highlights: z.array(z.string().min(1)).min(1),
-  coverImage: z.string().optional()
-})
+const projectTypeSchema = z.enum([
+  "product",
+  "developer-tool",
+  "website",
+  "systems-lab",
+  "game",
+  "experiment"
+] satisfies [ProjectType, ...ProjectType[]])
+
+const projectStageSchema = z.enum([
+  "live",
+  "in-progress",
+  "maintained",
+  "lab",
+  "archived"
+] satisfies [ProjectStage, ...ProjectStage[]])
+
+const projectFrontmatterSchema = z
+  .object({
+    title: z.string().min(1),
+    slug: z.string().min(1),
+    summary: z.string().min(1),
+    dateStart: dateStringSchema,
+    dateEnd: dateStringSchema.optional(),
+    role: z.string().min(1),
+    status: z.enum(["active", "archived"]),
+    type: projectTypeSchema.optional(),
+    stage: projectStageSchema.optional(),
+    tags: z.array(z.string().min(1)).min(1),
+    stack: z.array(z.string().min(1)).min(1),
+    links: z
+      .object({
+        repo: safeExternalUrlSchema.optional(),
+        live: safeExternalUrlSchema.optional(),
+        caseStudy: safeExternalUrlSchema.optional(),
+        demo: safeExternalUrlSchema.optional()
+      })
+      .default({}),
+    highlights: z.array(z.string().min(1)).min(1),
+    coverImage: z.string().optional()
+  })
+  .transform((project) => ({
+    ...project,
+    type: project.type ?? "experiment",
+    stage: project.stage ?? (project.status === "archived" ? "archived" : "live")
+  }))
 
 const blogFrontmatterSchema = z.object({
   title: z.string().min(1),

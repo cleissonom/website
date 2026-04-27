@@ -4,6 +4,7 @@ import { useMemo, useState } from "react"
 
 import { Grid, MutedText } from "@/components/design-system"
 import { ProjectCard, type ProjectCardProject } from "@/components/project-card"
+import type { ProjectStage, ProjectType } from "@/data/i18n/types"
 import type { Locale } from "@/lib/i18n"
 
 type ProjectsFilterCopy = {
@@ -18,12 +19,16 @@ export function ProjectListWithFilters({
   locale,
   readMoreLabel,
   readMoreAboutPrefix,
+  typeLabels,
+  stageLabels,
   copy
 }: {
   projects: ProjectCardProject[]
   locale: Locale
   readMoreLabel: string
   readMoreAboutPrefix: string
+  typeLabels: Record<ProjectType, string>
+  stageLabels: Record<ProjectStage, string>
   copy: ProjectsFilterCopy
 }) {
   const [selectedLabels, setSelectedLabels] = useState<string[]>([])
@@ -141,6 +146,8 @@ export function ProjectListWithFilters({
               locale={locale}
               readMoreLabel={readMoreLabel}
               readMoreAboutPrefix={readMoreAboutPrefix}
+              typeLabel={typeLabels[project.type]}
+              stageLabel={stageLabels[project.stage]}
               enableWalletHover
             />
           ))}

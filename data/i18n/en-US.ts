@@ -243,10 +243,10 @@ export const enUSDictionary: LocaleDictionary = {
       viewProfileLabel: "View LinkedIn profile"
     },
     projects: {
-      metadataTitle: "Projects",
+      metadataTitle: "Personal Projects",
       metadataDescription:
-        "Selected engineering projects spanning backend, cloud, and mobile delivery.",
-      lead: "Outcome-focused project snapshots with architecture decisions, delivery constraints, and measurable impact.",
+        "Personal software projects spanning portfolio infrastructure, open-source developer tools, and future learning labs.",
+      lead: "Real personal projects I build, maintain, or use to learn deeper engineering skills. I keep this page focused on public or demonstrable work instead of draft ideas.",
       filterHeading: "Filter by label",
       allLabels: "All labels",
       clearLabels: "Clear labels",
@@ -254,8 +254,25 @@ export const enUSDictionary: LocaleDictionary = {
       notFoundTitle: "Project not found",
       notFoundDescription: "Project not found for this locale.",
       linksHeading: "Links",
+      typeHeading: "Type",
+      stageHeading: "Stage",
       statusLabels: {
         active: "Active",
+        archived: "Archived"
+      },
+      typeLabels: {
+        product: "Product",
+        "developer-tool": "Developer Tool",
+        website: "Website",
+        "systems-lab": "Systems Lab",
+        game: "Game",
+        experiment: "Experiment"
+      },
+      stageLabels: {
+        live: "Live",
+        "in-progress": "In progress",
+        maintained: "Maintained",
+        lab: "Lab",
         archived: "Archived"
       },
       linkLabels: {

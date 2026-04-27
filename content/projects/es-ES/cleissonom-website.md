@@ -2,9 +2,11 @@
 title: Sitio personal - cleisson.com
 slug: cleissonom-website
 summary: Sitio web y portafolio personal multilingüe creado para presentar mi trabajo, publicar contenido técnico y centralizar contacto y currículum.
-dateStart: 2026-02-01
+dateStart: "2026-02-01T12:00:00.000Z"
 role: Ingeniero de Software
 status: active
+type: website
+stage: live
 tags:
   - Portfolio
   - Personal Branding

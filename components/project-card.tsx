@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/i18n"
 
 export type ProjectCardProject = Pick<
   ProjectEntry,
-  "slug" | "title" | "summary" | "role" | "tags" | "coverImage"
+  "slug" | "title" | "summary" | "role" | "type" | "stage" | "tags" | "coverImage"
 >
 
 export function ProjectCard({
@@ -15,12 +15,16 @@ export function ProjectCard({
   locale,
   readMoreLabel,
   readMoreAboutPrefix,
+  typeLabel,
+  stageLabel,
   enableWalletHover = false
 }: {
   project: ProjectCardProject
   locale: Locale
   readMoreLabel: string
   readMoreAboutPrefix: string
+  typeLabel: string
+  stageLabel: string
   enableWalletHover?: boolean
 }) {
   const contextLabel = `${readMoreAboutPrefix} ${project.title}`
@@ -41,6 +45,10 @@ export function ProjectCard({
         ) : (
           <div className="card-banner-fallback" aria-hidden="true" />
         )}
+      </div>
+      <div className="project-card-meta-row" aria-label={`${typeLabel} | ${stageLabel}`}>
+        <span>{typeLabel}</span>
+        <span>{stageLabel}</span>
       </div>
       <p className="card-meta">{project.role}</p>
       <h3>

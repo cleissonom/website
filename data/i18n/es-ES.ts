@@ -244,9 +244,10 @@ export const esESDictionary: LocaleDictionary = {
       viewProfileLabel: "Ver perfil de LinkedIn"
     },
     projects: {
-      metadataTitle: "Proyectos",
-      metadataDescription: "Proyectos de ingeniería enfocados en backend, nube y entrega mobile.",
-      lead: "Resumen de proyectos orientados a resultados, con decisiones de arquitectura, restricciones de entrega e impacto medible.",
+      metadataTitle: "Proyectos personales",
+      metadataDescription:
+        "Proyectos personales de software entre infraestructura del portafolio, herramientas open source para desarrolladores y futuros laboratorios de aprendizaje.",
+      lead: "Proyectos personales reales que construyo, mantengo o uso para profundizar habilidades de ingeniería. Esta página se enfoca en trabajo público o demostrable, no en ideas provisionales.",
       filterHeading: "Filtrar por etiqueta",
       allLabels: "Todas las etiquetas",
       clearLabels: "Borrar etiquetas",
@@ -254,8 +255,25 @@ export const esESDictionary: LocaleDictionary = {
       notFoundTitle: "Proyecto no encontrado",
       notFoundDescription: "No se encontró el proyecto para este idioma.",
       linksHeading: "Enlaces",
+      typeHeading: "Tipo",
+      stageHeading: "Etapa",
       statusLabels: {
         active: "Activo",
+        archived: "Archivado"
+      },
+      typeLabels: {
+        product: "Producto",
+        "developer-tool": "Herramienta dev",
+        website: "Sitio web",
+        "systems-lab": "Lab de sistemas",
+        game: "Juego",
+        experiment: "Experimento"
+      },
+      stageLabels: {
+        live: "En vivo",
+        "in-progress": "En progreso",
+        maintained: "Mantenido",
+        lab: "Laboratorio",
         archived: "Archivado"
       },
       linkLabels: {
