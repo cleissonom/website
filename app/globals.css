@@ -1131,6 +1131,11 @@ summary:focus-visible {
   background: color-mix(in srgb, var(--accent-soft) 70%, transparent);
 }
 
+.timeline-company-details[open] > .timeline-company-summary {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .timeline-company-summary-main {
   display: inline-flex;
   align-items: center;
