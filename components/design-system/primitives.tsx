@@ -1,4 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react"
+import type { Route } from "next"
+import Link from "next/link"
 
 import { cn } from "@/lib/cn"
 
@@ -10,6 +12,16 @@ const buttonVariantClassNames: Record<ButtonVariant, string> = {
   primary: "primary-button",
   secondary: "secondary-button",
   ghost: "ghost-button"
+}
+
+const PUBLIC_FILE_EXTENSION = /\.[^/?#]+$/
+
+function isInternalAppPath(href: ComponentPropsWithoutRef<"a">["href"], target?: string): boolean {
+  if (!href || target || !href.startsWith("/") || href.startsWith("//")) {
+    return false
+  }
+
+  return !PUBLIC_FILE_EXTENSION.test(href.split(/[?#]/, 1)[0] ?? "")
 }
 
 export function Container({
@@ -131,14 +143,28 @@ export function ChipButton({
   )
 }
 
-export function InlineLink({ className, ...props }: ComponentPropsWithoutRef<"a">) {
-  return <a className={cn("inline-link", className)} {...props} />
+export function InlineLink({ className, href, target, ...props }: ComponentPropsWithoutRef<"a">) {
+  const resolvedClassName = cn("inline-link", className)
+
+  if (isInternalAppPath(href, target)) {
+    return <Link className={resolvedClassName} href={href as Route} {...props} />
+  }
+
+  return <a className={resolvedClassName} href={href} target={target} {...props} />
 }
 
 export function ButtonLink({
   variant = "primary",
   className,
+  href,
+  target,
   ...props
 }: ComponentPropsWithoutRef<"a"> & { variant?: ButtonVariant }) {
-  return <a className={cn(buttonVariantClassNames[variant], className)} {...props} />
+  const resolvedClassName = cn(buttonVariantClassNames[variant], className)
+
+  if (isInternalAppPath(href, target)) {
+    return <Link className={resolvedClassName} href={href as Route} {...props} />
+  }
+
+  return <a className={resolvedClassName} href={href} target={target} {...props} />
 }

@@ -43,6 +43,10 @@ export function ThemeScript() {
           }
         }
 
+        function syncThemeToggleLabels() {
+          updateThemeToggleLabel(getCurrentTheme());
+        }
+
         function applyTheme(nextTheme, persistCookie) {
           root.setAttribute('data-theme', nextTheme);
           if (persistCookie) {
@@ -59,6 +63,12 @@ export function ThemeScript() {
         var savedTheme = readThemeFromCookie();
         var initialTheme = savedTheme || (mediaQuery.matches ? 'dark' : 'light');
         applyTheme(initialTheme, false);
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', syncThemeToggleLabels, { once: true });
+        } else {
+          syncThemeToggleLabels();
+        }
 
         if (window.__themeToggleBound !== true) {
           window.addEventListener('click', function (event) {

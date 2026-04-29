@@ -16,7 +16,7 @@ export function LocaleSwitcher({ currentLocale, label }: { currentLocale: Locale
         </svg>
       </summary>
 
-      <ul className="locale-dropdown-menu" role="listbox" aria-label={label}>
+      <ul className="locale-dropdown-menu" aria-label={label}>
         {LOCALES.map((locale) => {
           const isCurrent = locale === currentLocale
           const option = LOCALE_OPTIONS[locale]

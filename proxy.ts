@@ -108,7 +108,7 @@ export function proxy(request: NextRequest) {
   }
 
   if (isLocale(firstSegment)) {
-    return withLocaleCookie(NextResponse.next(), firstSegment)
+    return NextResponse.next()
   }
 
   if (looksLikeLocale(firstSegment)) {

@@ -66,6 +66,25 @@ a {
   color: inherit;
 }
 
+.locale-dropdown summary,
+.projects-label-dropdown summary,
+.timeline-company-summary,
+.recommendation-summary {
+  list-style: none;
+}
+
+.locale-dropdown summary::-webkit-details-marker,
+.projects-label-dropdown summary::-webkit-details-marker,
+.timeline-company-summary::-webkit-details-marker,
+.recommendation-summary::-webkit-details-marker {
+  display: none;
+}
+
+.locale-dropdown:not([open]) .locale-dropdown-menu,
+.projects-label-dropdown:not([open]) .projects-label-dropdown-menu {
+  display: none;
+}
+
 .container {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
@@ -157,14 +176,6 @@ a {
   position: relative;
 }
 
-.locale-dropdown summary {
-  list-style: none;
-}
-
-.locale-dropdown summary::-webkit-details-marker {
-  display: none;
-}
-
 .locale-dropdown-trigger {
   border: 1px solid var(--border);
   background: var(--surface);
@@ -218,10 +229,6 @@ a {
   background: var(--surface-strong);
   box-shadow: var(--shadow);
   z-index: 30;
-}
-
-.locale-dropdown:not([open]) .locale-dropdown-menu {
-  display: none;
 }
 
 .locale-dropdown-option {
@@ -404,6 +411,12 @@ h3 {
   margin: 1.25rem 0 2.1rem;
 }
 
+.page-header {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 1.3rem;
+}
+
 .section-heading-row {
   display: flex;
   align-items: end;
@@ -420,6 +433,7 @@ h3 {
   display: flex;
   align-items: end;
   justify-content: space-between;
+  gap: 0.8rem;
   margin-bottom: 1rem;
 }
 
@@ -538,14 +552,6 @@ h3 {
   width: min(100%, 28rem);
 }
 
-.projects-label-dropdown summary {
-  list-style: none;
-}
-
-.projects-label-dropdown summary::-webkit-details-marker {
-  display: none;
-}
-
 .projects-label-dropdown-trigger {
   min-height: 2.75rem;
   width: 100%;
@@ -625,10 +631,6 @@ h3 {
   background: var(--surface-strong);
   box-shadow: var(--shadow);
   padding: 0.45rem;
-}
-
-.projects-label-dropdown:not([open]) .projects-label-dropdown-menu {
-  display: none;
 }
 
 .projects-label-dropdown-actions {
@@ -919,11 +921,16 @@ summary:focus-visible {
   margin-bottom: 0;
 }
 
-.experience-current {
+.experience-current,
+.detail-facts,
+.resume-contact-panel {
   display: grid;
-  gap: 0.45rem;
   padding-left: 1rem;
   border-left: 3px solid var(--accent);
+}
+
+.experience-current {
+  gap: 0.45rem;
 }
 
 .experience-current p {
@@ -1108,7 +1115,6 @@ summary:focus-visible {
 }
 
 .timeline-company-summary {
-  list-style: none;
   cursor: pointer;
   position: relative;
   display: grid;
@@ -1120,10 +1126,6 @@ summary:focus-visible {
   transition:
     background-color 160ms ease,
     color 160ms ease;
-}
-
-.timeline-company-summary::-webkit-details-marker {
-  display: none;
 }
 
 .timeline-company-summary:hover,
@@ -1226,7 +1228,6 @@ summary:focus-visible {
 }
 
 .recommendation-summary {
-  list-style: none;
   cursor: pointer;
   position: relative;
   display: flex;
@@ -1235,10 +1236,6 @@ summary:focus-visible {
   gap: 0.32rem;
   padding: 0.75rem 0.85rem;
   transition: background-color 160ms ease;
-}
-
-.recommendation-summary::-webkit-details-marker {
-  display: none;
 }
 
 .recommendation-summary:hover,
@@ -1282,11 +1279,8 @@ summary:focus-visible {
 }
 
 .detail-facts {
-  display: grid;
   gap: 0.75rem;
   margin: 0;
-  padding-left: 1rem;
-  border-left: 3px solid var(--accent);
 }
 
 .detail-facts div {
@@ -1347,10 +1341,7 @@ summary:focus-visible {
 }
 
 .resume-contact-panel {
-  display: grid;
   gap: 0.45rem;
-  padding-left: 1rem;
-  border-left: 3px solid var(--accent);
 }
 
 .resume-contact-panel p {
@@ -1365,19 +1356,6 @@ summary:focus-visible {
 .detail-footer-nav {
   display: flex;
   justify-content: flex-start;
-}
-
-.page-header {
-  display: grid;
-  gap: 0.8rem;
-  margin-bottom: 1.3rem;
-}
-
-.page-header.page-overview-copy,
-.page-header.detail-hero-copy,
-.page-header.article-hero-copy,
-.page-header.experience-page-header {
-  margin-bottom: 0;
 }
 
 .project-banner {
@@ -1458,26 +1436,6 @@ summary:focus-visible {
   padding-left: 1.1rem;
   display: grid;
   gap: 0.3rem;
-}
-
-.meta-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem;
-  margin: 1rem 0;
-}
-
-.meta-grid article {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 0.7rem;
-  display: grid;
-  gap: 0.35rem;
-}
-
-.meta-grid p {
-  margin: 0;
 }
 
 .muted {
@@ -1584,7 +1542,6 @@ summary:focus-visible {
   }
 
   .grid,
-  .meta-grid,
   .metric-grid {
     grid-template-columns: 1fr;
   }

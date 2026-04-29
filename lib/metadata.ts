@@ -26,6 +26,75 @@ export const SEO_IMAGE_PATHS = {
   resume: "/seo/og-resume-1200x630.png"
 } as const
 
+export const rootMetadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: "%s"
+  },
+  description:
+    "Senior Software Engineer focused on backend systems, cloud infrastructure, and scalable software.",
+  applicationName: SITE_NAME,
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      {
+        url: "/favicon-48x48-light.png",
+        sizes: "48x48",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)"
+      },
+      {
+        url: "/favicon-48x48-dark.png",
+        sizes: "48x48",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)"
+      },
+      {
+        url: "/favicon-96x96-light.png",
+        sizes: "96x96",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)"
+      },
+      {
+        url: "/favicon-96x96-dark.png",
+        sizes: "96x96",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)"
+      },
+      { url: "/favicon-light.svg", media: "(prefers-color-scheme: light)" },
+      { url: "/favicon-dark.svg", media: "(prefers-color-scheme: dark)" },
+      {
+        url: "/favicon-32x32-light.png",
+        sizes: "32x32",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)"
+      },
+      {
+        url: "/favicon-32x32-dark.png",
+        sizes: "32x32",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)"
+      }
+    ],
+    shortcut: "/favicon-light.svg",
+    apple: [
+      {
+        url: "/apple-touch-icon-light.png",
+        sizes: "180x180",
+        media: "(prefers-color-scheme: light)"
+      },
+      {
+        url: "/apple-touch-icon-dark.png",
+        sizes: "180x180",
+        media: "(prefers-color-scheme: dark)"
+      }
+    ]
+  }
+}
+
 const SOCIAL_IMAGE_WIDTH = 1200
 const SOCIAL_IMAGE_HEIGHT = 630
 
