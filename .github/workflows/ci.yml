@@ -61,6 +61,7 @@ jobs:
             tar -xzf devimg-linux-x86_64.tar.gz
           )
           "$tmp/devimg" check --config devimg.toml
+          "$tmp/devimg" check --config devimg-cli-tools.toml
 
       - name: Setup Node
         uses: actions/setup-node@v6

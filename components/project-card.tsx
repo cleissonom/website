@@ -3,7 +3,7 @@ import type { Route } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import type { ProjectEntry } from "@/lib/content"
-import { projectCardImage } from "@/lib/devimg"
+import { projectCardImageVariant } from "@/lib/devimg"
 import type { Locale } from "@/lib/i18n"
 
 export type ProjectCardProject = Pick<
@@ -30,17 +30,18 @@ export function ProjectCard({
 }) {
   const contextLabel = `${readMoreAboutPrefix} ${project.title}`
   const descriptiveLabel = `${readMoreLabel} ${contextLabel}`
+  const cardImage = project.coverImage ? projectCardImageVariant(project.coverImage) : null
 
   return (
     <Card enableWalletHover={enableWalletHover}>
       <div className="card-banner-shell">
-        {project.coverImage ? (
+        {cardImage ? (
           <Image
-            className="card-banner-image"
-            src={projectCardImage(project.coverImage)}
+            className={`card-banner-image${cardImage.fit === "contain" ? " card-banner-image-contain" : ""}`}
+            src={cardImage.src}
             alt={`${project.title} preview`}
-            width={640}
-            height={360}
+            width={cardImage.width}
+            height={cardImage.height}
             loading="lazy"
           />
         ) : (

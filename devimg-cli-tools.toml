@@ -1,26 +1,24 @@
 [project]
 root = "."
-manifest = "public/images/devimg-manifest.json"
-report = ".devimg/devimg-report.md"
+manifest = "public/images/devimg-cli-tools-manifest.json"
+report = ".devimg/devimg-cli-tools-report.md"
 overwrite = false
 strip_metadata = true
 content_hash_filenames = true
 
 [[sources]]
-name = "project-covers"
+name = "cli-tools-cover"
 input = "public/projects"
 output = "public/images/generated/projects"
-include = ["**/*.webp", "**/*.png", "**/*.jpg", "**/*.jpeg"]
-exclude = ["cli_tools.png"]
+include = ["cli_tools.png"]
 
 [[preset]]
 name = "project-card"
 widths = [640]
 formats = ["jpeg"]
 quality = 82
-fit = "cover"
+fit = "contain"
 aspect_ratio = "16:9"
-crop = "top"
 allow_upscale = false
 
 [[preset]]
@@ -28,12 +26,11 @@ name = "project-banner"
 widths = [1200]
 formats = ["jpeg"]
 quality = 82
-fit = "cover"
+fit = "contain"
 aspect_ratio = "1200:630"
-crop = "top"
 allow_upscale = false
 
 [budgets]
-max_total_bytes = "320kb"
-max_file_bytes = "100kb"
+max_total_bytes = "180kb"
+max_file_bytes = "120kb"
 fail_on_regression = true
