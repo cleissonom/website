@@ -19,7 +19,7 @@ import { getDictionary } from "@/data/i18n"
 import { siteIdentity } from "@/data/profile"
 import type { ProjectLinkKey } from "@/data/i18n/types"
 import { getAllProjectSlugs, getProjectBySlug } from "@/lib/content"
-import { projectBannerImage } from "@/lib/devimg"
+import { projectBannerImageVariant } from "@/lib/devimg"
 import { LOCALES, isLocale } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
 import { breadcrumbJsonLd, projectJsonLd } from "@/lib/schema"
@@ -94,6 +94,7 @@ export default async function ProjectDetailPage({
         project.dateEnd
       ).toLocaleDateString(locale)}`
     : new Date(project.dateStart).toLocaleDateString(locale)
+  const bannerImage = project.coverImage ? projectBannerImageVariant(project.coverImage) : null
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: ui.nav.home, url: absoluteUrl(`/${locale}`) },
@@ -165,13 +166,13 @@ export default async function ProjectDetailPage({
         ) : null}
       </Surface>
 
-      {project.coverImage ? (
+      {bannerImage ? (
         <figure className="project-banner">
           <Image
-            src={projectBannerImage(project.coverImage)}
+            src={bannerImage.src}
             alt={`${project.title} banner`}
-            width={1200}
-            height={630}
+            width={bannerImage.width}
+            height={bannerImage.height}
           />
         </figure>
       ) : null}

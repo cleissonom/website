@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generated_at": "unix:1777746441",
+  "generated_at": "unix:1777748468",
   "config_path": "devimg.toml",
-  "config_hash": "blake3:ec93496957628c4005392ab4ab48893bce2c04cb0e7bb3a2b40ef4054402526d",
+  "config_hash": "blake3:295d1bb3c7e7c61c78337e85fb1e22c26c4609f06d084697b379a168d9487941",
   "outputs": [
     {
       "source_path": "public/projects/accesstrace-overview.png",
@@ -17,7 +17,7 @@
       "format": "jpeg",
       "bytes": 101724,
       "hash": "blake3:2e980c09f37ebe20e7bfa8e717e0dd25aa3dc08cd94b8a71d4249256652054ce",
-      "operation_hash": "blake3:2256ae68d5e1fcbe5b3e7951432337a21c32558789370451e682267dfde18994"
+      "operation_hash": "blake3:9039d337f2f1953cdb5b6ad753e485eed02025543ab5d151554622fb546d7837"
     },
     {
       "source_path": "public/projects/accesstrace-overview.png",
@@ -32,7 +32,7 @@
       "format": "jpeg",
       "bytes": 39996,
       "hash": "blake3:99197950f285d1c60c88a4c755fc8486b3c99bcb8b277a99123733850b72dcfc",
-      "operation_hash": "blake3:547c43ca4ceddd19bd58fc4744e137849c8c95c1df6edf7af8ed39c4252bc0c7"
+      "operation_hash": "blake3:7c5c19fb1f3ce54bdf0c864753807de6d2942a531f2253523c7b605161f7bc52"
     },
     {
       "source_path": "public/projects/website.webp",
@@ -47,7 +47,7 @@
       "format": "jpeg",
       "bytes": 77553,
       "hash": "blake3:2c72d6802a9e8ab0b1acb95e71c2d7332a196d2fe103100aeaf8b83a5eadb8e2",
-      "operation_hash": "blake3:ee90b3b3739c632eae28b26015a652fabdb6450870eae4d2af5377fc5aad0c3a"
+      "operation_hash": "blake3:9528a2154669c487cb831f1563315c4791ed9fd4752ef37aa10023495626d43e"
     },
     {
       "source_path": "public/projects/website.webp",
@@ -62,7 +62,7 @@
       "format": "jpeg",
       "bytes": 30658,
       "hash": "blake3:88dea3f9f53b2dc609a5c0849805fcfbba76a82676f7bd66db5ce03deaffe99e",
-      "operation_hash": "blake3:075c9e36bf10195254d6f9f00b433c6d826f49380a8aaae9cd526fb8635dd6c5"
+      "operation_hash": "blake3:0d71aa0ed786873d39f0307e1a9ead407c5e8e9c582296aaeb6a9889fd098daf"
     }
   ],
   "totals": {

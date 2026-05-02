@@ -804,6 +804,8 @@ h3 {
   overflow: hidden;
   border-radius: 14px;
   border: 1px solid var(--border);
+  aspect-ratio: 16 / 9;
+  background: var(--surface-strong);
   transform-origin: top center;
   transform: translateY(0) scale(1);
   margin: 0;
@@ -822,12 +824,15 @@ h3 {
 .card-banner-fallback {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  height: 100%;
 }
 
 .card-banner-image {
   object-fit: cover;
+}
+
+.card-banner-image-contain {
+  object-fit: contain;
 }
 
 .card-banner-fallback {

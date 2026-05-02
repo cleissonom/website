@@ -22,6 +22,7 @@ stack:
   - Shell
 links:
   repo: https://github.com/cleissonom/cli_tools
+coverImage: /projects/cli_tools.png
 highlights:
   - Criei cinco ferramentas CLI em Rust e C para automação de imagens, compactação de código, requisições HTTP brutas e relatórios de ganhos com conversão de moeda.
   - Unifiquei a coleção com build/test via Make e um instalador público para macOS que funciona sem clonar o repositório.
