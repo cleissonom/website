@@ -11,7 +11,6 @@ name = "project-covers"
 input = "public/projects"
 output = "public/images/generated/projects"
 include = ["**/*.webp", "**/*.png", "**/*.jpg", "**/*.jpeg"]
-exclude = ["cli_tools.png"]
 
 [[preset]]
 name = "project-card"
@@ -33,7 +32,11 @@ aspect_ratio = "1200:630"
 crop = "top"
 allow_upscale = false
 
+[[overrides]]
+include = ["cli_tools.png"]
+fit = "contain"
+
 [budgets]
-max_total_bytes = "320kb"
+max_total_bytes = "400kb"
 max_file_bytes = "100kb"
 fail_on_regression = true

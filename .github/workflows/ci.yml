@@ -51,7 +51,7 @@ jobs:
             exit 0
           fi
           tmp="$(mktemp -d)"
-          GH_TOKEN="$DEVIMG_RELEASE_TOKEN" gh release download v0.1.3 \
+          GH_TOKEN="$DEVIMG_RELEASE_TOKEN" gh release download v0.1.4 \
             --repo cleissonom/devimg \
             --pattern 'devimg-linux-x86_64.tar.gz*' \
             --dir "$tmp"
@@ -61,7 +61,6 @@ jobs:
             tar -xzf devimg-linux-x86_64.tar.gz
           )
           "$tmp/devimg" check --config devimg.toml
-          "$tmp/devimg" check --config devimg-cli-tools.toml
 
       - name: Setup Node
         uses: actions/setup-node@v6

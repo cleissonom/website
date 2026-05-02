@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generated_at": "unix:1777748468",
+  "generated_at": "unix:1777750641",
   "config_path": "devimg.toml",
-  "config_hash": "blake3:295d1bb3c7e7c61c78337e85fb1e22c26c4609f06d084697b379a168d9487941",
+  "config_hash": "blake3:91205b8394f1fe1d62809d363f88d4f015680b1f3de57805d0eadcd629240c00",
   "outputs": [
     {
       "source_path": "public/projects/accesstrace-overview.png",
@@ -17,7 +17,7 @@
       "format": "jpeg",
       "bytes": 101724,
       "hash": "blake3:2e980c09f37ebe20e7bfa8e717e0dd25aa3dc08cd94b8a71d4249256652054ce",
-      "operation_hash": "blake3:9039d337f2f1953cdb5b6ad753e485eed02025543ab5d151554622fb546d7837"
+      "operation_hash": "blake3:0d6c1a7eca32c0ebf79b79d80895dfea2a42b3c47938736498bf1e73b2af8ada"
     },
     {
       "source_path": "public/projects/accesstrace-overview.png",
@@ -32,7 +32,37 @@
       "format": "jpeg",
       "bytes": 39996,
       "hash": "blake3:99197950f285d1c60c88a4c755fc8486b3c99bcb8b277a99123733850b72dcfc",
-      "operation_hash": "blake3:7c5c19fb1f3ce54bdf0c864753807de6d2942a531f2253523c7b605161f7bc52"
+      "operation_hash": "blake3:40b4bfa29f6ccc2d9e5c2d99dd0ec30e95a8c81d6cab6ad70f706bdcb382f15d"
+    },
+    {
+      "source_path": "public/projects/cli_tools.png",
+      "source_hash": "blake3:4dffeaec821cadd3486c8585ce13d0fa1729ebf3c449403c9c3814409ff76b47",
+      "source_width": 1731,
+      "source_height": 909,
+      "source_bytes": 1361650,
+      "output_path": "public/images/generated/projects/cli_tools.project-banner.1200.357fa291d080.jpeg",
+      "preset": "project-banner",
+      "width": 1200,
+      "height": 630,
+      "format": "jpeg",
+      "bytes": 91518,
+      "hash": "blake3:357fa291d08066268b5c97cd9c46291054a684fd724cb276276f105e52741741",
+      "operation_hash": "blake3:b611f29657b85cd5dd30223d085db649bf631dca6c74194f28111498e0027524"
+    },
+    {
+      "source_path": "public/projects/cli_tools.png",
+      "source_hash": "blake3:4dffeaec821cadd3486c8585ce13d0fa1729ebf3c449403c9c3814409ff76b47",
+      "source_width": 1731,
+      "source_height": 909,
+      "source_bytes": 1361650,
+      "output_path": "public/images/generated/projects/cli_tools.project-card.640.bb144ce19644.jpeg",
+      "preset": "project-card",
+      "width": 640,
+      "height": 336,
+      "format": "jpeg",
+      "bytes": 33233,
+      "hash": "blake3:bb144ce19644068289ecd58847c30beb1834823cfb03808488fc81381bf2ea11",
+      "operation_hash": "blake3:61ded3d9788be946ecdc17993d67a6818def136f1777051d4f5af3e1fc1605fe"
     },
     {
       "source_path": "public/projects/website.webp",
@@ -47,7 +77,7 @@
       "format": "jpeg",
       "bytes": 77553,
       "hash": "blake3:2c72d6802a9e8ab0b1acb95e71c2d7332a196d2fe103100aeaf8b83a5eadb8e2",
-      "operation_hash": "blake3:9528a2154669c487cb831f1563315c4791ed9fd4752ef37aa10023495626d43e"
+      "operation_hash": "blake3:a09222beea10a3aeb5d9fae7a4eb62be86a2e68ba958d41b438ae4df1b373f2c"
     },
     {
       "source_path": "public/projects/website.webp",
@@ -62,11 +92,11 @@
       "format": "jpeg",
       "bytes": 30658,
       "hash": "blake3:88dea3f9f53b2dc609a5c0849805fcfbba76a82676f7bd66db5ce03deaffe99e",
-      "operation_hash": "blake3:0d71aa0ed786873d39f0307e1a9ead407c5e8e9c582296aaeb6a9889fd098daf"
+      "operation_hash": "blake3:ee12c7ca171482937e3a6e92c801b5e489d437fbb7f4f74769c11055823e0545"
     }
   ],
   "totals": {
-    "source_bytes": 259615,
-    "output_bytes": 249931
+    "source_bytes": 1621265,
+    "output_bytes": 374682
   }
 }
