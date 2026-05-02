@@ -11,3 +11,4 @@ yarn-error.log*
 tsconfig.tsbuildinfo
 ai_tasks
 .project-ideas/
+.devimg/

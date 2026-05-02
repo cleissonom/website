@@ -52,6 +52,10 @@ const nextConfig = {
         headers: immutableAssetHeaders
       },
       {
+        source: "/images/generated/:path*",
+        headers: stableImageHeaders
+      },
+      {
         source: "/about/profile.webp",
         headers: stableImageHeaders
       },
