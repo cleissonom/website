@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generated_at": "unix:1777741073",
+  "generated_at": "unix:1777746441",
   "config_path": "devimg.toml",
-  "config_hash": "blake3:c7fb03f0075d65413a077d959eecf13f1f1bb1c90c5af7cefa4517c94a942f05",
+  "config_hash": "blake3:ec93496957628c4005392ab4ab48893bce2c04cb0e7bb3a2b40ef4054402526d",
   "outputs": [
     {
       "source_path": "public/projects/accesstrace-overview.png",
@@ -10,14 +10,14 @@
       "source_width": 1280,
       "source_height": 1136,
       "source_bytes": 151031,
-      "output_path": "public/images/generated/projects/accesstrace-overview.project-banner.1200.5eb6cd0f5378.jpeg",
+      "output_path": "public/images/generated/projects/accesstrace-overview.project-banner.1200.2e980c09f37e.jpeg",
       "preset": "project-banner",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
-      "bytes": 101024,
-      "hash": "blake3:5eb6cd0f53789abe93d0eebcddfc1c6d5cd2eb6e2b35040d30eed05dda48cf8a",
-      "operation_hash": "blake3:28d6473fa4060a19d629eba7d047c54724ec0b73b1236b988c75f579132bb915"
+      "bytes": 101724,
+      "hash": "blake3:2e980c09f37ebe20e7bfa8e717e0dd25aa3dc08cd94b8a71d4249256652054ce",
+      "operation_hash": "blake3:2256ae68d5e1fcbe5b3e7951432337a21c32558789370451e682267dfde18994"
     },
     {
       "source_path": "public/projects/accesstrace-overview.png",
@@ -25,14 +25,14 @@
       "source_width": 1280,
       "source_height": 1136,
       "source_bytes": 151031,
-      "output_path": "public/images/generated/projects/accesstrace-overview.project-card.640.65b2bdb3bc73.jpeg",
+      "output_path": "public/images/generated/projects/accesstrace-overview.project-card.640.99197950f285.jpeg",
       "preset": "project-card",
       "width": 640,
       "height": 360,
       "format": "jpeg",
-      "bytes": 38024,
-      "hash": "blake3:65b2bdb3bc73cc178680fab982c847815445032b240df509283403f93f7cdefa",
-      "operation_hash": "blake3:69414f1490665b61508a909b8967c77a9fbdb179cc89a7a0152a627739040157"
+      "bytes": 39996,
+      "hash": "blake3:99197950f285d1c60c88a4c755fc8486b3c99bcb8b277a99123733850b72dcfc",
+      "operation_hash": "blake3:547c43ca4ceddd19bd58fc4744e137849c8c95c1df6edf7af8ed39c4252bc0c7"
     },
     {
       "source_path": "public/projects/website.webp",
@@ -40,14 +40,14 @@
       "source_width": 2796,
       "source_height": 1584,
       "source_bytes": 108584,
-      "output_path": "public/images/generated/projects/website.project-banner.1200.a6d0d83ad763.jpeg",
+      "output_path": "public/images/generated/projects/website.project-banner.1200.2c72d6802a9e.jpeg",
       "preset": "project-banner",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
-      "bytes": 85879,
-      "hash": "blake3:a6d0d83ad76380fa17cfeee0fc2d405e84921dbbf6bf55b838f65f33bac69649",
-      "operation_hash": "blake3:4e7ae4b4e106b4b72c9fdb13b2ab83a2b2dd3d7e0da4b033c3fc8e90d2aea6ab"
+      "bytes": 77553,
+      "hash": "blake3:2c72d6802a9e8ab0b1acb95e71c2d7332a196d2fe103100aeaf8b83a5eadb8e2",
+      "operation_hash": "blake3:ee90b3b3739c632eae28b26015a652fabdb6450870eae4d2af5377fc5aad0c3a"
     },
     {
       "source_path": "public/projects/website.webp",
@@ -55,18 +55,18 @@
       "source_width": 2796,
       "source_height": 1584,
       "source_bytes": 108584,
-      "output_path": "public/images/generated/projects/website.project-card.640.e1c08c280a80.jpeg",
+      "output_path": "public/images/generated/projects/website.project-card.640.88dea3f9f53b.jpeg",
       "preset": "project-card",
       "width": 640,
       "height": 360,
       "format": "jpeg",
-      "bytes": 30700,
-      "hash": "blake3:e1c08c280a809d169392f817fccbe83d4b4066efd62cb32d3bc4966e7fa2ef97",
-      "operation_hash": "blake3:b4f7f019ad55d0290485e489d7a3598b94f3d13afd441fd105faed5f02aa67ef"
+      "bytes": 30658,
+      "hash": "blake3:88dea3f9f53b2dc609a5c0849805fcfbba76a82676f7bd66db5ce03deaffe99e",
+      "operation_hash": "blake3:075c9e36bf10195254d6f9f00b433c6d826f49380a8aaae9cd526fb8635dd6c5"
     }
   ],
   "totals": {
     "source_bytes": 259615,
-    "output_bytes": 255627
+    "output_bytes": 249931
   }
 }

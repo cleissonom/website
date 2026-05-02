@@ -1,11 +1,11 @@
 const PROJECT_IMAGE_VARIANTS: Record<string, { card: string; banner: string }> = {
   "/projects/accesstrace-overview.png": {
-    card: "/images/generated/projects/accesstrace-overview.project-card.640.65b2bdb3bc73.jpeg",
-    banner: "/images/generated/projects/accesstrace-overview.project-banner.1200.5eb6cd0f5378.jpeg"
+    card: "/images/generated/projects/accesstrace-overview.project-card.640.99197950f285.jpeg",
+    banner: "/images/generated/projects/accesstrace-overview.project-banner.1200.2e980c09f37e.jpeg"
   },
   "/projects/website.webp": {
-    card: "/images/generated/projects/website.project-card.640.e1c08c280a80.jpeg",
-    banner: "/images/generated/projects/website.project-banner.1200.a6d0d83ad763.jpeg"
+    card: "/images/generated/projects/website.project-card.640.88dea3f9f53b.jpeg",
+    banner: "/images/generated/projects/website.project-banner.1200.2c72d6802a9e.jpeg"
   }
 }
 
