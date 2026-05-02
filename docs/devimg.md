@@ -11,6 +11,8 @@ This site dogfoods `devimg` for static project cover variants. The project uses 
 
 The generated filenames are content-hashed through `content_hash_filenames = true`, so each generated URL changes when the encoded bytes change. This is the required precondition before applying broad immutable CDN caching to generated assets.
 
+Project cover variants use `crop = "top"` so screenshot headers and top navigation remain visible in cropped cards and banners. The project-banner preset uses JPEG quality `82` to keep the top-cropped AccessTrace banner inside the current per-file budget.
+
 ## Local Commands
 
 ```bash
@@ -23,6 +25,6 @@ Use `--allow-overwrite` when intentionally regenerating existing variants after 
 
 ## CI
 
-The main CI workflow can run `devimg check` by downloading the `v0.1.2` Linux release archive from the private `cleissonom/devimg` repository. Configure a `DEVIMG_RELEASE_TOKEN` repository secret with read access to that repository to enable the check. Without the secret, CI skips only the image check and continues with lint, typecheck, and build.
+The main CI workflow can run `devimg check` by downloading the Linux `v0.1.3` release archive from the private `cleissonom/devimg` repository. Configure a `DEVIMG_RELEASE_TOKEN` repository secret with read access to that repository to enable the check. Without the secret, CI skips only the image check and continues with lint, typecheck, and build.
 
 Generated variants and `public/images/devimg-manifest.json` should be committed with image changes; `.devimg/` is ignored because reports are regenerated locally and in CI.

@@ -51,7 +51,7 @@ jobs:
             exit 0
           fi
           tmp="$(mktemp -d)"
-          GH_TOKEN="$DEVIMG_RELEASE_TOKEN" gh release download v0.1.2 \
+          GH_TOKEN="$DEVIMG_RELEASE_TOKEN" gh release download v0.1.3 \
             --repo cleissonom/devimg \
             --pattern 'devimg-linux-x86_64.tar.gz*' \
             --dir "$tmp"

@@ -19,15 +19,17 @@ formats = ["jpeg"]
 quality = 82
 fit = "cover"
 aspect_ratio = "16:9"
+crop = "top"
 allow_upscale = false
 
 [[preset]]
 name = "project-banner"
 widths = [1200]
 formats = ["jpeg"]
-quality = 84
+quality = 82
 fit = "cover"
 aspect_ratio = "1200:630"
+crop = "top"
 allow_upscale = false
 
 [budgets]
