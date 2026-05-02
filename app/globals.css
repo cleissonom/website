@@ -1383,10 +1383,6 @@ summary:focus-visible {
   width: 100%;
 }
 
-.content-prose > * {
-  max-width: 82ch;
-}
-
 .article-prose {
   justify-self: center;
   width: 100%;
