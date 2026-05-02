@@ -1,3 +1,5 @@
+import { DEVIMG_MANIFEST } from "@/lib/devimg.generated"
+
 type ProjectImageFit = "cover" | "contain"
 
 type ProjectImageVariant = {
@@ -7,74 +9,29 @@ type ProjectImageVariant = {
   fit: ProjectImageFit
 }
 
-const PROJECT_IMAGE_VARIANTS: Record<
-  string,
-  { card: ProjectImageVariant; banner: ProjectImageVariant }
-> = {
-  "/projects/accesstrace-overview.png": {
-    card: {
-      src: "/images/generated/projects/accesstrace-overview.project-card.640.99197950f285.jpeg",
-      width: 640,
-      height: 360,
-      fit: "cover"
-    },
-    banner: {
-      src: "/images/generated/projects/accesstrace-overview.project-banner.1200.2e980c09f37e.jpeg",
-      width: 1200,
-      height: 630,
-      fit: "cover"
-    }
+type DevimgSource = (typeof DEVIMG_MANIFEST.sources)[number]
+type DevimgVariant = DevimgSource["variants"][number]
+type ProjectPreset = "project-card" | "project-banner"
+
+const PROJECT_VARIANT_DEFAULTS: Record<ProjectPreset, { width: number; height: number }> = {
+  "project-card": {
+    width: 640,
+    height: 360
   },
-  "/projects/cli_tools.png": {
-    card: {
-      src: "/images/generated/projects/cli_tools.project-card.640.bb144ce19644.jpeg",
-      width: 640,
-      height: 336,
-      fit: "contain"
-    },
-    banner: {
-      src: "/images/generated/projects/cli_tools.project-banner.1200.357fa291d080.jpeg",
-      width: 1200,
-      height: 630,
-      fit: "contain"
-    }
-  },
-  "/projects/website.webp": {
-    card: {
-      src: "/images/generated/projects/website.project-card.640.88dea3f9f53b.jpeg",
-      width: 640,
-      height: 360,
-      fit: "cover"
-    },
-    banner: {
-      src: "/images/generated/projects/website.project-banner.1200.2c72d6802a9e.jpeg",
-      width: 1200,
-      height: 630,
-      fit: "cover"
-    }
+  "project-banner": {
+    width: 1200,
+    height: 630
   }
 }
 
+const PROJECT_VARIANT_FORMAT = "jpeg"
+
 export function projectCardImageVariant(src: string): ProjectImageVariant {
-  return (
-    PROJECT_IMAGE_VARIANTS[src]?.card ?? {
-      src,
-      width: 640,
-      height: 360,
-      fit: "cover"
-    }
-  )
+  return projectImageVariant(src, "project-card")
 }
 
 export function projectBannerImageVariant(src: string): ProjectImageVariant {
-  return (
-    PROJECT_IMAGE_VARIANTS[src]?.banner ?? {
-      src,
-      width: 1200,
-      height: 630,
-      fit: "cover"
-    }
-  )
+  return projectImageVariant(src, "project-banner")
 }
 
 export function projectCardImage(src: string): string {
@@ -83,4 +40,33 @@ export function projectCardImage(src: string): string {
 
 export function projectBannerImage(src: string): string {
   return projectBannerImageVariant(src).src
+}
+
+function projectImageVariant(src: string, preset: ProjectPreset): ProjectImageVariant {
+  const variant = findProjectVariant(src, preset)
+  const fallback = PROJECT_VARIANT_DEFAULTS[preset]
+
+  return {
+    src: variant?.src ?? src,
+    width: variant?.width ?? fallback.width,
+    height: variant?.height ?? fallback.height,
+    fit: projectImageFit(variant?.fit)
+  }
+}
+
+function findProjectVariant(src: string, preset: ProjectPreset): DevimgVariant | undefined {
+  const sourcePath = projectSourcePath(src)
+  const source = DEVIMG_MANIFEST.sources.find((source) => source.source_path === sourcePath)
+
+  return source?.variants.find(
+    (variant) => variant.preset === preset && variant.format === PROJECT_VARIANT_FORMAT
+  )
+}
+
+function projectSourcePath(src: string): string {
+  return src.startsWith("/") ? `public${src}` : src
+}
+
+function projectImageFit(fit: string | undefined): ProjectImageFit {
+  return fit === "contain" ? "contain" : "cover"
 }
