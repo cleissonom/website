@@ -19,6 +19,7 @@ import { getDictionary } from "@/data/i18n"
 import { siteIdentity } from "@/data/profile"
 import type { ProjectLinkKey } from "@/data/i18n/types"
 import { getAllProjectSlugs, getProjectBySlug } from "@/lib/content"
+import { projectBannerImage } from "@/lib/devimg"
 import { LOCALES, isLocale } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
 import { breadcrumbJsonLd, projectJsonLd } from "@/lib/schema"
@@ -167,7 +168,7 @@ export default async function ProjectDetailPage({
       {project.coverImage ? (
         <figure className="project-banner">
           <Image
-            src={project.coverImage}
+            src={projectBannerImage(project.coverImage)}
             alt={`${project.title} banner`}
             width={1200}
             height={630}

@@ -1,0 +1,35 @@
+[project]
+root = "."
+manifest = "public/images/devimg-manifest.json"
+report = ".devimg/devimg-report.md"
+overwrite = false
+strip_metadata = true
+
+[[sources]]
+name = "project-covers"
+input = "public/projects"
+output = "public/images/generated/projects"
+include = ["**/*.webp", "**/*.png", "**/*.jpg", "**/*.jpeg"]
+
+[[preset]]
+name = "project-card"
+widths = [640]
+formats = ["jpeg"]
+quality = 82
+fit = "cover"
+aspect_ratio = "16:9"
+allow_upscale = false
+
+[[preset]]
+name = "project-banner"
+widths = [1200]
+formats = ["jpeg"]
+quality = 84
+fit = "cover"
+aspect_ratio = "1200:630"
+allow_upscale = false
+
+[budgets]
+max_total_bytes = "150kb"
+max_file_bytes = "100kb"
+fail_on_regression = true

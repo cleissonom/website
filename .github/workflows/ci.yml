@@ -10,6 +10,7 @@ jobs:
   validate:
     name: Validate Code
     runs-on: ubuntu-latest
+    environment: Production
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,6 +23,27 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITLEAKS_CONFIG: .gitleaks.toml
           GITLEAKS_VERSION: 8.30.0
+
+      - name: Check image variants
+        env:
+          DEVIMG_RELEASE_TOKEN: ${{ secrets.DEVIMG_RELEASE_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${DEVIMG_RELEASE_TOKEN:-}" ]]; then
+            echo "::warning::Skipping devimg check because DEVIMG_RELEASE_TOKEN is not configured."
+            exit 0
+          fi
+          tmp="$(mktemp -d)"
+          GH_TOKEN="$DEVIMG_RELEASE_TOKEN" gh release download v0.1.1 \
+            --repo cleissonom/devimg \
+            --pattern 'devimg-linux-x86_64.tar.gz*' \
+            --dir "$tmp"
+          (
+            cd "$tmp"
+            sha256sum -c devimg-linux-x86_64.tar.gz.sha256
+            tar -xzf devimg-linux-x86_64.tar.gz
+          )
+          "$tmp/devimg" check --config devimg.toml
 
       - name: Setup Node
         uses: actions/setup-node@v4

@@ -3,6 +3,7 @@ import type { Route } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import type { ProjectEntry } from "@/lib/content"
+import { projectCardImage } from "@/lib/devimg"
 import type { Locale } from "@/lib/i18n"
 
 export type ProjectCardProject = Pick<
@@ -36,7 +37,7 @@ export function ProjectCard({
         {project.coverImage ? (
           <Image
             className="card-banner-image"
-            src={project.coverImage}
+            src={projectCardImage(project.coverImage)}
             alt={`${project.title} preview`}
             width={640}
             height={360}

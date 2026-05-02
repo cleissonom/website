@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "generated_at": "unix:1777736170",
+  "config_path": "devimg.toml",
+  "config_hash": "blake3:fee92c6946400ffdb522a3915e62d7fa2508e1beebea558b61e919799f213aa7",
+  "outputs": [
+    {
+      "source_path": "public/projects/website.webp",
+      "source_hash": "blake3:afa14f6f21d5d2bb7a5660eee7005ce244ef8be052ed19ebb40d8bb9e3291fa6",
+      "source_width": 2796,
+      "source_height": 1584,
+      "source_bytes": 108584,
+      "output_path": "public/images/generated/projects/website.project-banner.1200.jpeg",
+      "preset": "project-banner",
+      "width": 1200,
+      "height": 630,
+      "format": "jpeg",
+      "bytes": 85879,
+      "hash": "blake3:a6d0d83ad76380fa17cfeee0fc2d405e84921dbbf6bf55b838f65f33bac69649",
+      "operation_hash": "blake3:9237ef829e71966be9235d2d1544fd6f08d59d0b3b9001b1534acca4539358bd"
+    },
+    {
+      "source_path": "public/projects/website.webp",
+      "source_hash": "blake3:afa14f6f21d5d2bb7a5660eee7005ce244ef8be052ed19ebb40d8bb9e3291fa6",
+      "source_width": 2796,
+      "source_height": 1584,
+      "source_bytes": 108584,
+      "output_path": "public/images/generated/projects/website.project-card.640.jpeg",
+      "preset": "project-card",
+      "width": 640,
+      "height": 360,
+      "format": "jpeg",
+      "bytes": 30700,
+      "hash": "blake3:e1c08c280a809d169392f817fccbe83d4b4066efd62cb32d3bc4966e7fa2ef97",
+      "operation_hash": "blake3:544e5c9f44398ecc7ff034f1ee4ca7d405a96ccddd12dfddbd1abd9fed8b4ded"
+    }
+  ],
+  "totals": {
+    "source_bytes": 108584,
+    "output_bytes": 116579
+  }
+}
