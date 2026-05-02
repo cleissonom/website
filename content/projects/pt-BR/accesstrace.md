@@ -27,6 +27,8 @@ highlights:
   - Modelei armazenamento de payloads brutos, eventos de acesso normalizados, rastreamento de importações e scripts de consulta com resultados no formato de dashboard.
   - Adicionei funções tipadas de consulta no servidor, validação de filtros com Zod, primeiro dashboard, experimentos com tabelas-resumo no ClickHouse e revisão de segurança local.
 coverImage: /projects/accesstrace-overview.png
+links:
+  repo: https://github.com/cleissonom/accesstrace
 ---
 
 AccessTrace é um protótipo local de produto para explorar como logs de auditoria de segurança podem virar dados úteis para investigação.

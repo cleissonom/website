@@ -27,6 +27,8 @@ highlights:
   - Modeled raw payload storage, normalized access events, import tracking, and dashboard-shaped query scripts with non-empty results.
   - Added typed server-side query functions, Zod filter validation, a first dashboard, ClickHouse summary-table experiments, and a local security review.
 coverImage: /projects/accesstrace-overview.png
+links:
+  repo: https://github.com/cleissonom/accesstrace
 ---
 
 AccessTrace is a local product prototype for exploring how security audit logs can become usable investigation data.
