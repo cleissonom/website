@@ -1,23 +1,38 @@
 {
   "version": 1,
-  "generated_at": "unix:1777736170",
+  "generated_at": "unix:1777741073",
   "config_path": "devimg.toml",
-  "config_hash": "blake3:fee92c6946400ffdb522a3915e62d7fa2508e1beebea558b61e919799f213aa7",
+  "config_hash": "blake3:c7fb03f0075d65413a077d959eecf13f1f1bb1c90c5af7cefa4517c94a942f05",
   "outputs": [
     {
-      "source_path": "public/projects/website.webp",
-      "source_hash": "blake3:afa14f6f21d5d2bb7a5660eee7005ce244ef8be052ed19ebb40d8bb9e3291fa6",
-      "source_width": 2796,
-      "source_height": 1584,
-      "source_bytes": 108584,
-      "output_path": "public/images/generated/projects/website.project-banner.1200.jpeg",
+      "source_path": "public/projects/accesstrace-overview.png",
+      "source_hash": "blake3:f966621f26d4f9b65d03ae8df992bab373ed0ef8d05beff2303a9af6df9e62a3",
+      "source_width": 1280,
+      "source_height": 1136,
+      "source_bytes": 151031,
+      "output_path": "public/images/generated/projects/accesstrace-overview.project-banner.1200.5eb6cd0f5378.jpeg",
       "preset": "project-banner",
       "width": 1200,
       "height": 630,
       "format": "jpeg",
-      "bytes": 85879,
-      "hash": "blake3:a6d0d83ad76380fa17cfeee0fc2d405e84921dbbf6bf55b838f65f33bac69649",
-      "operation_hash": "blake3:9237ef829e71966be9235d2d1544fd6f08d59d0b3b9001b1534acca4539358bd"
+      "bytes": 101024,
+      "hash": "blake3:5eb6cd0f53789abe93d0eebcddfc1c6d5cd2eb6e2b35040d30eed05dda48cf8a",
+      "operation_hash": "blake3:28d6473fa4060a19d629eba7d047c54724ec0b73b1236b988c75f579132bb915"
+    },
+    {
+      "source_path": "public/projects/accesstrace-overview.png",
+      "source_hash": "blake3:f966621f26d4f9b65d03ae8df992bab373ed0ef8d05beff2303a9af6df9e62a3",
+      "source_width": 1280,
+      "source_height": 1136,
+      "source_bytes": 151031,
+      "output_path": "public/images/generated/projects/accesstrace-overview.project-card.640.65b2bdb3bc73.jpeg",
+      "preset": "project-card",
+      "width": 640,
+      "height": 360,
+      "format": "jpeg",
+      "bytes": 38024,
+      "hash": "blake3:65b2bdb3bc73cc178680fab982c847815445032b240df509283403f93f7cdefa",
+      "operation_hash": "blake3:69414f1490665b61508a909b8967c77a9fbdb179cc89a7a0152a627739040157"
     },
     {
       "source_path": "public/projects/website.webp",
@@ -25,18 +40,33 @@
       "source_width": 2796,
       "source_height": 1584,
       "source_bytes": 108584,
-      "output_path": "public/images/generated/projects/website.project-card.640.jpeg",
+      "output_path": "public/images/generated/projects/website.project-banner.1200.a6d0d83ad763.jpeg",
+      "preset": "project-banner",
+      "width": 1200,
+      "height": 630,
+      "format": "jpeg",
+      "bytes": 85879,
+      "hash": "blake3:a6d0d83ad76380fa17cfeee0fc2d405e84921dbbf6bf55b838f65f33bac69649",
+      "operation_hash": "blake3:4e7ae4b4e106b4b72c9fdb13b2ab83a2b2dd3d7e0da4b033c3fc8e90d2aea6ab"
+    },
+    {
+      "source_path": "public/projects/website.webp",
+      "source_hash": "blake3:afa14f6f21d5d2bb7a5660eee7005ce244ef8be052ed19ebb40d8bb9e3291fa6",
+      "source_width": 2796,
+      "source_height": 1584,
+      "source_bytes": 108584,
+      "output_path": "public/images/generated/projects/website.project-card.640.e1c08c280a80.jpeg",
       "preset": "project-card",
       "width": 640,
       "height": 360,
       "format": "jpeg",
       "bytes": 30700,
       "hash": "blake3:e1c08c280a809d169392f817fccbe83d4b4066efd62cb32d3bc4966e7fa2ef97",
-      "operation_hash": "blake3:544e5c9f44398ecc7ff034f1ee4ca7d405a96ccddd12dfddbd1abd9fed8b4ded"
+      "operation_hash": "blake3:b4f7f019ad55d0290485e489d7a3598b94f3d13afd441fd105faed5f02aa67ef"
     }
   ],
   "totals": {
-    "source_bytes": 108584,
-    "output_bytes": 116579
+    "source_bytes": 259615,
+    "output_bytes": 255627
   }
 }

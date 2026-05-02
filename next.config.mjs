@@ -53,7 +53,7 @@ const nextConfig = {
       },
       {
         source: "/images/generated/:path*",
-        headers: stableImageHeaders
+        headers: immutableAssetHeaders
       },
       {
         source: "/about/profile.webp",
