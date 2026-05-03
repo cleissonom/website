@@ -28,7 +28,7 @@ highlights:
   - Added typed server-side query functions, Zod filter validation, a first dashboard, ClickHouse summary-table experiments, and a local security review.
 coverImage: /projects/accesstrace-overview.png
 links:
-  repo: https://github.com/cleissonom/accesstrace
+  repo: https://github.cleisson.com/accesstrace
 ---
 
 AccessTrace is a local product prototype for exploring how security audit logs can become usable investigation data.

@@ -36,7 +36,12 @@ allow_upscale = false
 include = ["cli_tools.png"]
 fit = "contain"
 
+[[overrides]]
+include = ["devimg.png"]
+fit = "contain"
+quality = 60
+
 [budgets]
-max_total_bytes = "400kb"
+max_total_bytes = "525kb"
 max_file_bytes = "100kb"
 fail_on_regression = true

@@ -11,9 +11,9 @@ This site dogfoods `devimg` for static project cover variants. The project uses 
 
 The generated filenames are content-hashed through `content_hash_filenames = true`, so each generated URL changes when the encoded bytes change. This is the required precondition before applying broad immutable CDN caching to generated assets.
 
-Project cover variants use `crop = "top"` so screenshot headers and top navigation remain visible in cropped cards and banners. The project-banner preset uses JPEG quality `82` to keep the top-cropped AccessTrace banner inside the current per-file budget.
+Project cover variants use `crop = "top"` so screenshot headers and top navigation remain visible in cropped cards and banners. The DevImg source uses a quality override so its detailed banner stays under the current per-file budget.
 
-The CLI Tools artwork uses a `[[overrides]]` entry with `fit = "contain"` so the full diagram is resized without cropping while the other project screenshots keep top-crop behavior.
+The CLI Tools and DevImg artwork use `[[overrides]]` entries with `fit = "contain"` so each full diagram is resized without cropping while the other project screenshots keep top-crop behavior.
 
 `lib/devimg.generated.ts` is generated from `public/images/devimg-manifest.json` and is the only place generated content-hash filenames are copied into app code. `lib/devimg.ts` derives project card and banner variants from that generated module.
 
