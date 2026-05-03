@@ -16,7 +16,7 @@ include = ["**/*.webp", "**/*.png", "**/*.jpg", "**/*.jpeg"]
 name = "project-card"
 widths = [640]
 formats = ["jpeg"]
-quality = 82
+quality = 90
 fit = "cover"
 aspect_ratio = "16:9"
 crop = "top"
@@ -26,7 +26,7 @@ allow_upscale = false
 name = "project-banner"
 widths = [1200]
 formats = ["jpeg"]
-quality = 82
+quality = 90
 fit = "cover"
 aspect_ratio = "1200:630"
 crop = "top"
@@ -39,9 +39,8 @@ fit = "contain"
 [[overrides]]
 include = ["devimg.png"]
 fit = "contain"
-quality = 60
 
 [budgets]
-max_total_bytes = "525kb"
-max_file_bytes = "100kb"
+max_total_bytes = "800kb"
+max_file_bytes = "200kb"
 fail_on_regression = true
