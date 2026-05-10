@@ -15,6 +15,8 @@ Project cover variants use `crop = "top"` so screenshot headers and top navigati
 
 The CLI Tools and DevImg artwork use `[[overrides]]` entries with `fit = "contain"` so each full diagram is resized without cropping while the other project screenshots keep top-crop behavior.
 
+AccessTrace keeps two narrow `quality:cover-crop` acknowledgements for the card and banner presets because the top-anchored crop was visually reviewed and is intentional. New unacknowledged warnings still fail strict checks.
+
 `lib/devimg.generated.ts` is generated from `public/images/devimg-manifest.json` and is the only place generated content-hash filenames are copied into app code. `lib/devimg.ts` derives project card and banner variants from that generated module.
 
 ## Local Commands
@@ -24,13 +26,13 @@ devimg optimize --config devimg.toml --dry-run
 devimg optimize --config devimg.toml
 devimg manifest export --manifest public/images/devimg-manifest.json --strip-prefix public --url-prefix / --format typescript --output lib/devimg.generated.ts
 devimg manifest export --manifest public/images/devimg-manifest.json --strip-prefix public --url-prefix / --format typescript --output lib/devimg.generated.ts --check
-devimg check --config devimg.toml
+devimg check --config devimg.toml --fail-on-warning
 ```
 
 Use `--allow-overwrite` when intentionally regenerating existing variants after changing source images or presets.
 
 ## CI
 
-The main CI workflow can run `devimg check` and `devimg manifest export --check` by downloading the Linux `v0.1.10` release archive from the private `cleissonom/devimg` repository and verifying its checksum. Configure a `DEVIMG_RELEASE_TOKEN` repository secret with read access to that repository to enable the check. Without the secret, CI skips only the image check and continues with lint, typecheck, and build.
+The main CI workflow can run `devimg check --fail-on-warning` and `devimg manifest export --check` by downloading the Linux `v0.1.11` release archive from the private `cleissonom/devimg` repository and verifying its checksum. Configure a `DEVIMG_RELEASE_TOKEN` repository secret with read access to that repository to enable the check. Without the secret, CI skips only the image check and continues with lint, typecheck, and build.
 
 Generated variants, `public/images/devimg-manifest.json`, and `lib/devimg.generated.ts` should be committed with image changes; `.devimg/` is ignored because reports are regenerated locally and in CI.

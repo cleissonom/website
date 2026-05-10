@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generated_at": "unix:1777820713",
+  "generated_at": "unix:1778417321",
   "config_path": "devimg.toml",
-  "config_hash": "blake3:d8416da24d8da50f161a9ed6f85e3254cc08ea74c1fcccb293fa32d728a6fd65",
+  "config_hash": "blake3:fa70340dd612d8569ddd5b7c9552002d74c92e514f31be15e96fe0e3bd9d8b93",
   "outputs": [
     {
       "source_path": "public/projects/accesstrace-overview.png",
@@ -18,7 +18,7 @@
       "format": "jpeg",
       "bytes": 128986,
       "hash": "blake3:a5cc41e55e3acc325d8cc65fa02d3f5d14a9c5a4ef2b050390076b2cfe9da175",
-      "operation_hash": "blake3:0a0f6d29af89a3edb585cd02a7e59f99fcf428aeb3f33352e55aca1929b1e4ca"
+      "operation_hash": "blake3:4411a2eb4494e85180d29c064fe5db9bdfc216c8c9000c52df7cdcf4e9194b66"
     },
     {
       "source_path": "public/projects/accesstrace-overview.png",
@@ -34,7 +34,7 @@
       "format": "jpeg",
       "bytes": 51018,
       "hash": "blake3:e21ca73fb0f9c547b0d99e8f5bb4a3f7e00ea142bf94bac27ee6a0c19f91ce60",
-      "operation_hash": "blake3:916e5237ad1cdee5d8e2db7ce68993f573e77f9c8671c4a829f151e209c12f30"
+      "operation_hash": "blake3:ed6ff850267c2e7d8a9fbcbbba85de7978095a58bc04a2f9292e0245c8055484"
     },
     {
       "source_path": "public/projects/cli_tools.png",
@@ -50,7 +50,7 @@
       "format": "jpeg",
       "bytes": 121517,
       "hash": "blake3:cafd458c426aaecb2c7ea39c77aff27da29df6003e6f164841fc8a2d42d1e420",
-      "operation_hash": "blake3:9a9005725b339ae83c21ddb4871707bc741ef5468cb579d18f88c029a1a8dbaa"
+      "operation_hash": "blake3:01f78346523fea242a629cad63a3e91ce2ff08250a9a35862de4f2e4929a59db"
     },
     {
       "source_path": "public/projects/cli_tools.png",
@@ -66,7 +66,7 @@
       "format": "jpeg",
       "bytes": 44295,
       "hash": "blake3:5b8292e813754534cb64304685954447980f1aaf4db860fcf7c1f017aaced325",
-      "operation_hash": "blake3:367b32cb02e2b63ff6fafa91143618135d7eba55871cab1fc1a8f4b863dc39e1"
+      "operation_hash": "blake3:13d2f374824b123923f9216c92f2e9f8d8f8b7dbe2571e6fa2c7bd51fcee0d53"
     },
     {
       "source_path": "public/projects/devimg.png",
@@ -82,7 +82,7 @@
       "format": "jpeg",
       "bytes": 195673,
       "hash": "blake3:4bffb451e10d67db44ac7a1cd5bbb2e2cd74906a74c118b831d40bd03b5a0b71",
-      "operation_hash": "blake3:f98a9abb3178142490458ad991fef3b7dc142bc19ab289263c52ebfa06f39a34"
+      "operation_hash": "blake3:fff44182443acfdc174c67d7fdff5e3c9327bde54eaade7c2f79c25039267ccf"
     },
     {
       "source_path": "public/projects/devimg.png",
@@ -98,7 +98,7 @@
       "format": "jpeg",
       "bytes": 68327,
       "hash": "blake3:1a31a13c61b7be9e47703d8b46a23ece7dc7b1ff629c421b2e5e3f62afb93a2a",
-      "operation_hash": "blake3:73afe7e95a0df2046ae2c4aa4495a751dcce29d7bc8df5fed73890f46a272e2c"
+      "operation_hash": "blake3:59055ab2d00c15ac195e46c711efd548bcbbeac1faca822178eb422218c8ddd4"
     },
     {
       "source_path": "public/projects/website.webp",
@@ -114,7 +114,7 @@
       "format": "jpeg",
       "bytes": 96980,
       "hash": "blake3:8fb712153b69538eb5f815b506bdcf9c76349cc74bd77d57ba05e35d4f13cc01",
-      "operation_hash": "blake3:c5eba11c10c71f93f13cd71ab64ea4d8fe24c32e6de7206e1d9965b2ca4adc69"
+      "operation_hash": "blake3:d05742f590527b65e173db91cc8a76d4596a5ae3030b628360d9b627dfcc6c14"
     },
     {
       "source_path": "public/projects/website.webp",
@@ -130,7 +130,7 @@
       "format": "jpeg",
       "bytes": 38785,
       "hash": "blake3:4702e7ceb58eabfbcc15cca9adf812892320d5d914927fc29e3fc31f1d599cd6",
-      "operation_hash": "blake3:2d081286eaf1cdea0a796982e370e3ec55916a228185400b4407dc494a8d4a7f"
+      "operation_hash": "blake3:34c643bee5a1ebcd1b0c5f19bdc9e293c9833fd3732bb370a037e1bd242c0b68"
     }
   ],
   "totals": {

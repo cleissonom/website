@@ -40,6 +40,20 @@ fit = "contain"
 include = ["devimg.png"]
 fit = "contain"
 
+[[warnings.acknowledge]]
+code = "quality:cover-crop"
+source = "public/projects/accesstrace-overview.png"
+preset = "project-card"
+width = 640
+reason = "Intentional top-anchored project-card crop after visual review."
+
+[[warnings.acknowledge]]
+code = "quality:cover-crop"
+source = "public/projects/accesstrace-overview.png"
+preset = "project-banner"
+width = 1200
+reason = "Intentional top-anchored project-banner crop after visual review."
+
 [budgets]
 max_total_bytes = "800kb"
 max_file_bytes = "200kb"
