@@ -181,6 +181,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
                 locale={locale}
                 readMoreLabel={ui.labels.readMore}
                 readMoreAboutPrefix={dictionary.snippets.readMoreAboutPrefix}
+                detailsUnavailableLabel={dictionary.pages.projects.detailsComingSoonLabel}
                 typeLabel={dictionary.pages.projects.typeLabels[project.type]}
                 stageLabel={dictionary.pages.projects.stageLabels[project.stage]}
               />

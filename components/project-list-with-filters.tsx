@@ -19,6 +19,7 @@ export function ProjectListWithFilters({
   locale,
   readMoreLabel,
   readMoreAboutPrefix,
+  detailsUnavailableLabel,
   typeLabels,
   stageLabels,
   copy
@@ -27,6 +28,7 @@ export function ProjectListWithFilters({
   locale: Locale
   readMoreLabel: string
   readMoreAboutPrefix: string
+  detailsUnavailableLabel: string
   typeLabels: Record<ProjectType, string>
   stageLabels: Record<ProjectStage, string>
   copy: ProjectsFilterCopy
@@ -146,6 +148,7 @@ export function ProjectListWithFilters({
               locale={locale}
               readMoreLabel={readMoreLabel}
               readMoreAboutPrefix={readMoreAboutPrefix}
+              detailsUnavailableLabel={detailsUnavailableLabel}
               typeLabel={typeLabels[project.type]}
               stageLabel={stageLabels[project.stage]}
               enableWalletHover

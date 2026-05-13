@@ -3,6 +3,7 @@ import type { MetadataRoute } from "next"
 import { getAllPosts, getAllProjects } from "@/lib/content"
 import { LOCALES, buildLocalizedPath } from "@/lib/i18n"
 import { absoluteUrl } from "@/lib/metadata"
+import { isProjectDetailAvailable } from "@/lib/project-state"
 
 const staticPaths = ["/", "/experience", "/projects", "/blog", "/resume"] as const
 
@@ -38,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })
     }
 
-    for (const project of getAllProjects(locale)) {
+    for (const project of getAllProjects(locale).filter(isProjectDetailAvailable)) {
       const path = `/projects/${project.slug}`
       const projectLastModified = toValidDate(project.dateEnd ?? project.dateStart, now)
       entries.push({

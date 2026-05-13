@@ -6,7 +6,7 @@ dateStart: "2026-05-02T12:00:00.000Z"
 role: Software Engineer
 status: active
 type: systems-lab
-stage: lab
+stage: in-progress
 tags:
   - Security Analytics
   - ClickHouse

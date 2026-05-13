@@ -18,18 +18,21 @@ import { JsonLd } from "@/components/json-ld"
 import { getDictionary } from "@/data/i18n"
 import { siteIdentity } from "@/data/profile"
 import type { ProjectLinkKey } from "@/data/i18n/types"
-import { getAllProjectSlugs, getProjectBySlug } from "@/lib/content"
+import { getAllProjects, getProjectBySlug } from "@/lib/content"
 import { projectBannerImageVariant } from "@/lib/devimg"
 import { LOCALES, isLocale } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, absoluteUrl, buildPageTitle, createMetadata } from "@/lib/metadata"
+import { isProjectDetailAvailable } from "@/lib/project-state"
 import { breadcrumbJsonLd, projectJsonLd } from "@/lib/schema"
 
 export function generateStaticParams() {
   return LOCALES.flatMap((locale) =>
-    getAllProjectSlugs(locale).map((slug) => ({
-      locale,
-      slug
-    }))
+    getAllProjects(locale)
+      .filter(isProjectDetailAvailable)
+      .map((project) => ({
+        locale,
+        slug: project.slug
+      }))
   )
 }
 
@@ -46,7 +49,7 @@ export async function generateMetadata({
 
   const dictionary = getDictionary(locale)
   const project = getProjectBySlug(locale, slug)
-  if (!project) {
+  if (!project || !isProjectDetailAvailable(project)) {
     return createMetadata(locale, {
       title: buildPageTitle(dictionary.pages.projects.notFoundTitle),
       description: dictionary.pages.projects.notFoundDescription,
@@ -82,7 +85,7 @@ export default async function ProjectDetailPage({
   const ui = dictionary.ui
   const project = getProjectBySlug(locale, slug)
 
-  if (!project) {
+  if (!project || !isProjectDetailAvailable(project)) {
     notFound()
   }
 

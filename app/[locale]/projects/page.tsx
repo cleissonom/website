@@ -104,6 +104,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         locale={locale}
         readMoreLabel={ui.labels.readMore}
         readMoreAboutPrefix={dictionary.snippets.readMoreAboutPrefix}
+        detailsUnavailableLabel={dictionary.pages.projects.detailsComingSoonLabel}
         typeLabels={dictionary.pages.projects.typeLabels}
         stageLabels={dictionary.pages.projects.stageLabels}
         copy={{

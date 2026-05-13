@@ -251,6 +251,7 @@ export const enUSDictionary: LocaleDictionary = {
       allLabels: "All labels",
       clearLabels: "Clear labels",
       noResultsDescription: "No projects found for the selected labels.",
+      detailsComingSoonLabel: "Details coming soon",
       notFoundTitle: "Project not found",
       notFoundDescription: "Project not found for this locale.",
       linksHeading: "Links",

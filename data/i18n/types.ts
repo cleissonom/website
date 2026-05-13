@@ -120,6 +120,7 @@ export type LocaleDictionary = {
       allLabels: string
       clearLabels: string
       noResultsDescription: string
+      detailsComingSoonLabel: string
       notFoundTitle: string
       notFoundDescription: string
       linksHeading: string

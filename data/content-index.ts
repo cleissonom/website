@@ -3,7 +3,9 @@ import "server-only"
 import fs from "node:fs"
 import path from "node:path"
 
+import { getAllProjects } from "@/lib/content"
 import { LOCALES, type Locale } from "@/lib/i18n"
+import { isProjectDetailAvailable } from "@/lib/project-state"
 
 const contentRoot = path.join(process.cwd(), "content")
 
@@ -26,5 +28,13 @@ function createLocaleSlugIndex(type: "projects" | "blog"): Record<Locale, string
   ) as Record<Locale, string[]>
 }
 
-export const PROJECT_SLUGS_BY_LOCALE = createLocaleSlugIndex("projects")
+export const PROJECT_SLUGS_BY_LOCALE = Object.fromEntries(
+  LOCALES.map((locale) => [
+    locale,
+    getAllProjects(locale)
+      .filter(isProjectDetailAvailable)
+      .map((project) => project.slug)
+      .sort()
+  ])
+) as Record<Locale, string[]>
 export const BLOG_SLUGS_BY_LOCALE = createLocaleSlugIndex("blog")

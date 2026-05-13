@@ -252,6 +252,7 @@ export const esESDictionary: LocaleDictionary = {
       allLabels: "Todas las etiquetas",
       clearLabels: "Borrar etiquetas",
       noResultsDescription: "No se encontraron proyectos para las etiquetas seleccionadas.",
+      detailsComingSoonLabel: "Detalles próximamente",
       notFoundTitle: "Proyecto no encontrado",
       notFoundDescription: "No se encontró el proyecto para este idioma.",
       linksHeading: "Enlaces",

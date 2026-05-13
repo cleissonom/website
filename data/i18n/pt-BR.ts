@@ -252,6 +252,7 @@ export const ptBRDictionary: LocaleDictionary = {
       allLabels: "Todas as labels",
       clearLabels: "Limpar labels",
       noResultsDescription: "Nenhum projeto encontrado para as labels selecionadas.",
+      detailsComingSoonLabel: "Detalhes em breve",
       notFoundTitle: "Projeto não encontrado",
       notFoundDescription: "Projeto não encontrado para este idioma.",
       linksHeading: "Links",

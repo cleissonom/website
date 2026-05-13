@@ -806,6 +806,7 @@ h3 {
   border: 1px solid var(--border);
   aspect-ratio: 16 / 9;
   background: var(--surface-strong);
+  position: relative;
   transform-origin: top center;
   transform: translateY(0) scale(1);
   margin: 0;
@@ -869,6 +870,66 @@ h3 {
   letter-spacing: 0.05em;
   padding: 0.22rem 0.5rem;
   text-transform: uppercase;
+}
+
+.project-card-in-progress {
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--accent) 46%, var(--border));
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 42%),
+    var(--surface);
+}
+
+.project-card-in-progress::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--accent) 0 1.15rem,
+    color-mix(in srgb, var(--accent) 22%, transparent) 1.15rem 2rem
+  );
+}
+
+.project-card-state-ribbon {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  max-width: calc(100% - 1.3rem);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--surface-strong));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-strong) 88%, var(--accent));
+  color: var(--text);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  padding: 0.42rem 0.55rem;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.project-card-meta-row .project-card-stage-in-progress {
+  border-color: color-mix(in srgb, var(--accent) 68%, var(--border));
+  background: color-mix(in srgb, var(--accent-soft) 82%, var(--surface-strong));
+}
+
+.project-card-detail-status {
+  justify-self: start;
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-soft) 54%, transparent);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 750;
+  line-height: 1.2;
+  padding: 0.45rem 0.7rem;
 }
 
 .post-card {
