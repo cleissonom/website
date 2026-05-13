@@ -1555,6 +1555,12 @@ summary:focus-visible {
   gap: 0.75rem;
 }
 
+.not-found-actions .ghost-button {
+  padding: 0.62rem 1.05rem;
+  font-size: inherit;
+  font-weight: 600;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .site-header {
     transition: none;

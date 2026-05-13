@@ -3,7 +3,12 @@
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 
+import { THEME_COOKIE_KEY, type Theme, parseTheme } from "@/lib/theme"
+
 type SlugIndex = Record<string, string[]>
+type ThemeToggleWindow = Window & {
+  __themeToggleBound?: boolean
+}
 
 type UiEnhancementsProps = {
   locales: readonly string[]
@@ -154,6 +159,80 @@ function updateActiveNav(pathname: string): void {
   }
 }
 
+function readThemeFromCookie(): Theme | null {
+  const cookieValue = `; ${document.cookie}`
+  const parts = cookieValue.split(`; ${THEME_COOKIE_KEY}=`)
+  if (parts.length !== 2) {
+    return null
+  }
+
+  return parseTheme(decodeURIComponent(parts.pop()?.split(";").shift() ?? ""))
+}
+
+function preferredTheme(): Theme {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+}
+
+function updateThemeToggleLabel(theme: Theme): void {
+  const buttons = document.querySelectorAll(".js-theme-toggle")
+
+  for (const button of buttons) {
+    if (!(button instanceof HTMLButtonElement)) {
+      continue
+    }
+
+    const lightLabel = button.getAttribute("data-light-label") ?? ""
+    const darkLabel = button.getAttribute("data-dark-label") ?? ""
+    const label = theme === "dark" ? lightLabel : darkLabel
+    button.setAttribute("aria-label", label)
+    button.textContent = label
+  }
+}
+
+function applyTheme(theme: Theme, persistCookie: boolean): void {
+  document.documentElement.setAttribute("data-theme", theme)
+  if (persistCookie) {
+    document.cookie = `${THEME_COOKIE_KEY}=${encodeURIComponent(theme)}; path=/; max-age=31536000; samesite=lax`
+  }
+
+  updateThemeToggleLabel(theme)
+}
+
+function syncThemePreference(): void {
+  applyTheme(readThemeFromCookie() ?? preferredTheme(), false)
+}
+
+function setupThemeToggle(): () => void {
+  const themeWindow = window as ThemeToggleWindow
+  if (themeWindow.__themeToggleBound === true) {
+    return () => {}
+  }
+
+  const handleClick = (event: MouseEvent) => {
+    const target = event.target
+    if (!(target instanceof Element)) {
+      return
+    }
+
+    const toggle = target.closest(".js-theme-toggle")
+    if (!(toggle instanceof HTMLButtonElement)) {
+      return
+    }
+
+    const currentTheme =
+      document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light"
+    applyTheme(currentTheme === "dark" ? "light" : "dark", true)
+  }
+
+  window.addEventListener("click", handleClick)
+  themeWindow.__themeToggleBound = true
+
+  return () => {
+    window.removeEventListener("click", handleClick)
+    themeWindow.__themeToggleBound = false
+  }
+}
+
 function setupHeaderVisibility(): () => void {
   const header = document.querySelector(".js-site-header")
   if (!(header instanceof HTMLElement)) {
@@ -202,11 +281,13 @@ export function UiEnhancements({
 
   useEffect(() => {
     const normalizedPath = normalizePath(pathname ?? "/")
+    syncThemePreference()
     updateLocaleSwitcher(normalizedPath, locales, projectSlugsByLocale, blogSlugsByLocale)
     updateActiveNav(normalizedPath)
   }, [pathname, locales, projectSlugsByLocale, blogSlugsByLocale])
 
   useEffect(() => setupHeaderVisibility(), [])
+  useEffect(() => setupThemeToggle(), [])
 
   return null
 }
