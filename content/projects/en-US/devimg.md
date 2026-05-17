@@ -30,11 +30,36 @@ highlights:
   - Shipped a public GitHub Action, checksum-verified release binaries, and production dogfooding in this website's image pipeline.
 ---
 
-DevImg is a developer image pipeline built to make frontend image workflows reproducible, reviewable, and CI-enforced instead of manual.
+DevImg is a developer image pipeline built to make frontend image workflows reproducible, reviewable, and CI-enforced instead of manual. It is designed for teams that keep static assets in the repository and want generated image variants to behave like normal build artifacts.
 
-The tool reads a `devimg.toml` config, scans source folders, generates configured variants, writes a JSON manifest, exports app-friendly helpers, produces a Markdown report, and checks that generated files are present, current, and inside configured budgets.
+The tool reads a `devimg.toml` config, scans source folders, generates configured variants, writes a JSON manifest, exports app-friendly helpers, produces a Markdown report, and checks that generated files are present, current, and inside configured budgets. It sits beside framework image components and CDNs: DevImg owns deterministic source-to-variant generation, while the frontend decides how to render the selected assets.
 
-It is now distributed publicly: developers can install it with `cargo install devimg`, pin the GitHub Action with `cleissonom/devimg/action@v0.1.14`, or download checksum-verified binaries from GitHub Releases.
+## Install and CI
+
+Install the CLI with Rust 1.85 or newer:
+
+```bash
+cargo install devimg
+```
+
+Use the public GitHub Action in pull requests:
+
+```yaml
+- uses: cleissonom/devimg/action@v0.1.14
+  with:
+    config: devimg.toml
+    mode: check
+```
+
+The Action downloads the matching GitHub Release binary, verifies its SHA-256 checksum, and runs the same CLI behavior developers use locally.
+
+## Workflow
+
+1. Define sources, presets, widths, formats, quality, crop behavior, and budgets in `devimg.toml`.
+2. Run `devimg optimize` to generate responsive variants and a manifest.
+3. Run `devimg manifest export` when the app needs a checked-in TypeScript or JSON helper for content-hash filenames.
+4. Run `devimg review` to create a static HTML artifact for visual inspection.
+5. Run `devimg check` in CI so missing, stale, oversized, or config-drifted outputs block the branch.
 
 ## What I built
 
@@ -47,6 +72,12 @@ It is now distributed publicly: developers can install it with `cargo install de
 - Generated TypeScript manifest export so web apps can consume hashed image paths without hand-maintained lookup tables.
 - Framework-aware `doctor` diagnostics that explain helper export checks and the intended `img`/`picture`, framework `Image`, or layered optimization consumption modes.
 - Static HTML review artifact so generated variants can be inspected locally or uploaded from CI.
+
+## Why it is useful
+
+Frontend image work often drifts because generated files are easy to forget, hard to review, and usually tied to ad hoc scripts. DevImg makes that workflow explicit: source image, config, generated variants, manifest, helper export, Markdown report, and review artifact move together in the same pull request.
+
+For static sites, portfolios, documentation sites, and product marketing pages, this keeps image quality and byte budgets visible without introducing a hosted service or remote storage dependency.
 
 ## Why I built it
 
