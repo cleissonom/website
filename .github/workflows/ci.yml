@@ -11,6 +11,8 @@ jobs:
     name: Validate Code
     runs-on: ubuntu-latest
     environment: Production
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -42,32 +44,23 @@ jobs:
         run: gitleaks detect --redact --config .gitleaks.toml --source . --platform github
 
       - name: Check image variants
-        env:
-          DEVIMG_RELEASE_TOKEN: ${{ secrets.DEVIMG_RELEASE_TOKEN }}
-        run: |
-          set -euo pipefail
-          if [[ -z "${DEVIMG_RELEASE_TOKEN:-}" ]]; then
-            echo "::warning::Skipping devimg check because DEVIMG_RELEASE_TOKEN is not configured."
-            exit 0
-          fi
-          tmp="$(mktemp -d)"
-          GH_TOKEN="$DEVIMG_RELEASE_TOKEN" gh release download v0.1.12 \
-            --repo cleissonom/devimg \
-            --pattern 'devimg-linux-x86_64.tar.gz*' \
-            --dir "$tmp"
-          (
-            cd "$tmp"
-            sha256sum -c devimg-linux-x86_64.tar.gz.sha256
-            tar -xzf devimg-linux-x86_64.tar.gz
-          )
-          "$tmp/devimg" check --config devimg.toml --fail-on-warning
-          "$tmp/devimg" manifest export \
-            --manifest public/images/devimg-manifest.json \
-            --strip-prefix public \
-            --url-prefix / \
-            --format typescript \
-            --output lib/devimg.generated.ts \
-            --check
+        uses: cleissonom/devimg/action@v0.1.14
+        with:
+          config: devimg.toml
+          mode: check
+          fail-on-warning: "true"
+          export-output: lib/devimg.generated.ts
+          export-format: typescript
+          strip-prefix: public
+          url-prefix: /
+          review-output: .devimg/review.html
+
+      - name: Upload image review
+        uses: actions/upload-artifact@v4
+        with:
+          name: devimg-review
+          path: .devimg/review.html
+          if-no-files-found: error
 
       - name: Setup Node
         uses: actions/setup-node@v6

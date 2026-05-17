@@ -65,7 +65,8 @@ const projectFrontmatterSchema = z
         repo: safeExternalUrlSchema.optional(),
         live: safeExternalUrlSchema.optional(),
         caseStudy: safeExternalUrlSchema.optional(),
-        demo: safeExternalUrlSchema.optional()
+        demo: safeExternalUrlSchema.optional(),
+        package: safeExternalUrlSchema.optional()
       })
       .default({}),
     highlights: z.array(z.string().min(1)).min(1),

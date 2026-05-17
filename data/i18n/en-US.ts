@@ -280,7 +280,8 @@ export const enUSDictionary: LocaleDictionary = {
         repo: "Repository",
         live: "Live",
         caseStudy: "Case Study",
-        demo: "Demo"
+        demo: "Demo",
+        package: "Package"
       }
     },
     blog: {

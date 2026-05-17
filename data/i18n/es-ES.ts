@@ -281,7 +281,8 @@ export const esESDictionary: LocaleDictionary = {
         repo: "Repositorio",
         live: "Aplicación",
         caseStudy: "Caso de estudio",
-        demo: "Demostración"
+        demo: "Demostración",
+        package: "Paquete"
       }
     },
     blog: {

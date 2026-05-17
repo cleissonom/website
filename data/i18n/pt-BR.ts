@@ -281,7 +281,8 @@ export const ptBRDictionary: LocaleDictionary = {
         repo: "Repositório",
         live: "Aplicação",
         caseStudy: "Estudo de caso",
-        demo: "Demonstração"
+        demo: "Demonstração",
+        package: "Pacote"
       }
     },
     blog: {

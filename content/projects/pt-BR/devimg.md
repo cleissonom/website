@@ -21,23 +21,27 @@ stack:
   - Processamento de Imagens
   - Markdown
 links:
-  repo: https://github.cleisson.com/devimg
+  repo: https://github.com/cleissonom/devimg
+  package: https://crates.io/crates/devimg
 coverImage: /projects/devimg.png
 highlights:
-  - Criei um workspace Rust com biblioteca core reutilizável e CLI `devimg` para fluxos repetíveis de otimização de imagens.
+  - Publiquei a CLI Rust no crates.io como `devimg`, com a biblioteca reutilizável `devimg-core` por baixo.
   - Adicionei nomes com hash de conteúdo, controles de crop, overrides por preset, helpers gerados a partir do manifesto, diagnósticos de framework e artefatos visuais de revisão.
-  - Usei o fluxo neste site com `devimg optimize`, `devimg manifest export`, `devimg check --fail-on-warning` e um binário fixado de GitHub Release.
+  - Lancei uma GitHub Action pública, binários de release com checksum e uso em produção no pipeline de imagens deste site.
 ---
 
 DevImg é um pipeline de imagens para desenvolvimento criado para tornar fluxos de imagens frontend reproduzíveis, revisáveis e validados em CI em vez de manuais.
 
 A ferramenta lê um `devimg.toml`, escaneia pastas de origem, gera variantes configuradas, escreve um manifesto JSON, exporta helpers amigáveis para a aplicação, produz um relatório Markdown e valida se os arquivos gerados existem, estão atualizados e respeitam os orçamentos configurados.
 
+Agora ela também está distribuída publicamente: desenvolvedores podem instalar com `cargo install devimg`, fixar a GitHub Action com `cleissonom/devimg/action@v0.1.14` ou baixar binários com checksum pelos GitHub Releases.
+
 ## O que construí
 
 - Biblioteca core em Rust responsável por configuração, scan, planejamento, transformações, manifestos, relatórios, orçamentos e validação.
 - CLI em Rust com comandos `init`, `optimize`, `check`, `doctor`, `report`, `inspect`, artefato de revisão e exportação de manifesto.
-- GitHub Action que executa a CLI em pull requests e falha quando imagens geradas estão ausentes, antigas, grandes demais ou fora de sincronia.
+- Pacotes no crates.io para a CLI de uso direto e para a biblioteca core reutilizável.
+- GitHub Action pública que executa a CLI em pull requests e falha quando imagens geradas estão ausentes, antigas, grandes demais ou fora de sincronia.
 - Nomes de arquivos com hash de conteúdo para permitir cache imutável com segurança.
 - Âncoras de crop, pontos focais normalizados e overrides por arquivo para screenshots e diagramas reais.
 - Exportação TypeScript do manifesto para que aplicações consumam caminhos com hash sem tabelas mantidas manualmente.
@@ -54,7 +58,7 @@ Eu queria que o pipeline se comportasse como infraestrutura de desenvolvimento: 
 
 Este site usa DevImg para imagens de cards e banners dos projetos. As imagens de origem ficam em `public/projects`, as variantes geradas ficam em `public/images/generated` e o código da aplicação lê um helper TypeScript versionado gerado a partir do manifesto.
 
-O CI baixa um binário fixado de uma GitHub Release privada, valida o checksum, executa `devimg check --fail-on-warning` em modo estrito e confirma que o helper exportado está atualizado. Isso mantém os deploys na Vercel usando assets estáticos versionados, com nomes de arquivo com hash de conteúdo compatíveis com CDN.
+O CI usa a Action pública `cleissonom/devimg/action@v0.1.14`, baixa um binário de release com checksum, executa `devimg check --fail-on-warning` em modo estrito, confirma que o helper exportado está atualizado e envia um artefato de revisão. Isso mantém os deploys na Vercel usando assets estáticos versionados, com nomes de arquivo com hash de conteúdo compatíveis com CDN.
 
 ## Escopo atual
 

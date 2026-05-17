@@ -21,23 +21,27 @@ stack:
   - Image Processing
   - Markdown
 links:
-  repo: https://github.cleisson.com/devimg
+  repo: https://github.com/cleissonom/devimg
+  package: https://crates.io/crates/devimg
 coverImage: /projects/devimg.png
 highlights:
-  - Built a Rust workspace with a reusable core library and a `devimg` CLI for repeatable image optimization workflows.
+  - Published the Rust CLI on crates.io as `devimg`, with a reusable `devimg-core` library underneath.
   - Added content-hashed filenames, crop controls, preset overrides, generated manifest helpers, framework diagnostics, and static visual review artifacts.
-  - Dogfooded the workflow on this website with `devimg optimize`, `devimg manifest export`, `devimg check --fail-on-warning`, and a pinned GitHub Release binary.
+  - Shipped a public GitHub Action, checksum-verified release binaries, and production dogfooding in this website's image pipeline.
 ---
 
 DevImg is a developer image pipeline built to make frontend image workflows reproducible, reviewable, and CI-enforced instead of manual.
 
 The tool reads a `devimg.toml` config, scans source folders, generates configured variants, writes a JSON manifest, exports app-friendly helpers, produces a Markdown report, and checks that generated files are present, current, and inside configured budgets.
 
+It is now distributed publicly: developers can install it with `cargo install devimg`, pin the GitHub Action with `cleissonom/devimg/action@v0.1.14`, or download checksum-verified binaries from GitHub Releases.
+
 ## What I built
 
 - Rust core library that owns config parsing, scanning, planning, transforms, manifests, reports, budgets, and check behavior.
 - Rust CLI with `init`, `optimize`, `check`, `doctor`, `report`, `inspect`, review artifact, and manifest export commands.
-- GitHub Action wrapper that can run the CLI in pull requests and fail when generated images are missing, stale, oversized, or out of sync.
+- crates.io packages for both the user-facing CLI and reusable core library.
+- Public GitHub Action wrapper that can run the CLI in pull requests and fail when generated images are missing, stale, oversized, or out of sync.
 - Content-hashed output filenames for safe immutable caching.
 - Crop anchors, normalized focal points, and source-specific preset overrides for real-world screenshots and diagrams.
 - Generated TypeScript manifest export so web apps can consume hashed image paths without hand-maintained lookup tables.
@@ -54,7 +58,7 @@ I wanted the pipeline to behave like normal developer infrastructure: determinis
 
 This website uses DevImg for project card and banner images. The source images live under `public/projects`, generated variants live under `public/images/generated`, and application code reads a checked-in TypeScript helper generated from the manifest.
 
-CI downloads a pinned private GitHub Release binary, verifies the checksum, runs strict `devimg check --fail-on-warning`, and validates that the helper export is up to date. That keeps Vercel deployments using checked-in static assets while still getting CDN-friendly content-hash filenames.
+CI uses the public `cleissonom/devimg/action@v0.1.14`, downloads a checksum-verified release binary, runs strict `devimg check --fail-on-warning`, validates that the helper export is up to date, and uploads a review artifact. That keeps Vercel deployments using checked-in static assets while still getting CDN-friendly content-hash filenames.
 
 ## Current scope
 

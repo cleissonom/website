@@ -76,7 +76,7 @@ export type ProjectType =
   | "game"
   | "experiment"
 export type ProjectStage = "live" | "in-progress" | "maintained" | "lab" | "archived"
-export type ProjectLinkKey = "repo" | "live" | "caseStudy" | "demo"
+export type ProjectLinkKey = "repo" | "live" | "caseStudy" | "demo" | "package"
 
 export type LocaleDictionary = {
   site: {
