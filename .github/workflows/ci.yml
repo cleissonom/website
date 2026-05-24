@@ -44,9 +44,8 @@ jobs:
         run: gitleaks detect --redact --config .gitleaks.toml --source . --platform github
 
       - name: Check image variants
-        uses: cleissonom/devimg/action@v0.1.14
+        uses: cleissonom/devimg/action@v0.1.15
         with:
-          config: devimg.toml
           mode: check
           fail-on-warning: "true"
           export-output: lib/devimg.generated.ts

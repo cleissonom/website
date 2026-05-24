@@ -22,17 +22,17 @@ AccessTrace keeps two narrow `quality:cover-crop` acknowledgements for the card 
 ## Local Commands
 
 ```bash
-devimg optimize --config devimg.toml --dry-run
-devimg optimize --config devimg.toml
+devimg optimize --dry-run
+devimg optimize
 devimg manifest export --manifest public/images/devimg-manifest.json --strip-prefix public --url-prefix / --format typescript --output lib/devimg.generated.ts
 devimg manifest export --manifest public/images/devimg-manifest.json --strip-prefix public --url-prefix / --format typescript --output lib/devimg.generated.ts --check
-devimg check --config devimg.toml --fail-on-warning
+devimg check --fail-on-warning
 ```
 
 Use `--allow-overwrite` when intentionally regenerating existing variants after changing source images or presets.
 
 ## CI
 
-The main CI workflow can run `devimg check --fail-on-warning` and `devimg manifest export --check` by downloading the Linux `v0.1.12` release archive from the private `cleissonom/devimg` repository and verifying its checksum. Configure a `DEVIMG_RELEASE_TOKEN` repository secret with read access to that repository to enable the check. Without the secret, CI skips only the image check and continues with lint, typecheck, and build.
+The main CI workflow uses the public `cleissonom/devimg/action@v0.1.15` Action. It downloads the matching Linux release archive, verifies its checksum, runs `devimg check --fail-on-warning`, validates `devimg manifest export --check`, and uploads the generated review artifact.
 
 Generated variants, `public/images/devimg-manifest.json`, and `lib/devimg.generated.ts` should be committed with image changes; `.devimg/` is ignored because reports are regenerated locally and in CI.
