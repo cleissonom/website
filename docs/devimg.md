@@ -27,12 +27,17 @@ devimg optimize
 devimg manifest export --manifest public/images/devimg-manifest.json --strip-prefix public --url-prefix / --format typescript --output lib/devimg.generated.ts
 devimg manifest export --manifest public/images/devimg-manifest.json --strip-prefix public --url-prefix / --format typescript --output lib/devimg.generated.ts --check
 devimg check --fail-on-warning
+devimg ai consent --ai-provider openai --model openai-dry-run-model --dry-run --output /tmp/cleisson-devimg-openai-consent.json --force
 ```
 
 Use `--allow-overwrite` when intentionally regenerating existing variants after changing source images or presets.
 
+The AI consent dry-run is a provider setup preview only. It requires no API key, includes no image bytes by default, and writes deterministic JSON under `/tmp` for local inspection. Real OpenAI calls are deferred to future opt-in DevImg AI commands.
+
 ## CI
 
-The main CI workflow uses the public `cleissonom/devimg/action@v0.1.15` Action. It downloads the matching Linux release archive, verifies its checksum, runs `devimg check --fail-on-warning`, validates `devimg manifest export --check`, and uploads the generated review artifact.
+The main CI workflow uses the public `cleissonom/devimg/action@v0.2.3` Action. It downloads the matching Linux release archive, verifies its checksum, runs `devimg check --fail-on-warning`, validates `devimg manifest export --check`, and uploads the generated review artifact.
+
+After the Action resolves the CLI, CI uses its `binary-path` output to run an OpenAI `devimg ai consent --dry-run` preview. The preview is written only under `$RUNNER_TEMP`, asserted nonempty, and does not require `OPENAI_API_KEY`.
 
 Generated variants, `public/images/devimg-manifest.json`, and `lib/devimg.generated.ts` should be committed with image changes; `.devimg/` is ignored because reports are regenerated locally and in CI.
