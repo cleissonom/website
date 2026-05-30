@@ -45,7 +45,7 @@ jobs:
 
       - name: Check image variants
         id: devimg
-        uses: cleissonom/devimg/action@v0.2.3
+        uses: cleissonom/devimg/action@v0.2.4
         with:
           mode: check
           fail-on-warning: "true"
@@ -55,7 +55,7 @@ jobs:
           url-prefix: /
           review-output: .devimg/review.html
 
-      - name: Preview DevImg AI consent
+      - name: Preview DevImg AI commands
         env:
           DEVIMG_BIN: ${{ steps.devimg.outputs.binary-path }}
         run: |
@@ -64,7 +64,17 @@ jobs:
             --model openai-dry-run-model \
             --dry-run \
             --output "${RUNNER_TEMP}/devimg-openai-consent.json"
+          "$DEVIMG_BIN" review \
+            --manifest public/images/devimg-manifest.json \
+            --ai \
+            --ai-provider openai \
+            --model openai-dry-run-model \
+            --dry-run \
+            --ai-output "${RUNNER_TEMP}/devimg-openai-ai-review.json" \
+            --markdown "${RUNNER_TEMP}/devimg-openai-ai-review.md"
           test -s "${RUNNER_TEMP}/devimg-openai-consent.json"
+          test -s "${RUNNER_TEMP}/devimg-openai-ai-review.json"
+          test -s "${RUNNER_TEMP}/devimg-openai-ai-review.md"
 
       - name: Upload image review
         uses: actions/upload-artifact@v4

@@ -45,7 +45,7 @@ cargo install devimg
 Use a GitHub Action pública em pull requests:
 
 ```yaml
-- uses: cleissonom/devimg/action@v0.1.15
+- uses: cleissonom/devimg/action@v0.2.4
   with:
     mode: check
 ```
@@ -88,7 +88,7 @@ Eu queria que o pipeline se comportasse como infraestrutura de desenvolvimento: 
 
 Este site usa DevImg para imagens de cards e banners dos projetos. As imagens de origem ficam em `public/projects`, as variantes geradas ficam em `public/images/generated` e o código da aplicação lê um helper TypeScript versionado gerado a partir do manifesto.
 
-O CI usa a Action pública `cleissonom/devimg/action@v0.1.15`, baixa um binário de release com checksum, executa `devimg check --fail-on-warning` em modo estrito, confirma que o helper exportado está atualizado e envia um artefato de revisão. O arquivo de configuração é o `devimg.toml` padrão, então o workflow fica curto enquanto os deploys na Vercel seguem usando assets estáticos versionados com nomes de arquivo com hash de conteúdo compatíveis com CDN.
+O CI usa a Action pública `cleissonom/devimg/action@v0.2.4`, baixa um binário de release com checksum, executa `devimg check --fail-on-warning` em modo estrito, confirma que o helper exportado está atualizado, envia um artefato de revisão e roda um dry-run do artefato de revisão por IA da OpenAI sem chaves de API. O arquivo de configuração é o `devimg.toml` padrão, então o workflow fica curto enquanto os deploys na Vercel seguem usando assets estáticos versionados com nomes de arquivo com hash de conteúdo compatíveis com CDN.
 
 ## Escopo atual
 

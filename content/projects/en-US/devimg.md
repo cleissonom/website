@@ -45,7 +45,7 @@ cargo install devimg
 Use the public GitHub Action in pull requests:
 
 ```yaml
-- uses: cleissonom/devimg/action@v0.1.15
+- uses: cleissonom/devimg/action@v0.2.4
   with:
     mode: check
 ```
@@ -88,7 +88,7 @@ I wanted the pipeline to behave like normal developer infrastructure: determinis
 
 This website uses DevImg for project card and banner images. The source images live under `public/projects`, generated variants live under `public/images/generated`, and application code reads a checked-in TypeScript helper generated from the manifest.
 
-CI uses the public `cleissonom/devimg/action@v0.1.15`, downloads a checksum-verified release binary, runs strict `devimg check --fail-on-warning`, validates that the helper export is up to date, and uploads a review artifact. The config file is the default `devimg.toml`, so the workflow can stay short while Vercel deployments keep using checked-in static assets with CDN-friendly content-hash filenames.
+CI uses the public `cleissonom/devimg/action@v0.2.4`, downloads a checksum-verified release binary, runs strict `devimg check --fail-on-warning`, validates that the helper export is up to date, uploads a review artifact, and dry-runs the OpenAI AI review artifact path without API keys. The config file is the default `devimg.toml`, so the workflow can stay short while Vercel deployments keep using checked-in static assets with CDN-friendly content-hash filenames.
 
 ## Current scope
 
