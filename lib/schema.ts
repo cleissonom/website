@@ -1,4 +1,5 @@
 import type { BlogEntry, ProjectEntry } from "@/lib/content"
+import { seoImageVariant } from "@/lib/devimg"
 import type { Locale } from "@/lib/i18n"
 import { SEO_IMAGE_PATHS, absoluteUrl } from "@/lib/metadata"
 import { SITE_LINKS, SITE_NAME, SITE_SHORT_TITLE, siteEmailAddress } from "@/lib/site"
@@ -18,7 +19,7 @@ export function personJsonLd(locale: Locale) {
 export function projectJsonLd(locale: Locale, project: ProjectEntry) {
   const image = project.coverImage
     ? absoluteUrl(project.coverImage)
-    : absoluteUrl(SEO_IMAGE_PATHS.projects)
+    : absoluteUrl(seoImageVariant(SEO_IMAGE_PATHS.projects).src)
 
   return {
     "@context": "https://schema.org",
@@ -39,7 +40,9 @@ export function projectJsonLd(locale: Locale, project: ProjectEntry) {
 }
 
 export function blogPostJsonLd(locale: Locale, post: BlogEntry) {
-  const image = post.coverImage ? absoluteUrl(post.coverImage) : absoluteUrl(SEO_IMAGE_PATHS.blog)
+  const image = post.coverImage
+    ? absoluteUrl(post.coverImage)
+    : absoluteUrl(seoImageVariant(SEO_IMAGE_PATHS.blog).src)
 
   return {
     "@context": "https://schema.org",

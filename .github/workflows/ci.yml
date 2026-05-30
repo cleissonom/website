@@ -45,7 +45,7 @@ jobs:
 
       - name: Check image variants
         id: devimg
-        uses: cleissonom/devimg/action@v0.2.6
+        uses: cleissonom/devimg/action@v0.2.7
         with:
           mode: check
           fail-on-warning: "true"
@@ -55,10 +55,25 @@ jobs:
           url-prefix: /
           review-output: .devimg/review.html
 
-      - name: Preview DevImg AI commands
+      - name: Check SEO variants and preview DevImg AI commands
         env:
           DEVIMG_BIN: ${{ steps.devimg.outputs.binary-path }}
         run: |
+          "$DEVIMG_BIN" check \
+            --config devimg.seo.toml \
+            --fail-on-warning \
+            --no-report
+          "$DEVIMG_BIN" manifest export \
+            --manifest public/images/seo-manifest.json \
+            --strip-prefix public \
+            --url-prefix / \
+            --format typescript \
+            --output lib/devimg-seo.generated.ts \
+            --check
+          "$DEVIMG_BIN" review \
+            --manifest public/images/seo-manifest.json \
+            --output .devimg/seo-review.html \
+            --force
           "$DEVIMG_BIN" ai consent \
             --ai-provider openai \
             --model openai-dry-run-model \
@@ -71,13 +86,10 @@ jobs:
             --model openai-dry-run-model \
             --dry-run \
             --ai-output "${RUNNER_TEMP}/devimg-openai-ai-review.json" \
-            --markdown "${RUNNER_TEMP}/devimg-openai-ai-review.md"
+              --markdown "${RUNNER_TEMP}/devimg-openai-ai-review.md"
           "$DEVIMG_BIN" alt \
-            --ai-provider openai \
-            --model openai-dry-run-model \
-            --dry-run \
-            --output "${RUNNER_TEMP}/devimg-openai-alt.json" \
-            --markdown "${RUNNER_TEMP}/devimg-openai-alt.md"
+            --output "${RUNNER_TEMP}/devimg-alt.json" \
+            --markdown "${RUNNER_TEMP}/devimg-alt.md"
           "$DEVIMG_BIN" draft \
             --draft-type project-page-copy \
             --ai-provider openai \
@@ -89,15 +101,17 @@ jobs:
           test -s "${RUNNER_TEMP}/devimg-openai-consent.json"
           test -s "${RUNNER_TEMP}/devimg-openai-ai-review.json"
           test -s "${RUNNER_TEMP}/devimg-openai-ai-review.md"
-          test -s "${RUNNER_TEMP}/devimg-openai-alt.json"
-          test -s "${RUNNER_TEMP}/devimg-openai-alt.md"
+          test -s "${RUNNER_TEMP}/devimg-alt.json"
+          test -s "${RUNNER_TEMP}/devimg-alt.md"
           test -s "${RUNNER_TEMP}/devimg-project-page-copy.md"
 
       - name: Upload image review
         uses: actions/upload-artifact@v7
         with:
           name: devimg-review
-          path: .devimg/review.html
+          path: |
+            .devimg/review.html
+            .devimg/seo-review.html
           if-no-files-found: error
 
       - name: Setup Node

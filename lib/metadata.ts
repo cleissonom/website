@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+import { seoImageVariant } from "@/lib/devimg"
 import { DEFAULT_LOCALE, LOCALES, buildLocalizedPath, type Locale } from "@/lib/i18n"
 import { SITE_NAME, SITE_SHORT_TITLE, SITE_URL } from "@/lib/site"
 
@@ -95,9 +96,6 @@ export const rootMetadata: Metadata = {
   }
 }
 
-const SOCIAL_IMAGE_WIDTH = 1200
-const SOCIAL_IMAGE_HEIGHT = 630
-
 export function absoluteUrl(pathname = "/"): string {
   if (!pathname || pathname === "/") {
     return SITE_URL
@@ -130,8 +128,9 @@ export function createMetadata(locale: Locale, input: MetadataInput): Metadata {
   const pathWithoutLocale = input.path ?? "/"
   const pageUrl = absoluteUrl(buildLocalizedPath(locale, pathWithoutLocale))
   const socialImagePath = input.imagePath ?? SEO_IMAGE_PATHS.default
+  const socialImage = seoImageVariant(socialImagePath)
   const socialImageAlt = input.imageAlt ?? `${input.title} social preview`
-  const socialImageUrl = absoluteUrl(socialImagePath)
+  const socialImageUrl = absoluteUrl(socialImage.src)
   const alternates: NonNullable<Metadata["alternates"]> =
     buildAlternates(locale, pathWithoutLocale) ?? {}
 
@@ -148,8 +147,8 @@ export function createMetadata(locale: Locale, input: MetadataInput): Metadata {
     images: [
       {
         url: socialImageUrl,
-        width: SOCIAL_IMAGE_WIDTH,
-        height: SOCIAL_IMAGE_HEIGHT,
+        width: socialImage.width,
+        height: socialImage.height,
         alt: socialImageAlt
       }
     ]

@@ -51,6 +51,7 @@ export function ProjectCard({
             width={cardImage.width}
             height={cardImage.height}
             loading="lazy"
+            unoptimized
           />
         ) : (
           <div className="card-banner-fallback" aria-hidden="true" />

@@ -45,7 +45,7 @@ cargo install devimg
 Usa la GitHub Action pública en pull requests:
 
 ```yaml
-- uses: cleissonom/devimg/action@v0.2.6
+- uses: cleissonom/devimg/action@v0.2.7
   with:
     mode: check
 ```
@@ -88,7 +88,7 @@ Quería que el pipeline se comportara como infraestructura de desarrollo: config
 
 Este sitio usa DevImg para imágenes de tarjetas y banners de proyectos. Las imágenes de origen viven en `public/projects`, las variantes generadas viven en `public/images/generated` y el código de la aplicación lee un helper TypeScript versionado generado desde el manifiesto.
 
-El CI usa la Action pública `cleissonom/devimg/action@v0.2.6`, descarga un binario de release con checksum, ejecuta `devimg check --fail-on-warning` en modo estricto, confirma que el helper exportado está actualizado, sube un artefacto de revisión y ejecuta dry-runs de los artefactos de revisión con IA, alt text y borrador de página de proyecto de OpenAI sin claves de API. El borrador en prosa se escribe solo en `$RUNNER_TEMP` y CI no lo commitea ni lo publica. El archivo de configuración es el `devimg.toml` predeterminado, así que el workflow queda corto mientras los despliegues en Vercel siguen usando assets estáticos versionados con nombres de archivo con hash de contenido compatibles con CDN.
+El CI usa la Action pública `cleissonom/devimg/action@v0.2.7`, descarga un binario de release con checksum, ejecuta `devimg check --fail-on-warning` en modo estricto, confirma que los helpers exportados estén actualizados, sube artefactos de revisión para proyectos y SEO, y ejecuta dry-runs de revisión con IA, alt text metadata-only y borrador de página de proyecto sin claves de API. El borrador en prosa se escribe solo en `$RUNNER_TEMP` y CI no lo commitea ni lo publica. El `devimg.toml` predeterminado gestiona covers de proyectos, mientras `devimg.seo.toml` genera imágenes Open Graph más pequeñas y con hash de contenido para metadata.
 
 ## Alcance actual
 

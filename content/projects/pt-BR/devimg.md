@@ -45,7 +45,7 @@ cargo install devimg
 Use a GitHub Action pública em pull requests:
 
 ```yaml
-- uses: cleissonom/devimg/action@v0.2.6
+- uses: cleissonom/devimg/action@v0.2.7
   with:
     mode: check
 ```
@@ -88,7 +88,7 @@ Eu queria que o pipeline se comportasse como infraestrutura de desenvolvimento: 
 
 Este site usa DevImg para imagens de cards e banners dos projetos. As imagens de origem ficam em `public/projects`, as variantes geradas ficam em `public/images/generated` e o código da aplicação lê um helper TypeScript versionado gerado a partir do manifesto.
 
-O CI usa a Action pública `cleissonom/devimg/action@v0.2.6`, baixa um binário de release com checksum, executa `devimg check --fail-on-warning` em modo estrito, confirma que o helper exportado está atualizado, envia um artefato de revisão e roda dry-runs dos artefatos de revisão por IA, alt text e rascunho de página de projeto da OpenAI sem chaves de API. O rascunho em prosa é escrito apenas em `$RUNNER_TEMP` e não é commitado nem publicado pelo CI. O arquivo de configuração é o `devimg.toml` padrão, então o workflow fica curto enquanto os deploys na Vercel seguem usando assets estáticos versionados com nomes de arquivo com hash de conteúdo compatíveis com CDN.
+O CI usa a Action pública `cleissonom/devimg/action@v0.2.7`, baixa um binário de release com checksum, executa `devimg check --fail-on-warning` em modo estrito, confirma que os helpers exportados estão atualizados, envia artefatos de revisão para projetos e SEO, e roda dry-runs de revisão por IA, alt text metadata-only e rascunho de página de projeto sem chaves de API. O rascunho em prosa é escrito apenas em `$RUNNER_TEMP` e não é commitado nem publicado pelo CI. O `devimg.toml` padrão gerencia capas de projetos, enquanto `devimg.seo.toml` gera imagens Open Graph menores e com hash de conteúdo para metadata.
 
 ## Escopo atual
 

@@ -1,0 +1,28 @@
+[project]
+root = "."
+manifest = "public/images/seo-manifest.json"
+report = ".devimg/seo-report.md"
+overwrite = false
+strip_metadata = true
+content_hash_filenames = true
+
+[[sources]]
+name = "seo-open-graph"
+input = "public/seo"
+output = "public/images/generated/seo"
+include = ["**/*.png"]
+
+[[preset]]
+name = "seo-open-graph"
+widths = [1200]
+formats = ["jpeg"]
+quality = 90
+fit = "cover"
+aspect_ratio = "1200:630"
+crop = "center"
+allow_upscale = false
+
+[budgets]
+max_total_bytes = "650kb"
+max_file_bytes = "120kb"
+fail_on_regression = true

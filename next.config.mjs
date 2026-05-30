@@ -49,7 +49,7 @@ const nextConfig = {
       },
       {
         source: "/seo/:path*",
-        headers: immutableAssetHeaders
+        headers: stableImageHeaders
       },
       {
         source: "/images/generated/:path*",

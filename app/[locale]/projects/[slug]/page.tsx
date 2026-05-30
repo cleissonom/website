@@ -176,6 +176,7 @@ export default async function ProjectDetailPage({
             alt={`${project.title} banner`}
             width={bannerImage.width}
             height={bannerImage.height}
+            unoptimized
           />
         </figure>
       ) : null}
