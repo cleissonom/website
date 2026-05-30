@@ -36,7 +36,7 @@ The tool reads a `devimg.toml` config, scans source folders, generates configure
 
 ## Install and CI
 
-Install the CLI with Rust 1.85 or newer:
+Install the CLI with Rust 1.88 or newer:
 
 ```bash
 cargo install devimg
@@ -45,7 +45,7 @@ cargo install devimg
 Use the public GitHub Action in pull requests:
 
 ```yaml
-- uses: cleissonom/devimg/action@v0.2.5
+- uses: cleissonom/devimg/action@v0.2.6
   with:
     mode: check
 ```
@@ -88,7 +88,7 @@ I wanted the pipeline to behave like normal developer infrastructure: determinis
 
 This website uses DevImg for project card and banner images. The source images live under `public/projects`, generated variants live under `public/images/generated`, and application code reads a checked-in TypeScript helper generated from the manifest.
 
-CI uses the public `cleissonom/devimg/action@v0.2.5`, downloads a checksum-verified release binary, runs strict `devimg check --fail-on-warning`, validates that the helper export is up to date, uploads a review artifact, and dry-runs the OpenAI AI review and alt-text artifact paths without API keys. The config file is the default `devimg.toml`, so the workflow can stay short while Vercel deployments keep using checked-in static assets with CDN-friendly content-hash filenames.
+CI uses the public `cleissonom/devimg/action@v0.2.6`, downloads a checksum-verified release binary, runs strict `devimg check --fail-on-warning`, validates that the helper export is up to date, uploads a review artifact, and dry-runs the OpenAI AI review, alt-text, and project-page draft artifact paths without API keys. Draft prose is written only under `$RUNNER_TEMP` and is not committed or published by CI. The config file is the default `devimg.toml`, so the workflow can stay short while Vercel deployments keep using checked-in static assets with CDN-friendly content-hash filenames.
 
 ## Current scope
 

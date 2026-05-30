@@ -30,16 +30,17 @@ devimg check --fail-on-warning
 devimg ai consent --ai-provider openai --model openai-dry-run-model --dry-run --output /tmp/cleisson-devimg-openai-consent.json --force
 devimg review --manifest public/images/devimg-manifest.json --ai --ai-provider openai --model openai-dry-run-model --dry-run --ai-output /tmp/cleisson-devimg-openai-ai-review.json --markdown /tmp/cleisson-devimg-openai-ai-review.md --force
 devimg alt --ai-provider openai --model openai-dry-run-model --dry-run --output /tmp/cleisson-devimg-openai-alt.json --markdown /tmp/cleisson-devimg-openai-alt.md --force
+devimg draft --draft-type project-page-copy --ai-provider openai --model openai-dry-run-model --dry-run --ai-review-json /tmp/cleisson-devimg-openai-ai-review.json --review-html .devimg/review.html --output /tmp/cleisson-devimg-project-page-copy.md --force
 ```
 
 Use `--allow-overwrite` when intentionally regenerating existing variants after changing source images or presets.
 
-The AI consent dry-run is a provider setup preview only. The AI review and alt-text dry-runs exercise OpenAI artifact paths without calling OpenAI. They require no API key, include no image bytes by default, and write artifacts under `/tmp` for local inspection. Real OpenAI AI review and alt-text calls are opt-in, require `OPENAI_API_KEY`, and send image bytes only with `--include-images`.
+The AI consent dry-run is a provider setup preview only. The AI review, alt-text, and project-page draft dry-runs exercise OpenAI artifact paths without calling OpenAI. They require no API key, include no image bytes by default, and write artifacts under `/tmp` for local inspection. Draft output is review-only prose and is not committed. Real OpenAI AI review, alt-text, and draft calls are opt-in, require `OPENAI_API_KEY`, and send image bytes only with `--include-images`.
 
 ## CI
 
-The main CI workflow uses the public `cleissonom/devimg/action@v0.2.5` Action. It downloads the matching Linux release archive, verifies its checksum, runs `devimg check --fail-on-warning`, validates `devimg manifest export --check`, and uploads the generated review artifact.
+The main CI workflow uses the public `cleissonom/devimg/action@v0.2.6` Action. It downloads the matching Linux release archive, verifies its checksum, runs `devimg check --fail-on-warning`, validates `devimg manifest export --check`, and uploads the generated review artifact.
 
-After the Action resolves the CLI, CI uses its `binary-path` output to run OpenAI `devimg ai consent --dry-run`, `devimg review --ai --dry-run`, and `devimg alt --dry-run` previews. The previews are written only under `$RUNNER_TEMP`, asserted nonempty, and do not require `OPENAI_API_KEY`.
+After the Action resolves the CLI, CI uses its `binary-path` output to run OpenAI `devimg ai consent --dry-run`, `devimg review --ai --dry-run`, `devimg alt --dry-run`, and `devimg draft --dry-run` previews. The previews are written only under `$RUNNER_TEMP`, asserted nonempty, and do not require `OPENAI_API_KEY`; draft prose is not committed or published by CI.
 
 Generated variants, `public/images/devimg-manifest.json`, and `lib/devimg.generated.ts` should be committed with image changes; `.devimg/` is ignored because reports are regenerated locally and in CI.
